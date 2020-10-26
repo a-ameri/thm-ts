@@ -1,0 +1,13 @@
+#ignore these files
+/public/less/
+/public/metadata/
+/public/scss/
+/public/sprites/
+/public/svgs/
+/public/webfonts/
+/public/css/*
+/public/js/
+/node_modules/
+#do not ignore
+!/public/css/thm*
+!/public/css/manual-bootstrap.css

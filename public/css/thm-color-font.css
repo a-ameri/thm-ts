@@ -1,0 +1,63 @@
+@charset "utf-8";
+/* CSS Document */
+.thm-bg1{
+	background-color: #294f3a;
+}
+.thm-bg2{
+	background-color: #557463;		
+}
+.thm-bg3{
+	background-color: #b4d6ce;
+}
+.thm-bg4{
+	background-color: #b4d6ce;
+}
+.thm-bg5{
+	background-color: #cff0e8;
+}
+.thm-bg6{
+	background-color: #eef1f0;
+}
+.thm-bg7{
+	background-color: #dbe8e5;
+}
+.thm-bg-tab{
+	background-color: #ebf7f4;
+}
+.thm-0radius{
+	border-radius: 0 !important;
+}
+.thm-sans-regular{
+	font-family: IRANSans-regular;	
+}
+.thm-sans-light{
+	font-family: IRANSans-light;	
+}
+.thm-sans-ultralight{
+	font-family: IRANSans-ultralight;	
+}
+.thm-title-font{
+	font-family: IRANSans-bold;
+	color: #294f3a;
+}
+.thm-sans-bold{
+	font-family: IRANSans-bold;
+}
+.thm-sans-medium{
+	font-family: IRANSans-medium;	
+}
+.thm-color1{
+	color: #294f3a;
+}
+.thm-color5{
+	color: #cff0e8;
+}
+.thm-font{
+font-size: 75%;
+font-weight: 700;
+line-height: 1;
+/*white-space: nowrap;*/
+}
+.fa-size {
+	font-size: large;
+}

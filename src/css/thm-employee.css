@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+/* CSS Document */
+
+/*begin account css*/
+
+
+.thm-fields label{
+	width: 30%;
+}
+.thm-fields select,.thm-fields input{
+	width: 60%;
+	display: inline-block;
+}
+
+/*end account css*/
+

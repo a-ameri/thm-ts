@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+/* CSS Document */
+
+/*begin account css*/
+
+
+.thm-fields, #thm-content{
+	margin-top: 0;
+}
+
+.thm-fields select,.thm-fields input{
+	width: 60%;
+	display: inline-block;
+}
+.thm-fields label{
+	width: 30%;
+}
+
+/*end account css*/
+

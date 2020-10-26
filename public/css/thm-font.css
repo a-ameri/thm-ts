@@ -1,0 +1,22 @@
+@charset "utf-8";
+/* CSS Document */
+@font-face{
+	font-family: "IRANSans-bold";
+	src: url("../font/IRANSansWeb_Bold.ttf");
+}
+@font-face{
+	font-family: "IRANSans-light";
+	src: url("../font/IRANSansWeb_Light.ttf");
+}
+@font-face{
+	font-family: "IRANSans-medium";
+	src: url("../font/IRANSansWeb_Medium.ttf");
+}
+@font-face{
+	font-family: "IRANSans-regular";
+	src:url("../font/IRANSansWeb.ttf");
+}
+@font-face{
+	font-family: "IRANSans-ultralight";
+	src:url("../font/IRANSansWeb_UltraLight.ttf");
+}

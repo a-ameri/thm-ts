@@ -1,0 +1,228 @@
+@charset "utf-8";
+
+/* CSS Document */
+
+/*begin master css*/
+
+
+li.list-group-item-action{
+	cursor: pointer;
+}
+
+.thm-header-badge{
+	height: 30px;
+}
+.thm-header-badge:hover{
+	opacity: 80%;
+	cursor: pointer;
+}
+.thm-sidebar{
+
+	position: absolute;
+
+	overflow-x: hidden;
+
+	height: 100%;
+
+	right: 0 !important;
+
+	width: 16.67%;
+
+}
+
+.thm-mian{
+
+	position: fixed;
+
+	height: 100%;
+
+	right: 0 !important;
+
+	margin-right: 16.67%
+
+}
+
+
+
+.thm-icon:hover{
+
+	cursor: pointer;
+
+	color: #557463;
+
+}
+
+.thm-tabs{
+
+	position: fixed;
+
+	width: 80%;
+
+	height: 83%;
+
+}
+
+.thm-content{
+
+	margin-right: 25px;
+
+	margin-top: 20px;
+
+}
+
+.thm-content ul{
+
+	padding-right: 0;
+	font-size: small;
+}
+
+.thm-close-tab:hover{
+
+	color: red;
+	cursor: pointer;
+
+}
+
+.thm-iframe{
+
+	position: absolute;
+
+	margin-top: 8px;;
+
+	width: 98%;
+
+	height: 95%;
+
+	margin-right: 1%;
+
+	border: none;
+
+}
+#avatar-badge{
+	margin-left: 43px;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+#avatar-badge:hover{
+	opacity: 100%;
+	cursor: pointer;
+}
+#avatar:hover{
+	cursor: pointer;
+}
+#thm-sidebar{
+
+	transition: 0.5S;
+	font-size: small;
+
+}
+
+#thm-sidebar div{
+
+	transition: 0.3S;
+
+}
+
+#thm-sidebar .badge{
+	font-size: small;
+}
+
+#thm-main{
+
+	transition: 0.5S;
+
+}
+
+#flip{
+
+	width: 20px; 
+
+	height: 50px;
+
+	z-index: 2;
+
+}
+
+#avatar{
+
+	z-index: 2;
+
+	left: 0!important;
+
+	top: 0 !important;
+
+}
+
+#srchbx{
+
+	border-top-right-radius: 0;
+
+	border-bottom-right-radius: 0;
+
+	border-bottom-left-radius: 0.5em 0.5em;
+
+	border-top-left-radius: 0.5em 0.5em;
+
+}
+
+#srchic{
+
+	border-top-right-radius: 0.5em 0.5em;
+
+	border-bottom-right-radius: 0.5em 0.5em;
+
+	border-bottom-left-radius: 0;
+
+	border-top-left-radius: 0;
+
+}
+
+#thm-menu{
+
+	right: 10px;
+
+}
+
+#thm-menu img{
+
+	height: 15px; 
+
+	margin-left: 10px;
+
+	margin-top: 0;
+
+	padding-top: 0;
+
+	margin-bottom: 0;
+
+	padding-bottom: 0;
+
+}
+
+#preferences{
+
+	position: absolute; 
+
+	right: 0;	
+
+}
+
+#addtab span{
+
+	opacity: 50%
+
+}
+
+#addtab span:hover{
+
+	opacity: 100%;
+
+	cursor: pointer;
+
+}
+
+#tab-title a{
+	direction: rtl;
+}
+
+/*end master css*/

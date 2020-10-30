@@ -1,0 +1,26 @@
+@charset "utf-8";
+
+/* CSS Document */
+
+/*begin account css*/
+
+label{
+	width: 90% !important;
+}
+.all-work-groups{
+	border-style: groove;
+	border-width: 7px;
+	border-color: #b4d6ce;
+}
+.choosen-work-groups{
+	border-style: ridge;
+	border-width: 7px;
+	border-color: #b4d6ce;
+}
+.titr{
+	font-size: x-large;
+	font-weight: bolder;
+}
+
+/*end account css*/
+

@@ -6,7 +6,7 @@ import SaveClose from'../images/save close.png';
 
 const Request_stuff = ()=>{
     return(
-        <div className="thm-f container-fluid thm-sans-light">
+        <div className="thm-f thm-sans-light">
 
         {/*begin header*/}
 
@@ -16,19 +16,19 @@ const Request_stuff = ()=>{
 
                 <div className="thm-f badge save">
 
-                    <img src={{Save}} alt="save" height="100%"/>
+                    <img src={Save} alt="save" height="100%"/>
 
                 </div>
 
                 <div className="thm-f badge  mr-2">
 
-                    <img src={{SaveAdd}}  alt="save add" height="100%"/>
+                    <img src={SaveAdd}  alt="save add" height="100%"/>
 
                 </div>
 
                 <div className="thm-f badge  mr-2">
 
-                    <img src={{SaveClose}}  alt="save close" height="100%"/>
+                    <img src={SaveClose}  alt="save close" height="100%"/>
 
                 </div>
 
@@ -43,31 +43,31 @@ const Request_stuff = ()=>{
         <div id="thm-content" className="thm-f row">
 
             {/*begin insert request softwate*/}		
-            <div className="thm-f col-md-12 h-100">
+            <div id="primary_col" className="thm-f col-md-12 h-100">
                 <div className="thm-f thm-fields thm-sans-light thm-bg6">
                     <div className="thm-f row">
                         <div className="thm-f col-md-3">
                             <label className="thm-f thm-title-font font-weight-bolder">کالا</label>
                             <select className="thm-f form-control font-weight-light thm-sans-regular">
-                                <option><span>کیس</span></option>
-                                <option><span>مانیتور</span></option>
-                                <option><span>پرینتر</span></option>
+                                <option>کیس</option>
+                                <option>مانیتور</option>
+                                <option>پرینتر</option>
                             </select>
                         </div>
                         <div className="thm-f col-md-3">
                             <label className="thm-f thm-title-font font-weight-bolder">برند</label>
                             <select className="thm-f form-control font-weight-light thm-sans-regular">
-                                <option><span>HP</span></option>
-                                <option><span>Canon</span></option>
-                                <option><span>Brother</span></option>
+                                <option>HP</option>
+                                <option>Canon</option>
+                                <option>Brothe</option>
                             </select>
                         </div>
                         <div className="thm-f col-md-3">
                             <label className="thm-f thm-title-font font-weight-bolder">نوع</label>
                             <select className="thm-f form-control font-weight-light thm-sans-regular">
-                                <option><span>2035</span></option>
-                                <option><span>2014</span></option>
-                                <option><span>M 402</span></option>
+                                <option>2035</option>
+                                <option>2014</option>
+                                <option>M 402</option>
                             </select>
                         </div>
                         <div className="thm-f col-md-3">
@@ -76,8 +76,10 @@ const Request_stuff = ()=>{
                         </div>
                     </div>
                     <div className="thm-f row">
-                        <label className="thm-f thm-title-font font-weight-bolder">شرح درخواست</label>
+                        <label className="thm-f thm-title-font font-weight-bolder pr-2">شرح درخواست</label>
+                        <div className="px-1 w-100">
                         <textarea rows="10" className="thm-f thm-0radius form-control font-weight-light thm-sans-regular" ></textarea>
+                        </div>
                     </div>
                     <div className="thm-f row">
                         <div className="thm-f col-md-12">

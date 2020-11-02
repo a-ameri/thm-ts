@@ -3,7 +3,7 @@ import '../css/thm-main.css';
 import $ from 'jquery';
 import Avatar from '../images/avatar.png';
 import Request_Stuff from './request-stuff'
-import { render } from '@testing-library/react';
+import {BrowserRouter, Switch, Link, Route} from 'react-router-dom';
 
 const Main = () =>{
 
@@ -88,8 +88,6 @@ const Main = () =>{
                 +$(this).html()+'&nbsp;&nbsp;<span class="fa fa-times thm-close-tab"></span></a></li>';
 
                 $("#addtab").before(menu_title);
-                
-                $("tab-content").append("<h1>hello</h1>");
 
 			}));
 
@@ -108,6 +106,7 @@ const Main = () =>{
     },[]);
 
     return(
+        <BrowserRouter>
         <div className="container-fluid">
 
             <div className="row">
@@ -166,10 +165,10 @@ const Main = () =>{
 
                                     <ul id="ul3-1" className="list-group thm-0radius p-0 collapse">
 
-                                        <li id="Request_Stuff" href="<Request_Stuff />" className="list-group-item list-group-item-action">
-
-                                        <span className="fas fa-cart-plus fa-size">&nbsp;&nbsp;</span><span>درخواست تجهیزات</span>
-
+                                        <li id="Request_Stuff" href="Request_Stuff" className="list-group-item list-group-item-action">
+                                            <Link to="/Request_Stuff">
+                                                <span className="fas fa-cart-plus fa-size">&nbsp;&nbsp;</span><span>درخواست تجهیزات</span>
+                                            </Link>
                                         </li>
                                         <li id="request-repair" href="request-repair.html" className="list-group-item list-group-item-action">
 
@@ -380,7 +379,11 @@ const Main = () =>{
                         {/*begin tab content*/}
 
                         <div id="tab-content" className="thm-tabs tab-content thm-bg-tab thm-sans-regular">
-                            
+                            <Switch>
+                                <Route path="/Request_Stuff">
+                                    <Request_Stuff />
+                                </Route>
+                            </Switch>
                         </div>
 
                         {/*end tab content*/}
@@ -396,6 +399,7 @@ const Main = () =>{
             </div>		
 
         </div>
+        </BrowserRouter>
     )
 }
 

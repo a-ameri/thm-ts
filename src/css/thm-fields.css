@@ -4,27 +4,13 @@
 
 /*begin account css*/
 
-.thm-fields{	
 
-	/*background-color: white;*/
-
-	position: fixed;
-
-	height: 90% !important;
-
-	width: 100%;
-
-	right: 0 !important;
-	
-	font-size: small;
-
-}
 
 .thm-fields{
 
 	overflow-x: hidden;
 
-	position: fixed;
+	/* position: fixed; */
 
 	height: 85% !important;
 
@@ -33,6 +19,10 @@
 	margin: 1% 0;
 
 	border-radius: 0;
+
+	font-size: small;
+
+	right: 0 !important;
 
 }
 
@@ -72,7 +62,7 @@ div.thm-f .badge{
 
 #thm-content.thm-f{
 
-	position: fixed;
+	position: absolute;
 
 	width: 100%;
 
@@ -84,7 +74,9 @@ div.thm-f .badge{
 
 #thm-main-action.thm-f{
 
-	position: fixed;
+	position: absolute;
+
+	right: 15px;
 
 	height: 35px;
 
@@ -100,6 +92,9 @@ div.thm-f .badge{
 
 	height: 95%;
 
+}
+#primary_col{
+	padding: 0;
 }
 
 /*end account css*/

@@ -1,0 +1,12 @@
+@charset "utf-8";
+
+/* CSS Document */
+
+/*begin account css*/
+
+
+.thm-fields select,.thm-fields input{
+	width: 100%;
+	display: inline-block;
+}/*end account css*/
+

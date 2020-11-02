@@ -1,0 +1,106 @@
+@charset "utf-8";
+
+/* CSS Document */
+
+/*begin account css*/
+
+.thm-fields{	
+
+	/*background-color: white;*/
+
+	position: fixed;
+
+	height: 90% !important;
+
+	width: 100%;
+
+	right: 0 !important;
+	
+	font-size: small;
+
+}
+
+.thm-fields{
+
+	overflow-x: hidden;
+
+	position: fixed;
+
+	height: 85% !important;
+
+	width: 100%;
+
+	margin: 1% 0;
+
+	border-radius: 0;
+
+}
+
+.thm-fields div{
+	margin: 10px 0;
+}
+.thm-fields div div{
+	margin: 10px 0;
+}
+.thm-fields label{
+	width: 20%;
+}
+.thm-fields select,.thm-fields input{
+	width: 70%;
+	display: inline-block;
+}
+.thm-fields input[type="checkbox"]{
+	width: 5%;
+}
+
+div .badge{
+
+	height: 100%;
+
+	background-color: transparent;
+
+}
+
+
+.badge:hover{
+
+	background-color: aliceblue;
+
+	cursor: pointer;
+
+}
+
+#thm-content{
+
+	position: fixed;
+
+	width: 100%;
+
+	height: 90%;
+
+	margin: 40px 0;
+
+}
+
+#thm-main-action{
+
+	position: fixed;
+
+	height: 35px;
+
+}
+
+#thm-main-action div{
+
+	height: 100%;
+
+}
+
+#thm-main-action div .save{
+
+	height: 95%;
+
+}
+
+/*end account css*/
+

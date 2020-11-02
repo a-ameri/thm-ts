@@ -53,7 +53,7 @@
 	width: 5%;
 }
 
-div .badge{
+div.thm-f .badge{
 
 	height: 100%;
 
@@ -62,7 +62,7 @@ div .badge{
 }
 
 
-.badge:hover{
+.badge.thm-f:hover{
 
 	background-color: aliceblue;
 
@@ -70,7 +70,7 @@ div .badge{
 
 }
 
-#thm-content{
+#thm-content.thm-f{
 
 	position: fixed;
 
@@ -82,7 +82,7 @@ div .badge{
 
 }
 
-#thm-main-action{
+#thm-main-action.thm-f{
 
 	position: fixed;
 
@@ -90,13 +90,13 @@ div .badge{
 
 }
 
-#thm-main-action div{
+#thm-main-action.thm-f div{
 
 	height: 100%;
 
 }
 
-#thm-main-action div .save{
+#thm-main-action.thm-f div .save{
 
 	height: 95%;
 

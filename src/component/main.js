@@ -3,6 +3,7 @@ import '../css/thm-main.css';
 import $ from 'jquery';
 import Avatar from '../images/avatar.png';
 import Request_Stuff from './request-stuff'
+import { render } from '@testing-library/react';
 
 const Main = () =>{
 
@@ -78,14 +79,17 @@ const Main = () =>{
 		$(function(){
 			$("#thm-menu li").on('click',(function(){
 				if($(this).attr("href") == "#")
-				return;
-				var hyper_ref = $(this).attr("href");
-				var id = $(this).attr("id");
-				var menu_title = '<li class="nav-item thm-bg-tab" dir="ltr"><a data-toggle="tab" data-thm-href="div_'+id+'" class="nav-link active">'+$(this).html()+'&nbsp;&nbsp;<span class="fa fa-times thm-close-tab"></span></a></li>';
-				var content = '<div id="div_'+id+'" class="tab-pane fade in active show">'+hyper_ref+'</div>';
-				$(".tab-pane").removeClass("active show");
-				$("#addtab").before(menu_title);
-				$("#tab-content").append(content);
+                return;
+                
+                var id = $(this).attr("id");
+                
+                var menu_title = '<li class="nav-item thm-bg-tab" dir="ltr">'+
+                '<a data-toggle="tab" data-thm-href="div_'+id+'" class="nav-link active">'
+                +$(this).html()+'&nbsp;&nbsp;<span class="fa fa-times thm-close-tab"></span></a></li>';
+
+                $("#addtab").before(menu_title);
+                
+                $("tab-content").append("<h1>hello</h1>");
 
 			}));
 
@@ -376,7 +380,7 @@ const Main = () =>{
                         {/*begin tab content*/}
 
                         <div id="tab-content" className="thm-tabs tab-content thm-bg-tab thm-sans-regular">
-
+                            
                         </div>
 
                         {/*end tab content*/}

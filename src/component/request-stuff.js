@@ -78,7 +78,7 @@ const Request_stuff = ()=>{
                     <div className="thm-f row">
                         <label className="thm-f thm-title-font font-weight-bolder pr-2">شرح درخواست</label>
                         <div className="px-1 w-100">
-                        <textarea rows="10" className="thm-f thm-0radius form-control font-weight-light thm-sans-regular" ></textarea>
+                        <textarea rows="5" className="thm-f thm-0radius form-control font-weight-light thm-sans-regular" ></textarea>
                         </div>
                     </div>
                     <div className="thm-f row">

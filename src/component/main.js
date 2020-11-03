@@ -1,4 +1,5 @@
 import React,{useEffect} from 'react';
+import ReactDOM from 'react-dom';
 import '../css/thm-main.css';
 import $ from 'jquery';
 import Avatar from '../images/avatar.png';
@@ -74,7 +75,15 @@ const Main = () =>{
 
 			$(".sidebar-obj > ul > ul> ul > ul > li > span").css("padding-right","20px");
 
-		});
+        });
+        
+        function RenderTabs($tabName, $id_content){
+            switch($tabName){
+                case "Request_Stuff":
+                    ReactDOM.render(<Request_Stuff />, document.getElementById($id_content));
+                    break;
+            }
+        }
 
 		$(function(){
 			$("#thm-menu li").on('click',(function(){
@@ -82,18 +91,24 @@ const Main = () =>{
                 return;
                 
                 var id = $(this).attr("id");
+
+                let id_content = "div_"+id;
                 
                 var menu_title = '<li class="nav-item thm-bg-tab" dir="ltr">'+
-                '<a data-toggle="tab" data-thm-href="div_'+id+'" class="nav-link active">'
+                '<a data-toggle="tab" data-thm-href="'+id_content+'" class="nav-link active">'
                 +$(this).html()+'&nbsp;&nbsp;<span class="fa fa-times thm-close-tab"></span></a></li>';
-
+                $(".tab-pane").removeClass("active show");
                 $("#addtab").before(menu_title);
+                
+                $("#tab-content").append("<div id='"+id_content+"' class='tab-pane fade in active show'></div>");
+
+                RenderTabs(id, id_content);
 
 			}));
 
 			$(document).on("click", "span.thm-close-tab" , function() {
-				$(this).parent().parent().remove();
 				var id = $(this).parent().attr('data-thm-href');
+				$(this).parent().parent().remove();
 				$("#"+id).remove();
 			});
 
@@ -166,9 +181,9 @@ const Main = () =>{
                                     <ul id="ul3-1" className="list-group thm-0radius p-0 collapse">
 
                                         <li id="Request_Stuff" href="Request_Stuff" className="list-group-item list-group-item-action">
-                                            <Link to="/Request_Stuff">
-                                                <span className="fas fa-cart-plus fa-size">&nbsp;&nbsp;</span><span>درخواست تجهیزات</span>
-                                            </Link>
+                                            
+                                        <span className="fas fa-cart-plus fa-size">&nbsp;&nbsp;</span><span>درخواست تجهیزات</span>
+                                            
                                         </li>
                                         <li id="request-repair" href="request-repair.html" className="list-group-item list-group-item-action">
 
@@ -379,11 +394,9 @@ const Main = () =>{
                         {/*begin tab content*/}
 
                         <div id="tab-content" className="thm-tabs tab-content thm-bg-tab thm-sans-regular">
-                            <Switch>
-                                <Route path="/Request_Stuff">
-                                    <Request_Stuff />
-                                </Route>
-                            </Switch>
+                            
+                            
+                                
                         </div>
 
                         {/*end tab content*/}

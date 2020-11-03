@@ -1,5 +1,4 @@
 import React from 'react';
-import '../css/thm-fields.css';
 import Save from '../images/save.png';
 import SaveAdd from '../images/save add.png';
 import SaveClose from'../images/save close.png';
@@ -42,7 +41,7 @@ const Request_stuff = ()=>{
 
         <div id="thm-content" className="thm-f row">
 
-            {/*begin insert request softwate*/}		
+            {/*begin insert request stuff*/}		
             <div id="primary_col" className="thm-f col-md-12 h-100">
                 <div className="thm-f thm-fields thm-sans-light thm-bg6">
                     <div className="thm-f row">
@@ -78,7 +77,7 @@ const Request_stuff = ()=>{
                     <div className="thm-f row">
                         <label className="thm-f thm-title-font font-weight-bolder pr-2">شرح درخواست</label>
                         <div className="px-1 w-100">
-                        <textarea rows="5" className="thm-f thm-0radius form-control font-weight-light thm-sans-regular" ></textarea>
+                        <textarea rows="10" className="thm-f thm-0radius form-control font-weight-light thm-sans-regular" ></textarea>
                         </div>
                     </div>
                     <div className="thm-f row">
@@ -93,7 +92,7 @@ const Request_stuff = ()=>{
 
             </div>
 
-            {/*end insert strequest softwate*/}
+            {/*end insert strequest stuff*/}
 
         </div>
 

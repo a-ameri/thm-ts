@@ -5,8 +5,9 @@
 /*begin account css*/
 
 
-.thm-fields, #thm-content{
+#thm-content.thm-l{
 	margin-top: 0;
+	padding: 5px;
 }
 
 .thm-fields select,.thm-fields input{

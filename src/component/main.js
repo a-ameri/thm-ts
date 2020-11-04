@@ -108,13 +108,16 @@ const Main = () =>{
             if(openTabs.length == 1)
             return;           
                  
-            removePane = true;            
+            removePane = true;   
+            $(".tab-pane").removeClass("active show");         
             if($id_inx == 0){
-                var id_str = "#" + openTabs[1];
-                $(id_str).addClass("active show");
+                var id_str = openTabs[1];
+                $("#" + id_str).addClass("active show");
+                $("[data-thm-href='"+id_str+"']").addClass("active");
             }else{
-                var id_str = "#" + openTabs[$id_inx - 1];
-                $(id_str).addClass("active show");
+                var id_str = openTabs[$id_inx - 1];
+                $("#" + id_str).addClass("active show");
+                $("[data-thm-href='"+id_str+"']").addClass("active");
             }
         }
 
@@ -131,10 +134,12 @@ const Main = () =>{
                 return;
 
                 openTabs.push(id_content);
-                
+                $(".nav-link").removeClass("active");
+
                 var menu_title = '<li class="nav-item thm-bg-tab" dir="ltr">'+
                 '<a data-toggle="tab" data-thm-href="'+id_content+'" class="nav-link active">'
                 +$(this).html()+'&nbsp;&nbsp;<span class="fa fa-times thm-close-tab"></span></a></li>';
+
                 $(".tab-pane").removeClass("active show");
                 $("#addtab").before(menu_title);
                 
@@ -145,10 +150,10 @@ const Main = () =>{
 			}));
 
 			$(document).on("click", "span.thm-close-tab" , function() {
-				var id_content = $(this).parent().attr('data-thm-href');
+                var id_content = $(this).parent().attr('data-thm-href');
 				$(this).parent().parent().remove();
                 $("#"+id_content).remove();
-                let inx = openTabs.indexOf(id_content);
+                let inx = openTabs.indexOf(id_content);                
                 activePane(inx);
                 openTabs.splice(inx,1);
 			});

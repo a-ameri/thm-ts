@@ -48,7 +48,7 @@ const Request_software = ()=>{
                         <div className="thm-f col-md-8">
                             <label className="thm-f thm-title-font font-weight-bolder">نوع درخواست</label>
                             <select className="thm-f form-control font-weight-light thm-sans-regular">
-                                <option selected>نرم افزار</option>
+                                <option>نرم افزار</option>
                                 <option>شبکه</option>
                             </select>
                         </div>

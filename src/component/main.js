@@ -13,6 +13,7 @@ import Task_list from './task-list';
 
 const Main = () =>{
     let openTabs=[];
+    
     useEffect(()=>{
         $("#flip").on('click',(function(){
 
@@ -102,14 +103,34 @@ const Main = () =>{
             }
         }
 
+        var removePane = false;
+        function activePane($id_inx){
+            if(openTabs.length == 1)
+            return;           
+                 
+            removePane = true;            
+            if($id_inx == 0){
+                var id_str = "#" + openTabs[1];
+                $(id_str).addClass("active show");
+            }else{
+                var id_str = "#" + openTabs[$id_inx - 1];
+                $(id_str).addClass("active show");
+            }
+        }
+
 		$(function(){
 			$("#thm-menu li").on('click',(function(){
 				if($(this).attr("href") == "#")
-                return;
+                return;                
                 
                 var id = $(this).attr("id");
 
                 let id_content = "div_"+id;
+
+                if(openTabs.indexOf(id_content) >= 0)
+                return;
+
+                openTabs.push(id_content);
                 
                 var menu_title = '<li class="nav-item thm-bg-tab" dir="ltr">'+
                 '<a data-toggle="tab" data-thm-href="'+id_content+'" class="nav-link active">'
@@ -124,16 +145,24 @@ const Main = () =>{
 			}));
 
 			$(document).on("click", "span.thm-close-tab" , function() {
-				var id = $(this).parent().attr('data-thm-href');
+				var id_content = $(this).parent().attr('data-thm-href');
 				$(this).parent().parent().remove();
-				$("#"+id).remove();
+                $("#"+id_content).remove();
+                let inx = openTabs.indexOf(id_content);
+                activePane(inx);
+                openTabs.splice(inx,1);
 			});
 
 			$(document).on("click", "a.nav-link" , function() {
-				$(".tab-pane").removeClass("active show");
-				var href = $(this).attr("data-thm-href");
-				$("#"+href).addClass("active show");
-			});
+                if(removePane == false)
+                {
+                    $(".tab-pane").removeClass("active show");
+                    var id_content = $(this).attr("data-thm-href");
+                    $("#"+id_content).addClass("active show");
+                }			
+                removePane = false;
+            });
+
 		});
     },[]);
 

@@ -3,6 +3,12 @@ import ReactDOM from 'react-dom';
 import '../css/thm-main.css';
 import '../css/thm-fields.css';
 import '../css/thm-list.css';
+import '../css/thm-employee.css';
+import '../css/thm-all-hardware.css';
+import '../css/thm-hardware.css';
+import Save from '../images/save.png';
+import SaveAdd from '../images/save add.png';
+import SaveClose from'../images/save close.png';
 import $ from 'jquery';
 import Avatar from '../images/avatar.png';
 import Request_stuff from './request-stuff';
@@ -10,11 +16,16 @@ import Request_software from './request-software';
 import Request_repair from './request-repair';
 import Request_list from './request-list';
 import Task_list from './task-list';
+import Employee from './employee';
+import Office from './office';
+import Zone from './zone';
+import Hardware_management from './hardware-management';
 
 const Main = () =>{
     let openTabs=[];
     
     useEffect(()=>{
+        //#region function of flip button
         $("#flip").on('click',(function(){
 
 			if(document.getElementById("thm-sidebar").style.width == "0%")
@@ -61,8 +72,10 @@ const Main = () =>{
 
 			}
 
-		}));
-
+        }));
+        //#endregion
+        
+        //#region add style to side menu
 		$(function(){
 
 			$(".sidebar-obj > ul > li").addClass("thm-bg1");
@@ -82,17 +95,19 @@ const Main = () =>{
 			$(".sidebar-obj > ul > ul> ul > ul > li > span").css("padding-right","20px");
 
         });
+        //#endregion
         
+        //#region render pages with react
         function RenderTabs($tabName, $id_content){
             switch($tabName){
                 case "request_stuff":
-                    ReactDOM.render(<Request_stuff />, document.getElementById($id_content));
+                    ReactDOM.render(<Request_stuff Save={Save} SaveAdd = {SaveAdd} SaveClose={SaveClose} />, document.getElementById($id_content));
                     break;
                 case "request_software":
-                    ReactDOM.render(<Request_software />, document.getElementById($id_content));
+                    ReactDOM.render(<Request_software Save={Save} SaveAdd = {SaveAdd} SaveClose={SaveClose} />, document.getElementById($id_content));
                     break;
                 case "request_repair":
-                    ReactDOM.render(<Request_repair />, document.getElementById($id_content));
+                    ReactDOM.render(<Request_repair Save={Save} SaveAdd = {SaveAdd} SaveClose={SaveClose} />, document.getElementById($id_content));
                     break;
                 case "task_list":
                     ReactDOM.render(<Task_list />, document.getElementById($id_content));
@@ -100,10 +115,24 @@ const Main = () =>{
                 case "request_list":
                     ReactDOM.render(<Request_list />, document.getElementById($id_content));
                     break;
+                case "employee":
+                    ReactDOM.render(<Employee Save={Save} SaveAdd = {SaveAdd} SaveClose={SaveClose} />, document.getElementById($id_content));
+                    break;                    
+                case "office":
+                    ReactDOM.render(<Office Save={Save} SaveAdd = {SaveAdd} SaveClose={SaveClose} />, document.getElementById($id_content));
+                    break;                                        
+                case "zone":
+                    ReactDOM.render(<Zone Save={Save} SaveAdd = {SaveAdd} SaveClose={SaveClose} />, document.getElementById($id_content));
+                    break;                                        
+                case "hardware_management":
+                    ReactDOM.render(<Hardware_management Save={Save} SaveAdd = {SaveAdd} SaveClose={SaveClose} />, document.getElementById($id_content));
+                    break;
             }
         }
+        //#endregion
 
         var removePane = false;
+        //#region funcion of active pane
         function activePane($id_inx){
             if(openTabs.length == 1)
             return;           
@@ -111,64 +140,75 @@ const Main = () =>{
             removePane = true;   
             $(".tab-pane").removeClass("active show");         
             if($id_inx == 0){
-                var id_str = openTabs[1];
-                $("#" + id_str).addClass("active show");
-                $("[data-thm-href='"+id_str+"']").addClass("active");
+                var id_content = openTabs[1];
+                $("#" + id_content).addClass("active show");
+                $("[data-thm-href='"+id_content+"']").addClass("active");
             }else{
-                var id_str = openTabs[$id_inx - 1];
-                $("#" + id_str).addClass("active show");
-                $("[data-thm-href='"+id_str+"']").addClass("active");
+                var id_content = openTabs[$id_inx - 1];
+                $("#" + id_content).addClass("active show");
+                $("[data-thm-href='"+id_content+"']").addClass("active");
             }
         }
+        //#endregion
+        
+        //#region click on side menu and open tabs
+        $("#thm-menu li").on('click',(function(){
+            if($(this).attr("href") == "#")
+            return;                
+            
+            var id = $(this).attr("id");
 
-		$(function(){
-			$("#thm-menu li").on('click',(function(){
-				if($(this).attr("href") == "#")
-                return;                
-                
-                var id = $(this).attr("id");
-
-                let id_content = "div_"+id;
-
-                if(openTabs.indexOf(id_content) >= 0)
-                return;
-
-                openTabs.push(id_content);
-                $(".nav-link").removeClass("active");
-
-                var menu_title = '<li class="nav-item thm-bg-tab" dir="ltr">'+
-                '<a data-toggle="tab" data-thm-href="'+id_content+'" class="nav-link active">'
-                +$(this).html()+'&nbsp;&nbsp;<span class="fa fa-times thm-close-tab"></span></a></li>';
-
+            let id_content = "div_"+id;
+            
+            //if tabs exist select opened tab
+            if(openTabs.indexOf(id_content) >= 0){
                 $(".tab-pane").removeClass("active show");
-                $("#addtab").before(menu_title);
-                
-                $("#tab-content").append("<div id='"+id_content+"' class='tab-pane fade in active show'></div>");
+                $("#"+id_content).addClass("active show");
+                $("[data-thm-href]").removeClass("active");
+                $("[data-thm-href='"+id_content+"']").addClass("active");
+                return;
+            }
 
-                RenderTabs(id, id_content);
+            openTabs.push(id_content);
+            $(".nav-link").removeClass("active");
 
-			}));
+            var menu_title = '<li class="nav-item thm-bg-tab" dir="ltr">'+
+            '<a data-toggle="tab" data-thm-href="'+id_content+'" class="nav-link active">'
+            +$(this).html()+'&nbsp;&nbsp;<span class="fa fa-times thm-close-tab"></span></a></li>';
 
-			$(document).on("click", "span.thm-close-tab" , function() {
-                var id_content = $(this).parent().attr('data-thm-href');
-				$(this).parent().parent().remove();
-                $("#"+id_content).remove();
-                let inx = openTabs.indexOf(id_content);                
-                activePane(inx);
-                openTabs.splice(inx,1);
-			});
+            $(".tab-pane").removeClass("active show");
+            $("#addtab").before(menu_title);
+            
+            $("#tab-content").append("<div id='"+id_content+"' class='tab-pane fade in active show'></div>");
 
-			$(document).on("click", "a.nav-link" , function() {
-                if(removePane == false)
-                {
-                    $(".tab-pane").removeClass("active show");
-                    var id_content = $(this).attr("data-thm-href");
-                    $("#"+id_content).addClass("active show");
-                }			
-                removePane = false;
-            });
+            RenderTabs(id, id_content);
 
-		});
+        }));
+        //#endregion
+
+        //#region click on x button and close pane
+        $(document).on("click", "span.thm-close-tab" , function() {
+            var id_content = $(this).parent().attr('data-thm-href');
+            $(this).parent().parent().remove();
+            $("#"+id_content).remove();
+            let inx = openTabs.indexOf(id_content);                
+            activePane(inx);
+            openTabs.splice(inx,1);
+        });
+        //#endregion
+
+        //#region click on tabs and show pane
+        $(document).on("click", "a.nav-link" , function() {
+            if(removePane == false)
+            {
+                $(".tab-pane").removeClass("active show");
+                var id_content = $(this).attr("data-thm-href");
+                $("#"+id_content).addClass("active show");
+            }			
+            removePane = false;
+        });
+        //#endregion
+
     },[]);
 
     return(
@@ -289,7 +329,7 @@ const Main = () =>{
 
                                     </ul>
                                     
-                                    <li id="manage_hardware" data-toggle="collapse" data-target="#ul3-3" href="manage-hardware.html" className="list-group-item list-group-item-action">
+                                    <li id="hardware_management" data-toggle="collapse" data-target="#ul3-3" href="manage-hardware.html" className="list-group-item list-group-item-action">
 
                                         <span className="fas fa-keyboard fa-size">&nbsp;&nbsp;</span><span>کالا</span>
 

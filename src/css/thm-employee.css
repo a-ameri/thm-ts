@@ -5,10 +5,10 @@
 /*begin account css*/
 
 
-.thm-fields label{
+.thm-fields.thm-m label{
 	width: 30%;
 }
-.thm-fields select,.thm-fields input{
+.thm-fields.thm-m  select,.thm-fields.thm-m input{
 	width: 60%;
 	display: inline-block;
 }

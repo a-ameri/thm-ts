@@ -1,16 +1,16 @@
 @charset "utf-8";
 
 /* CSS Document */
-body{
+body.thm-h{
 	font-size: small;
 }
-img[alt="save"]{
+img[alt="save"].thm-h{
 	padding-bottom: 10%;
 }
-div[class~="col-2"] label{
+div[class~="col-2"].thm-h label{
 	margin-top: 5px;
 }
-.nav-tabs .nav-link.active{
+.nav-tabs.thm-h .nav-link.active{
 
 	color: #557463;
 
@@ -20,7 +20,7 @@ div[class~="col-2"] label{
 
 }
 
-.nav-link{
+.nav-link.thm-h{
 
 	color: 	#294f3a;
 
@@ -30,13 +30,13 @@ div[class~="col-2"] label{
 
 }
 
-.nav-tabs .nav-link{
+.nav-tabs.thm-h .nav-link{
 
 	border-radius: 0 !important;
 
 }
 
-div .badge{
+div.thm-h .badge{
 
 	height: 90%;
 
@@ -44,7 +44,7 @@ div .badge{
 
 }
 
-.badge:hover{
+.badge.thm-h:hover{
 
 	background-color: aliceblue;
 
@@ -52,49 +52,49 @@ div .badge{
 
 }
 
-.level-item{
+.level-item.thm-h{
 	border: none;
 }
 
-.level-item.active{
+.level-item.thm-h.active{
 	background-color: #ebf7f4;
 	color: #495057;
 }
 
-.level-item span{
+.level-item.thm-h span{
 	margin-right: 20px;
 }
 
-.assign-list > span{
+.assign-list.thm-h > span{
 	font-weight: bold;
 }
 
-.assign-list span{
+.assign-list.thm-h span{
 	margin-right: 20px;
 }
 
-.assign-list div{
+.assign-list.thm-h div{
 	margin-top: 20px;
 }
 
-.assign-list div ul{
+.assign-list.thm-h div ul{
 	list-style-type: none;
 }
 
-.assign-list div ul li{
+.assign-list.thm-h div ul li{
 	padding: 2.5px 0;
 }
 
-.assign-list div ul .fa-times:hover, .assign-list div ul .fa-plus:hover{
+.assign-list.thm-h div ul .fa-times:hover, .assign-list div ul .fa-plus:hover{
 	color: red;
 	cursor: pointer;
 }
-.ta-desc .fa-times:hover{
+.ta-desc.thm-h .fa-times:hover{
 	cursor: pointer;
 	color: red;
 }
 
-#tab-content{
+#tab-content.thm-h{
 
 	background-color: white;
 	height: 85%;
@@ -103,7 +103,7 @@ div .badge{
 	overflow-x: hidden;
 }
 
-#thm-action{
+#thm-action.thm-h{
 
 	margin: 5px 0;
 
@@ -111,30 +111,30 @@ div .badge{
 
 }
 
-#thm-action div{
+#thm-action.thm-h div{
 
 	height: inherit;
 
 }
 
-#account, #history{
+#account.thm-h, #history.thm-h{
 
 	height: 390px;
 
 }
-#main-comtent{
+#main-content.thm-h{
 	position: fixed;
 	width: 100%;
 	height: 100%;
 }
-#sub-content{
+#sub-content.thm-h{
 	position: fixed;
 	margin-top: 37px;
 }
-#thm-precode{
+#thm-precode.thm-h{
 	margin-bottom: 0.25%;
 }
-#assign-col-1{
+#assign-col-1.thm-h{
 	margin-top: 1%;
 	margin-right: 3%;
 	width: 20%;
@@ -142,7 +142,7 @@ div .badge{
 	position: fixed;
 	overflow-x: hidden;
 }
-#assign-col-2{
+#assign-col-2.thm-h{
 	margin-top: 1%;
 	margin-right: 24%;
 	width: 35%;
@@ -150,7 +150,7 @@ div .badge{
 	position: fixed;
 	overflow-x: hidden;
 }
-#assign-col-3{
+#assign-col-3.thm-h{
 	margin-top: 1%;
 	margin-right: 60%;
 	width: 35%;
@@ -158,26 +158,26 @@ div .badge{
 	position: fixed;
 	overflow-x: hidden;
 }
-#assign-col-3 div ul li:hover{
+#assign-col-3.thm-h div ul li:hover{
 	background-color: #97c0b6;
 	display: block;
 	margin-left: 20px;
 	cursor: pointer;
 }
-#description{
+#description.thm-h{
 	margin: 10px;
 }
 
-#turnover{
+#turnover.thm-h{
 	margin: 5px 5px auto 10px;
 }
-#turnover td, #turnover th{
+#turnover.thm-h td, #turnover.thm-h th{
 	border: 1px solid #294f3a;
 }
-#turnover thead tr{
+#turnover.thm-h thead tr{
 	height: 15px;
 	background-color: #cde7f1;
 }
-#turnover tbody td{
+#turnover.thm-h tbody td{
 	font-size: large;
 }

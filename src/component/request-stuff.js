@@ -1,9 +1,6 @@
 import React from 'react';
-import Save from '../images/save.png';
-import SaveAdd from '../images/save add.png';
-import SaveClose from'../images/save close.png';
 
-const Request_stuff = ()=>{
+const Request_stuff = (props)=>{
     return(
         <div className="thm-f thm-sans-light">
 
@@ -15,19 +12,19 @@ const Request_stuff = ()=>{
 
                 <div className="thm-f badge save">
 
-                    <img src={Save} alt="save" height="100%"/>
+                    <img src={props.Save} alt="save" height="100%"/>
 
                 </div>
 
                 <div className="thm-f badge  mr-2">
 
-                    <img src={SaveAdd}  alt="save add" height="100%"/>
+                    <img src={props.SaveAdd}  alt="save add" height="100%"/>
 
                 </div>
 
                 <div className="thm-f badge  mr-2">
 
-                    <img src={SaveClose}  alt="save close" height="100%"/>
+                    <img src={props.SaveClose}  alt="save close" height="100%"/>
 
                 </div>
 

@@ -1,10 +1,11 @@
 import React from 'react';
+import ReactComment from '../Helpers/Comment';
 
 const Request_repair = (props)=>{
     return(
         <div className="thm-f thm-sans-light">
 
-        {/*begin header*/}
+        <ReactComment text="begin header" />
 
         <div id="thm-main-action" className="thm-f row w-100 thm-bg7">
 
@@ -32,13 +33,13 @@ const Request_repair = (props)=>{
 
         </div>
 
-        {/*end header*/}
+        <ReactComment text="end header" />
 
-        {/*begin content*/}
+        <ReactComment text="begin content" />
 
         <div id="thm-content" className="thm-f row">
 
-            {/*begin insert request repair*/}		
+            <ReactComment text="begin insert request repair" />		
             <div id="primary_col" className="thm-f col-md-12 h-100">
                 <div className="thm-f  thm-fields thm-sans-light thm-bg6">
                     <div className="thm-f  row">
@@ -67,11 +68,11 @@ const Request_repair = (props)=>{
                 </div>
             </div>
 
-            {/*end insert strequest repair*/}
+            <ReactComment text="end insert strequest repair" />
 
         </div>
 
-        {/*end content*/}
+        <ReactComment text="end content" />
 
 
 

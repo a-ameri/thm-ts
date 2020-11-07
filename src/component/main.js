@@ -1,5 +1,6 @@
 import React,{useEffect, useState} from 'react';
 import ReactDOM from 'react-dom';
+import ReactComment from '../Helpers/Comment';
 import '../css/thm-main.css';
 import '../css/thm-fields.css';
 import '../css/thm-list.css';
@@ -216,7 +217,7 @@ const Main = () =>{
 
             <div className="row">
 
-                {/*begin sidebar*/}
+                <ReactComment text="begin sidebar" />
 
             <div id="thm-sidebar" className="col-sm-2 thm-sans-light thm-sidebar thm-bg2">
 
@@ -224,7 +225,7 @@ const Main = () =>{
 
                     <div className="row-cols-1 w-100 ">
 
-                            {/*begin company name*/}
+                            <ReactComment text="begin company name" />
 
                             <div className="w-100 badge thm-bg5 mt-2 p-2">
 
@@ -232,9 +233,9 @@ const Main = () =>{
 
                             </div>
 
-                            {/*end company name*/}
+                            <ReactComment text="end company name" />
 
-                            {/*begin recently*/}
+                            <ReactComment text="begin recently" />
 
                             <div className="mt-3 sidebar-obj" style={{right: "10px",display: "none"}}>
 
@@ -246,9 +247,9 @@ const Main = () =>{
 
                             </div>
 
-                            {/*end recently*/}
+                            <ReactComment text="end recently" />
 
-                            {/*begin menu*/}
+                            <ReactComment text="begin menu" />
 
                         <div id="thm-menu" className=" mt-3 sidebar-obj">
 
@@ -365,7 +366,7 @@ const Main = () =>{
 
                         </div>
 
-                        {/*end menu*/}
+                        <ReactComment text="end menu" />
 
                     </div>					
 
@@ -373,13 +374,13 @@ const Main = () =>{
 
             </div>
 
-            {/* end sidebar*/}
+            <ReactComment text=" end sidebar" />
 
-            {/*begin main*/}
+            <ReactComment text="begin main" />
 
             <div id="thm-main" className="col-sm-10 thm-mian thm-bg3 px-0 ">
 
-                {/*begin flip*/}
+                <ReactComment text="begin flip" />
 
                 <div>					
 
@@ -387,9 +388,9 @@ const Main = () =>{
 
                 </div>
 
-                {/*end flip*/}
+                <ReactComment text="end flip" />
 
-                {/*begin header*/}
+                <ReactComment text="begin header" />
 
                 <div className="row mr-0 mt-2 thm-color1" >
 
@@ -461,13 +462,13 @@ const Main = () =>{
                         
                     </div>
 
-                    {/*ned header*/}
+                    <ReactComment text="ned header" />
 
-                    {/*begin content*/}				
+                    <ReactComment text="begin content" />				
 
                     <div className="thm-content thm-color1">
 
-                        {/*begin tab title*/}
+                        <ReactComment text="begin tab title" />
 
                         <ul id="tab-title" className="nav nav-tabs thm-sans-bold border-0" >
 
@@ -479,9 +480,9 @@ const Main = () =>{
 
                         </ul>
 
-                        {/*end tab title*/}
+                        <ReactComment text="end tab title" />
 
-                        {/*begin tab content*/}
+                        <ReactComment text="begin tab content" />
 
                         <div id="tab-content" className="thm-tabs tab-content thm-bg-tab thm-sans-regular">
                             
@@ -489,15 +490,15 @@ const Main = () =>{
                                 
                         </div>
 
-                        {/*end tab content*/}
+                        <ReactComment text="end tab content" />
 
                     </div>
 
-                    {/*end content*/}
+                    <ReactComment text="end content" />
 
                 </div>
 
-                {/*end main*/}
+                <ReactComment text="end main" />
 
             </div>		
 

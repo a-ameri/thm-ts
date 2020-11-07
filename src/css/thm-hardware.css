@@ -10,32 +10,6 @@ img[alt="save"].thm-h{
 div[class~="col-2"].thm-h label{
 	margin-top: 5px;
 }
-.nav-tabs.thm-h .nav-link.active{
-
-	color: #557463;
-
-	background-color: #fff;
-
-	border-color: #fff;
-
-}
-
-.nav-link.thm-h{
-
-	color: 	#294f3a;
-
-	background-color: #ebf7f4;
-
-	
-
-}
-
-.nav-tabs.thm-h .nav-link{
-
-	border-radius: 0 !important;
-
-}
-
 div.thm-h .badge{
 
 	height: 90%;
@@ -52,53 +26,11 @@ div.thm-h .badge{
 
 }
 
-.level-item.thm-h{
-	border: none;
-}
-
-.level-item.thm-h.active{
-	background-color: #ebf7f4;
-	color: #495057;
-}
-
-.level-item.thm-h span{
-	margin-right: 20px;
-}
-
-.assign-list.thm-h > span{
-	font-weight: bold;
-}
-
-.assign-list.thm-h span{
-	margin-right: 20px;
-}
-
-.assign-list.thm-h div{
-	margin-top: 20px;
-}
-
-.assign-list.thm-h div ul{
-	list-style-type: none;
-}
-
-.assign-list.thm-h div ul li{
-	padding: 2.5px 0;
-}
-
-.assign-list.thm-h div ul .fa-times:hover, .assign-list div ul .fa-plus:hover{
-	color: red;
-	cursor: pointer;
-}
-.ta-desc.thm-h .fa-times:hover{
-	cursor: pointer;
-	color: red;
-}
-
 #tab-content.thm-h{
 
 	background-color: white;
-	height: 85%;
-	position: fixed;
+	height: 90%;
+	position: absolute;
 	width: 97%;
 	overflow-x: hidden;
 }
@@ -116,68 +48,13 @@ div.thm-h .badge{
 	height: inherit;
 
 }
-
-#account.thm-h, #history.thm-h{
-
-	height: 390px;
-
-}
 #main-content.thm-h{
-	position: fixed;
+	position: absolute;
 	width: 100%;
 	height: 100%;
+	top: 50px;
+	right: 15px;
 }
 #sub-content.thm-h{
-	position: fixed;
-	margin-top: 37px;
-}
-#thm-precode.thm-h{
-	margin-bottom: 0.25%;
-}
-#assign-col-1.thm-h{
-	margin-top: 1%;
-	margin-right: 3%;
-	width: 20%;
-	height: 80%;
-	position: fixed;
-	overflow-x: hidden;
-}
-#assign-col-2.thm-h{
-	margin-top: 1%;
-	margin-right: 24%;
-	width: 35%;
-	height: 80%;
-	position: fixed;
-	overflow-x: hidden;
-}
-#assign-col-3.thm-h{
-	margin-top: 1%;
-	margin-right: 60%;
-	width: 35%;
-	height: 80%;
-	position: fixed;
-	overflow-x: hidden;
-}
-#assign-col-3.thm-h div ul li:hover{
-	background-color: #97c0b6;
-	display: block;
-	margin-left: 20px;
-	cursor: pointer;
-}
-#description.thm-h{
-	margin: 10px;
-}
-
-#turnover.thm-h{
-	margin: 5px 5px auto 10px;
-}
-#turnover.thm-h td, #turnover.thm-h th{
-	border: 1px solid #294f3a;
-}
-#turnover.thm-h thead tr{
-	height: 15px;
-	background-color: #cde7f1;
-}
-#turnover.thm-h tbody td{
-	font-size: large;
+	margin-top: 10px;
 }

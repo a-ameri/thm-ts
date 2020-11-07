@@ -1,15 +1,16 @@
 import React from 'react';
+import ReactComment from '../Helpers/Comment';
 
 const Request_lsit = ()=>{
     return(
         <div className="thm-f thm-sans-light">
 
 
-        {/*begin content*/}
+        <ReactComment text="begin content" />
 
         <div id="thm-content" className="thm-f thm-l row">
 
-            {/*begin insert request list*/}		
+            <ReactComment text="begin insert request list" />		
             <div id="primary_col" className="thm-f col-md-12 h-100">
                 <div className="thm-f  thm-fields thm-sans-light thm-bg6" >
                     <div className="thm-f  row d-flex justify-content-center">
@@ -78,11 +79,11 @@ const Request_lsit = ()=>{
                 </div>
             </div>
 
-            {/*end insert strequest list*/}
+            <ReactComment text="end insert strequest list" />
 
         </div>
 
-        {/*end content*/}
+        <ReactComment text="end content" />
 
 
 

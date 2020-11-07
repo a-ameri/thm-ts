@@ -1,5 +1,6 @@
 import React,{useEffect} from 'react';
 import Hardware from './hardware';
+import ReactComment from '../Helpers/Comment';
 import AddTree from '../images/Add Tree.png';
 import Delete from '../images/Delete.png';
 import Refresh from '../images/refresh.png';
@@ -8,7 +9,7 @@ import $ from 'jquery';
 
 const Hardware_management = (props)=>{
     useEffect(()=>{
-    //#region add script for stuff-management
+    //#region add script for hardware-management
     $(function(){
 
         $(".thm-tree-view ul").addClass("list-group");
@@ -29,13 +30,13 @@ const Hardware_management = (props)=>{
 
         $(".hardware-brand > li").attr("data-toggle","collapse");
 
-        $(".hardware > li").prepend('<span className="thm-ah fas fa-cart-plus fa-size">&nbsp;&nbsp;</span>');
+        $(".hardware > li").prepend('<span class="thm-ah fas fa-cart-plus fa-size">&nbsp;&nbsp;</span>');
 
-        $(".hardware-brand > li").prepend('<span className="thm-ah fas fa-share-alt fa-size">&nbsp;&nbsp;</span>');
+        $(".hardware-brand > li").prepend('<span class="thm-ah fas fa-share-alt fa-size">&nbsp;&nbsp;</span>');
 
-        $(".hardware-type > li").prepend('<span className="thm-ah fab fa-medium fa-size">&nbsp;&nbsp;</span>');
+        $(".hardware-type > li").prepend('<span class="thm-ah fab fa-medium fa-size">&nbsp;&nbsp;</span>');
         
-        var plus = '<span className="thm-ah far fa-plus-circle ml-2"></span>';
+        var plus = '<span class="thm-ah far fa-plus-circle ml-2"></span>';
         
         $("#thm-tree-view > li").prepend(plus);
         
@@ -91,7 +92,7 @@ const Hardware_management = (props)=>{
     return(
         <div className="thm-ah thm-ah ans-light">
 
-            {/*begin header*/}
+            <ReactComment text="begin header" />
 
             <div id="thm-main-action" className="thm-ah row w-100 thm-bg7">
 
@@ -155,13 +156,13 @@ const Hardware_management = (props)=>{
 
             </div>
 
-            {/*end header*/}
+            <ReactComment text="end header" />
 
-            {/*begin content*/}
+            <ReactComment text="begin content" />
 
             <div id="thm-content" className="thm-ah row">
 
-                {/*begin tree view*/}
+                <ReactComment text="begin tree view" />
 
             <div className="thm-ah col-md-4 h-100">
 
@@ -205,25 +206,25 @@ const Hardware_management = (props)=>{
 
                 </div>
 
-                {/*end tree view*/}
+                <ReactComment text="end tree view" />
 
-                {/*begin account content*/}
+                <ReactComment text="begin account content" />
 
                 <div className="thm-ah col-md-8">
 
                     <div id="thm-account-content" className="thm-ah thm-bg5 thm-ahans-light">
 
-                        {/* <Hardware Save={props.Save} SaveAdd={props.SaveAdd} SaveClose={props.SaveClose}/> */}
+                        <Hardware Save={props.Save} SaveAdd={props.SaveAdd} SaveClose={props.SaveClose} />
 
                     </div>
 
                 </div>
 
-                {/*end account content*/}
+                <ReactComment text="end account content" />
 
             </div>
 
-            {/*end content*/}
+            <ReactComment text="end content" />
 
 
 

@@ -22,13 +22,11 @@ div[class~="col-md-6"].thm-ah{
 
 	/*background-color: white;*/
 
-	position: fixed;
+	position: absolute;
 
-	height: 90% !important;
+	height: 100%;
 
-	width: 30.33%;
-
-	right: 0 !important;
+	width: 100%;
 	
 	font-size: small;
 
@@ -40,13 +38,13 @@ div[class~="col-md-6"].thm-ah{
 
 	overflow-x: hidden;
 
-	position: fixed;
+	position: absolute;
 
-	height: 85% !important;
+	height: 94%;
 
-	width: 28.33%;
+	width: 94%;
 
-	margin: 1%;
+	margin: 3%;
 
 	border-radius: 0;
 
@@ -92,6 +90,12 @@ div[class~="col-md-6"].thm-ah{
 
 }
 
+.badge.thm-ah span{
+
+	margin-right: 5px;
+
+}
+
 .badge.thm-ah:hover{
 
 	background-color: aliceblue;
@@ -102,7 +106,7 @@ div[class~="col-md-6"].thm-ah{
 
 .thm-tabs.thm-ah{
 
-	position: fixed;
+	position: absolute;
 
 	width: 80%;
 
@@ -136,7 +140,7 @@ div[class~="col-md-6"].thm-ah{
 
 #thm-content.thm-ah{
 
-	position: fixed;
+	position: absolute;
 
 	width: 100%;
 
@@ -148,21 +152,22 @@ div[class~="col-md-6"].thm-ah{
 
 #thm-account-content.thm-ah{
 
-	position: fixed;
+	position: absolute;
 
-	width: 71%;
+	width: 94%;
 
-	height: 90%;
+	height: 100%;
 
-	right: 31%;
+	right: 4%;
 
 }
 
 #thm-main-action.thm-ah{
 
-	position: fixed;
-
+	position: absolute;
 	height: 35px;
+	margin-right: 0;
+	margin-top: 1px;
 
 }
 

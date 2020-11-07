@@ -1,10 +1,11 @@
 import React from 'react';
+import ReactComment from '../Helpers/Comment';
 
 const Employee = (props)=>{
     return(
         <div className="thm-f thm-sans-light">
 
-        {/*begin header*/}
+        <ReactComment text="begin header" />
 
         <div id="thm-main-action" className="thm-f row w-100 thm-bg7">
 
@@ -32,13 +33,13 @@ const Employee = (props)=>{
 
         </div>
 
-        {/*end header*/}
+        <ReactComment text="end header" />
 
-        {/*begin content*/}
+        <ReactComment text="begin content" />
 
         <div id="thm-content" className="thm-f row">
 
-            {/*begin insert employee*/}		
+            <ReactComment text="begin insert employee" />		
             <div id="primary_col" className="thm-f col-md-12 h-100">
                 <div className="thm-f thm-m thm-fields thm-sans-light thm-bg6">
                     <div className="thm-f thm-m row">
@@ -127,11 +128,11 @@ const Employee = (props)=>{
                 </div>
             </div>
 
-            {/*end insert employee*/}
+            <ReactComment text="end insert employee" />
 
         </div>
 
-        {/*end content*/}
+        <ReactComment text="end content" />
 
 
 

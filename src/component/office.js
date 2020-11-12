@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactComment from '../Helpers/Comment';
+import ReactComment from '../Helper/Comment';
 
 const Office = (props)=>{
     return(

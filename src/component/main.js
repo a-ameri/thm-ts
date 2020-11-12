@@ -1,6 +1,6 @@
 import React,{useEffect, useState} from 'react';
 import ReactDOM from 'react-dom';
-import ReactComment from '../Helpers/Comment';
+import ReactComment from '../Helper/Comment';
 import '../css/thm-main.css';
 import '../css/thm-fields.css';
 import '../css/thm-list.css';

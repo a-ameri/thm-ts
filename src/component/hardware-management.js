@@ -1,6 +1,6 @@
 import React,{useEffect} from 'react';
 import Hardware from './hardware';
-import ReactComment from '../Helpers/Comment';
+import ReactComment from '../Helper/Comment';
 import AddTree from '../images/Add Tree.png';
 import Delete from '../images/Delete.png';
 import Refresh from '../images/refresh.png';

@@ -120,25 +120,25 @@ const Main = () =>{
                     ReactDOM.render(<Request_list />, document.getElementById($id_content));
                     break;
                 case "employee":
-                    ReactDOM.render(<Employee Save={Save} SaveAdd = {SaveAdd} SaveClose={SaveClose} />, document.getElementById($id_content));
+                    ReactDOM.render(<Employee />, document.getElementById($id_content));
                     break;                    
                 case "office":
-                    ReactDOM.render(<Office Save={Save} SaveAdd = {SaveAdd} SaveClose={SaveClose} />, document.getElementById($id_content));
+                    ReactDOM.render(<Office />, document.getElementById($id_content));
                     break;                                        
                 case "zone":
-                    ReactDOM.render(<Zone Save={Save} SaveAdd = {SaveAdd} SaveClose={SaveClose} />, document.getElementById($id_content));
+                    ReactDOM.render(<Zone />, document.getElementById($id_content));
                     break;                                        
                 case "hardware_management":
                     ReactDOM.render(<Hardware_management Save={Save} SaveAdd = {SaveAdd} SaveClose={SaveClose} />, document.getElementById($id_content));
                     break;
                 case "storage":
-                    ReactDOM.render(<Storage Save={Save} SaveAdd = {SaveAdd} SaveClose={SaveClose} />, document.getElementById($id_content));
+                    ReactDOM.render(<Storage />, document.getElementById($id_content));
                     break;
                 case "stuff_list":
-                    ReactDOM.render(<Stuff_list Save={Save} SaveAdd = {SaveAdd} SaveClose={SaveClose} />, document.getElementById($id_content));
+                    ReactDOM.render(<Stuff_list />, document.getElementById($id_content));
                     break;
                 case "employee_alternative":
-                    ReactDOM.render(<Employee_alternative Save={Save} SaveAdd = {SaveAdd} SaveClose={SaveClose} />, document.getElementById($id_content));
+                    ReactDOM.render(<Employee_alternative />, document.getElementById($id_content));
                     break;
             }
         }

@@ -5,6 +5,9 @@
 /*begin account css*/
 
 
+.no-header{
+	margin-top: 0 !important;
+}
 
 .thm-fields{
 

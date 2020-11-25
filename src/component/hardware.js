@@ -45,7 +45,7 @@ const Hardware = (props)=>{
 
 				<div id="tab-content" className="thm-h thm-h thm-tabs tab-content thm-sans-regular">
 
-					<div id="account" className="thm-h thm-h tab-pane fade in active show">
+					<div id="account" className="thm-h thm-h">
 
 						<div className="thm-h thm-h row">
 

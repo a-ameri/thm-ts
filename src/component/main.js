@@ -20,7 +20,10 @@ import Task_list from './task-list';
 import Employee from './employee';
 import Office from './office';
 import Zone from './zone';
+import Storage from './storage';
+import Stuff_list from './stuff_list';
 import Hardware_management from './hardware-management';
+import Employee_alternative from './employee_alternative';
 
 const Main = () =>{
     let openTabs=[];
@@ -127,6 +130,15 @@ const Main = () =>{
                     break;                                        
                 case "hardware_management":
                     ReactDOM.render(<Hardware_management Save={Save} SaveAdd = {SaveAdd} SaveClose={SaveClose} />, document.getElementById($id_content));
+                    break;
+                case "storage":
+                    ReactDOM.render(<Storage Save={Save} SaveAdd = {SaveAdd} SaveClose={SaveClose} />, document.getElementById($id_content));
+                    break;
+                case "stuff_list":
+                    ReactDOM.render(<Stuff_list Save={Save} SaveAdd = {SaveAdd} SaveClose={SaveClose} />, document.getElementById($id_content));
+                    break;
+                case "employee_alternative":
+                    ReactDOM.render(<Employee_alternative Save={Save} SaveAdd = {SaveAdd} SaveClose={SaveClose} />, document.getElementById($id_content));
                     break;
             }
         }

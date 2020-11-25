@@ -39,7 +39,7 @@ const Zone = (props)=>{
 
         <div id="thm-content" className="thm-f row">
 
-            <ReactComment text="begin insert request softwate" />		
+            <ReactComment text="begin insert zone" />		
             <div id="primary_col" className="thm-f col-md-12 h-100">
                 <div className="thm-f thm-fields thm-sans-light thm-bg6">
                     <div className="thm-f row">
@@ -110,7 +110,7 @@ const Zone = (props)=>{
                 </div>
             </div>
 
-            <ReactComment text="end insert strequest softwate" />
+            <ReactComment text="end insert zone" />
 
         </div>
 

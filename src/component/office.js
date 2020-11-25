@@ -39,7 +39,7 @@ const Office = (props)=>{
 
         <div id="thm-content" className="thm-f row">
 
-            <ReactComment text="begin insert request softwate" />		
+            <ReactComment text="begin insert office" />		
             <div id="primary_col" className="thm-f col-md-12 h-100">
                 <div className="thm-f thm-fields thm-sans-light thm-bg6">
                     <div className="thm-f row">
@@ -91,7 +91,7 @@ const Office = (props)=>{
                 </div>
             </div>
 
-            <ReactComment text="end insert strequest softwate" />
+            <ReactComment text="end insert office" />
 
         </div>
 

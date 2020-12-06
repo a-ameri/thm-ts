@@ -1,17 +1,6 @@
 import React,{useEffect, useState} from 'react';
 import ReactDOM from 'react-dom';
 import ReactComment from '../Helper/Comment';
-import '../css/thm-main.css';
-import '../css/thm-fields.css';
-import '../css/thm-list.css';
-import '../css/thm-employee.css';
-import '../css/thm-all-hardware.css';
-import '../css/thm-hardware.css';
-import Save from '../images/save.png';
-import SaveAdd from '../images/save add.png';
-import SaveClose from'../images/save close.png';
-import $ from 'jquery';
-import Avatar from '../images/avatar.png';
 import Request_stuff from './request-stuff';
 import Request_software from './request-software';
 import Request_repair from './request-repair';
@@ -24,6 +13,17 @@ import Storage from './storage';
 import Stuff_list from './stuff_list';
 import Hardware_management from './hardware-management';
 import Employee_alternative from './employee_alternative';
+import '../css/thm-main.css';
+import '../css/thm-fields.css';
+import '../css/thm-list.css';
+import '../css/thm-employee.css';
+import '../css/thm-all-hardware.css';
+import '../css/thm-hardware.css';
+import Save from '../images/save.png';
+import SaveAdd from '../images/save add.png';
+import SaveClose from'../images/save close.png';
+import Avatar from '../images/avatar.png';
+import $ from 'jquery';
 
 const Main = () =>{
     let openTabs=[];

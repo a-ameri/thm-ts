@@ -102,7 +102,7 @@ const Hardware_management = (props)=>{
 
                         <img src={AddTree} alt="add tree" height="100%"/>
 
-                        <span>حساب معین جدید</span>
+                        <span>ثبت کالای جدید</span>
 
                     </div>
 
@@ -115,14 +115,6 @@ const Hardware_management = (props)=>{
                     <div className="thm-ah badge mt-1 pt-1 mr-2">
 
                         <img src={Refresh} alt="refresh" height="100%"/>
-
-                    </div>
-
-                    <div className="thm-ah badge mt-1 pt-1 mr-2">
-
-                        <img src={Sort} alt="sort" height="100%"/>
-
-                        <span>مرتب سازی</span>
 
                     </div>
 

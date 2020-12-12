@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactComment from '../Helper/Comment';
+import Zone from './zone';
+import {BrowserRouter as Router, Link} from 'react-router-dom';
 
 const Storage = ()=>{
     return(
+        <Router>
         <div className="thm-f thm-sans-light">
 
         <ReactComment text="begin content" />
@@ -45,10 +48,8 @@ const Storage = ()=>{
                                     <td>این یک متن تستی است</td>
                                     <td>
                                         <button className="btn btn-warning ml-1 btn-sm">ویرایش</button>
-                                        <button className="btn btn-danger btn-sm">حذف</button>
-                                        <a href="employee-storage.html">
-                                            <button className="btn btn-primary btn-sm">انتساب انبار دار</button>
-                                        </a>
+                                        <button className="btn btn-danger ml-1 btn-sm">حذف</button>
+                                        <button className="btn btn-primary btn-sm">انتساب انبار دار</button>
                                     </td>
                                 </tr>
                                 <tr className="data">
@@ -57,10 +58,8 @@ const Storage = ()=>{
                                     <td>این یک متن تستی است</td>
                                     <td>
                                         <button className="btn btn-warning ml-1 btn-sm">ویرایش</button>
-                                        <button className="btn btn-danger btn-sm">حذف</button>
-                                        <a href="employee-storage.html">
-                                            <button className="btn btn-primary btn-sm">انتساب انبار دار</button>
-                                        </a>
+                                        <button className="btn btn-danger ml-1 btn-sm">حذف</button>
+                                        <button className="btn btn-primary btn-sm">انتساب انبار دار</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -80,6 +79,7 @@ const Storage = ()=>{
 
 
         </div>
+        </Router>
 
     )
 }

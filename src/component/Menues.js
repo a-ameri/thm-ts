@@ -5,7 +5,7 @@ const Menues = () => {
     return(
         <React.Fragment>
             <ReactComment text="begin menu" />
-
+            
             <div id="thm-menu" className=" mt-3 sidebar-obj">
 
                 <ul className="list-group thm-0radius p-0">
@@ -15,7 +15,7 @@ const Menues = () => {
                         <span>همه صفحات</span>
 
                     </li>
-
+                    
                     <ul id="ul2-1" className="list-group thm-0radius p-0 collapse">
 
                         <li href="#" data-toggle="collapse" data-target="#ul3-1" className="list-group-item list-group-item-action">

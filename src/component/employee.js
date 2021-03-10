@@ -12,31 +12,6 @@ const Employee = ()=>{
             <ReactComment text="begin insert employee" />		
             <div id="primary_col" className="thm-f col-md-12 h-100">
                 <div className="thm-f thm-m thm-fields thm-sans-light thm-bg6">
-                    <div className="thm-f thm-m row">
-                        <div className="thm-f thm-m col-md-3">
-                            <label className="thm-f thm-m thm-title-font font-weight-bolder">نام و نام خانوادگی</label>
-                            <input type="text" className="thm-f thm-m thm-0radius form-control font-weight-light thm-sans-regular" placeholder="نام و نام خانوادگی"/>
-                        </div>
-                        <div className="thm-f thm-m col-md-3">
-                            <label className="thm-f thm-m thm-title-font font-weight-bolder">کد ملی</label>
-                            <input type="text" className="thm-f thm-m thm-0radius form-control font-weight-light thm-sans-regular" placeholder="کد ملی"/>
-                        </div>
-                        <div className="thm-f thm-m col-md-3">
-                            <label className="thm-f thm-m thm-title-font font-weight-bolder">کلمه عبور</label>
-                            <input type="password" className="thm-f thm-m thm-0radius form-control font-weight-light thm-sans-regular" placeholder="کلمه عبور"/>
-                        </div>
-                        <div className="thm-f thm-m col-md-2">
-                            <label className="thm-f thm-m thm-title-font font-weight-bolder">سطح دسترسی</label>
-                            <select className="thm-f thm-m form-control font-weight-light thm-sans-regular">
-                                <option>ادمین</option>
-                                <option>انبار دار</option>
-                                <option>کاربر</option>
-                            </select>
-                        </div>					
-                        <div className="thm-f thm-m col-md-1">
-                            <button className="thm-f thm-m btn btn-success">ثبت</button>
-                        </div>
-                    </div>
                     <div className="thm-f thm-m row d-flex justify-content-center">
                         <input className="thm-f thm-m form-control" id="searchInput" type="text" placeholder="جستجو..." />
                     </div>

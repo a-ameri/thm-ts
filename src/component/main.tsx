@@ -27,21 +27,21 @@ import Avatar from '../images/avatar.png';
 import $ from 'jquery';
 
 const Main = () =>{
-    let openTabs=[];
+    let openTabs : any=[];
     
     useEffect(()=>{
         //#region function of flip button
         $("#flip").on('click',(function(){
 
-			if(document.getElementById("thm-sidebar").style.width == "0%")
+			if(document.getElementById("thm-sidebar")!.style.width == "0%")
 
 			{
 
-				document.getElementById("thm-sidebar").style.width = "16.67%";
+				document.getElementById("thm-sidebar")!.style.width = "16.67%";
 
-				document.getElementById("thm-main").style.marginRight = "16.67%";
+				document.getElementById("thm-main")!.style.marginRight = "16.67%";
 
-				document.getElementById("tab-content").style.width = "80%";	
+				document.getElementById("tab-content")!.style.width = "80%";	
 
 				$("#thm-sidebar").addClass("col-sm-2");
 
@@ -61,11 +61,11 @@ const Main = () =>{
 
 				$("#thm-sidebar").removeClass("col-sm-2");
 
-				document.getElementById("thm-sidebar").style.width = "0%";
+				document.getElementById("thm-sidebar")!.style.width = "0%";
 
-				document.getElementById("thm-main").style.marginRight = "0%";
+				document.getElementById("thm-main")!.style.marginRight = "0%";
 
-				document.getElementById("tab-content").style.width = "97%";	
+				document.getElementById("tab-content")!.style.width = "97%";	
 
 				$("#thm-main").removeClass("col-sm-10");
 
@@ -103,7 +103,7 @@ const Main = () =>{
         //#endregion
         
         //#region render pages with react
-        function RenderTabs($tabName, $id_content){
+        function RenderTabs($tabName : any, $id_content : any){
             switch($tabName){
                 case "request_stuff":
                     ReactDOM.render(<Request_stuff Save={Save} SaveAdd = {SaveAdd} SaveClose={SaveClose} />, document.getElementById($id_content));
@@ -147,7 +147,7 @@ const Main = () =>{
 
         var removePane = false;
         //#region funcion of active pane
-        function activePane($id_inx){
+        function activePane($id_inx : any){
             if(openTabs.length == 1)
             return;           
                  
@@ -167,7 +167,7 @@ const Main = () =>{
         
         //#region click on side menu and open tabs
         $("#thm-menu li").on('click',(function(){
-            if($(this).attr("href") == "#")
+            if($(this).attr("data-href") == "#")
             return;                
             
             var id = $(this).attr("id");

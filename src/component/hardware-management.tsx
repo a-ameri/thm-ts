@@ -1,13 +1,12 @@
 import React,{useEffect} from 'react';
 import Hardware from './hardware';
 import ReactComment from '../Helper/Comment';
-import AddTree from '../images/Add Tree.png';
-import Delete from '../images/Delete.png';
-import Refresh from '../images/refresh.png';
-import Sort from '../images/sort.png';
+import AddTree from '../images/Add Tree.png'
+import Delete from '../images/Delete.png'
+import Refresh from '../images/refresh.png'
 import $ from 'jquery';
 
-const Hardware_management = (props)=>{
+const Hardware_management = (props : any)=>{
     useEffect(()=>{
     //#region add script for hardware-management
     $(function(){

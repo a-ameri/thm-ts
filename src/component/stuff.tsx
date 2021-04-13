@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactComment from '../Helper/Comment';
 
-const Stuff = (props)=>{
+const Stuff = (props : any)=>{
     return(
     <div className="thm-f thm-sans-light">
 
@@ -109,7 +109,7 @@ const Stuff = (props)=>{
                     <div className="thm-f row">
                         <div className="thm-f col-md-12">
                             <label className="thm-f thm-title-font font-weight-bolder">توضیحات</label>
-                            <textarea rows="10" className="thm-f thm-0radius form-control font-weight-light thm-sans-regular" ></textarea>
+                            <textarea rows={10} className="thm-f thm-0radius form-control font-weight-light thm-sans-regular" ></textarea>
                         </div>
                     </div>
 

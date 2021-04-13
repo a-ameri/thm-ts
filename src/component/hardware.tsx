@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactComment from '../Helper/Comment';
 
-const Hardware = (props)=>{
+const Hardware = (props : any)=>{
     return(
         <div className="thm-h thm-f thm-sans-light">
 

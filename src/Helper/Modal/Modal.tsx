@@ -1,9 +1,10 @@
 import React from 'react';
 import './Modal.css';
 import Backdrop from '../Backdrop/Backdrop';
-const Modal = (props)=>{
+const Modal = (props : any)=>{
     return(
         <React.Fragment>
+            
             <Backdrop show={props.show} modalClosed={props.modalClosed} />
             <div className="Modal"
             style={{transform:props.show?'translateX(0)':'translateX(-100vw)',

@@ -55,7 +55,7 @@ const Request_repair = (props)=>{
                     </div>
                     <div className="thm-f  row">
                         <label className="thm-f  thm-title-font font-weight-bolder">شرح درخواست</label>
-                        <textarea rows="10" className="thm-f  thm-0radius form-control font-weight-light thm-sans-regular" ></textarea>
+                        <textarea rows={0} className="thm-f  thm-0radius form-control font-weight-light thm-sans-regular" ></textarea>
                     </div>
                     <div className="thm-f  row">
                         <div className="thm-f  col-md-12">

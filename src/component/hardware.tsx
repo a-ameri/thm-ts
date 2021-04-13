@@ -51,7 +51,7 @@ const Hardware = (props : any)=>{
 
 							<div className="thm-h thm-h col-2 mr-5 my-2">
 
-								<label for="AAIsActive" className="thm-h thm-h thm-sans-bold">ثبت کالا</label>
+								<label htmlFor="AAIsActive" className="thm-h thm-h thm-sans-bold">ثبت کالا</label>
 
 							</div>						  
 
@@ -63,7 +63,7 @@ const Hardware = (props : any)=>{
 
 							<div className="thm-h thm-h col-md-2 mr-5 my-2">
 
-							  <label for="HName">نام کالا</label>
+							  <label htmlFor="HName">نام کالا</label>
 
 							</div>
 
@@ -78,15 +78,15 @@ const Hardware = (props : any)=>{
 							<div className="thm-h thm-h col-md-7">
 								<div className="thm-h thm-h d-block">
 									<input id="check-code" type="checkbox" className="thm-h thm-h form-check-input" value=""/>
-									<label for="check-code" className="thm-h thm-h mr-4">بررسی کد اموال در هنگام تخصیص</label>
+									<label htmlFor="check-code" className="thm-h thm-h mr-4">بررسی کد اموال در هنگام تخصیص</label>
 								</div>
 								<div className="thm-h thm-h d-block">
 									<input id="check-serial" type="checkbox" className="thm-h thm-h form-check-input" value=""/> 
-								<label for="check-serial" className="thm-h thm-h mr-4">بررسی سریال سخت افزاری در هنگام تخصیص</label>
+								<label htmlFor="check-serial" className="thm-h thm-h mr-4">بررسی سریال سخت افزاری در هنگام تخصیص</label>
 								</div>
 								<div className="thm-h thm-h d-block">
 									<input id="check-attach" type="checkbox" className="thm-h thm-h form-check-input" value=""/>
-									<label for="check-attach" className="thm-h thm-h mr-4">قابلیت اتصال سایر تجهیزات </label>
+									<label htmlFor="check-attach" className="thm-h thm-h mr-4">قابلیت اتصال سایر تجهیزات </label>
 								</div>
 								
 								

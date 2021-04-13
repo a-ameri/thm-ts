@@ -52,7 +52,7 @@ const Request_software = (props : any)=>{
                         </div>
                         <div className="thm-f col-md-12">
                             <label className="thm-f thm-title-font font-weight-bolder">شرح درخواست</label>
-                            <textarea rows="10" className="thm-f thm-0radius form-control font-weight-light thm-sans-regular" ></textarea>
+                            <textarea rows={10} className="thm-f thm-0radius form-control font-weight-light thm-sans-regular" ></textarea>
                         </div>
                     </div>
                     <div className="thm-f row">					

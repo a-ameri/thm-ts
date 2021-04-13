@@ -57,7 +57,7 @@ const Hardware_management = (props : any)=>{
 
         });
         
-        function li_click(){
+        function li_click(this : HTMLElement){
             if($(this).children(".fa-plus-circle").length){
                 $(this).children(".fa-plus-circle").addClass("fa-minus-circle");
                 $(this).children(".fa-plus-circle").removeClass("fa-plus-circle");

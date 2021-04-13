@@ -254,7 +254,7 @@ const Main = () =>{
 
                                 <ul className="list-group thm-0radius p-0">
 
-                                    <li href="#" className="list-group-item list-group-item-action text-center">صفحات به تازگی بازدید شده</li>							  
+                                    <li data-href="#" className="list-group-item list-group-item-action text-center">صفحات به تازگی بازدید شده</li>							  
 
                                 </ul> 
 

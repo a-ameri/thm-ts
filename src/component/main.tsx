@@ -13,7 +13,7 @@ import Storage from './storage';
 import Stuff_list from './stuff_list';
 import Hardware_management from './hardware-management';
 import Employee_alternative from './employee_alternative';
-import Menues from './Menues'
+import Menues from './main/sidebar/menus'
 import '../css/thm-main.css';
 import '../css/thm-fields.css';
 import '../css/thm-list.css';
@@ -25,6 +25,10 @@ import SaveAdd from '../images/save add.png';
 import SaveClose from'../images/save close.png';
 import Avatar from '../images/avatar.png';
 import $ from 'jquery';
+import Sidebar from './main/sidebar';
+import Header from './main/header';
+import Flip from './main/flip';
+import Contents from './main/contents';
 
 const Main = () =>{
     let openTabs : any=[];
@@ -230,166 +234,17 @@ const Main = () =>{
 
             <div className="row">
 
-                <ReactComment text="begin sidebar" />
-
-            <div id="thm-sidebar" className="col-sm-2 thm-sans-light thm-sidebar thm-bg2">
-
-                <div className="w-100 d-flex justify-content-center">
-
-                    <div className="row-cols-1 w-100 ">
-
-                            <ReactComment text="begin company name" />
-
-                            <div className="w-100 badge thm-bg5 mt-2 p-2">
-
-                                <span>اداره کل امور مالیاتی استان هرمزگان</span>
-
-                            </div>
-
-                            <ReactComment text="end company name" />
-
-                            <ReactComment text="begin recently" />
-
-                            <div className="mt-3 sidebar-obj" style={{right: "10px",display: "none"}}>
-
-                                <ul className="list-group thm-0radius p-0">
-
-                                    <li data-href="#" className="list-group-item list-group-item-action text-center">صفحات به تازگی بازدید شده</li>							  
-
-                                </ul> 
-
-                            </div>
-
-                            <ReactComment text="end recently" />
-
-                            <Menues />
-                    </div>					
-
-                </div>
-
-            </div>
-
-            <ReactComment text=" end sidebar" />
+            <Sidebar/>
 
             <ReactComment text="begin main" />
 
             <div id="thm-main" className="col-sm-10 thm-mian thm-bg3 px-0 ">
 
-                <ReactComment text="begin flip" />
+                <Flip />
 
-                <div>					
+                < Header Avatar = {Avatar} />
 
-                    <i id="flip" className="fa fa-angle-right fa-2x pt-2 mt-5 thm-bg2 position-fixed text-white"></i>
-
-                </div>
-
-                <ReactComment text="end flip" />
-
-                <ReactComment text="begin header" />
-
-                <div className="row mr-0 mt-2 thm-color1" >
-
-                    <div className="col-sm-4 d-flex justify-content-start thm-sans-medium">
-
-                        <div className="mr-0">
-
-                            <span id="preferences" className="fa fa-ellipsis-v fa-2x thm-icon"></span>
-
-                        </div>
-
-                        <div className="badge thm-bg5 p-2 mr-2 thm-header-badge">
-
-                            <span>1399/10/17</span>
-
-                        </div>
-
-                    </div>
-
-                    <div className="col-sm-4 thm-sans-light" >
-
-                        <div className="input-group">
-
-                            <div className="input-group-prepend">
-
-                                <span id="srchic" className="input-group-text fa fa-search thm-bg5 border-0"></span>
-
-                            </div>
-
-                            <input id="srchbx" type="text" className="border-0 thm-bg5 w-75"/>
-
-                        </div>
-
-                    </div>
-
-                        <div className="col-sm-4 d-flex justify-content-end thm-sans-medium" >
-
-                            <div>
-
-                                <span className="far fa-question-circle fa-2x ml-2 thm-icon" aria-hidden="true"></span>
-
-                            </div>
-
-                            <div>
-
-                                <span className="far fa-cog fa-2x ml-2 thm-icon" aria-hidden="true"></span>
-
-                            </div>
-
-                            <div>
-
-                                <span className="far fa-bell fa-2x ml-2 thm-icon" aria-hidden="true"></span>
-
-                            </div>
-                            
-                            <div id="avatar-badge" className="thm-avt badge thm-bg5 p-2  thm-header-badge">
-
-                                <span>عادل عامری</span>
-
-                            </div>
-                            
-                        </div>	
-                            
-                        <div id="avatar" className="thm-avt p-0 m-0 position-fixed">
-
-                            <img src={Avatar} className="rounded-circle thm-bg5 pt-0 mt-0" alt="Cinque Terre" style={{width: "50px",height: "50px"}}/>
-
-                        </div>
-                        
-                    </div>
-
-                    <ReactComment text="ned header" />
-
-                    <ReactComment text="begin content" />				
-
-                    <div className="thm-content thm-color1">
-
-                        <ReactComment text="begin tab title" />
-
-                        <ul id="tab-title" className="nav nav-tabs thm-sans-bold border-0" >
-
-                            <li id="addtab">
-
-                                <span className="fas fa-plus-square fa-2x mr-2 mt-2"></span>
-
-                            </li>
-
-                        </ul>
-
-                        <ReactComment text="end tab title" />
-
-                        <ReactComment text="begin tab content" />
-
-                        <div id="tab-content" className="thm-tabs tab-content thm-bg-tab thm-sans-regular">
-                            
-                            
-                                
-                        </div>
-
-                        <ReactComment text="end tab content" />
-
-                    </div>
-
-                    <ReactComment text="end content" />
+                <Contents />
 
                 </div>
 

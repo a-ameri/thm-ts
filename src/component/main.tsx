@@ -99,9 +99,9 @@ const Main = () =>{
 
 			$(".sidebar-obj > ul > ul").addClass("show");
 
-			$(".sidebar-obj > ul > ul> ul > li > span").css("padding-right","10px");
+			$(".sidebar-obj > ul > ul> ul > li > .fa-size").css("padding-right","10px");
 
-			$(".sidebar-obj > ul > ul> ul > ul > li > span").css("padding-right","20px");
+			$(".sidebar-obj > ul > ul> ul > ul > li > .fa-size").css("padding-right","20px");
 
         });
         //#endregion
@@ -190,9 +190,12 @@ const Main = () =>{
             openTabs.push(id_content);
             $(".nav-link").removeClass("active");
 
+            let htmlName = $(this).text()
+            let spanClass = $(this).find(".fa-size").attr("class")
+            let allHtml = '<span class="'+spanClass+'">&nbsp;&nbsp;</span><span>'+htmlName+'</span>'
             var menu_title = '<li class="nav-item thm-bg-tab" dir="ltr">'+
             '<a data-toggle="tab" data-thm-href="'+id_content+'" class="nav-link active">'
-            +$(this).html()+'&nbsp;&nbsp;<span class="fa fa-times thm-close-tab"></span></a></li>';
+            +allHtml+'&nbsp;&nbsp;<span class="fa fa-times thm-close-tab"></span></a></li>';
 
             $(".tab-pane").removeClass("active show");
             $("#addtab").before(menu_title);

@@ -13,7 +13,6 @@ import Storage from './storage';
 import Stuff_list from './stuff_list';
 import Hardware_management from './hardware-management';
 import Employee_alternative from './employee_alternative';
-import Menues from './main/sidebar/menus'
 import '../css/thm-main.css';
 import '../css/thm-fields.css';
 import '../css/thm-list.css';
@@ -30,8 +29,13 @@ import Header from './main/header';
 import Flip from './main/flip';
 import Contents from './main/contents';
 
+
+
 const Main = () =>{
     let openTabs : any=[];
+
+    let UserFullName : string = "عادل عامری"
+    
     
     useEffect(()=>{
         //#region function of flip button
@@ -237,17 +241,20 @@ const Main = () =>{
 
             <div className="row">
 
-            <Sidebar/>
+                <Sidebar />
 
-            <ReactComment text="begin main" />
+                <ReactComment text="begin main" />
 
-            <div id="thm-main" className="col-sm-10 thm-mian thm-bg3 px-0 ">
+                <div id="thm-main" className="col-sm-10 thm-mian thm-bg3 px-0 ">
 
-                <Flip />
+                    <Flip />
 
-                < Header Avatar = {Avatar} />
+                    < Header 
+                        UserFullName = {UserFullName}  
+                        AvatarImage = {Avatar}
+                    />
 
-                <Contents />
+                    <Contents />
 
                 </div>
 

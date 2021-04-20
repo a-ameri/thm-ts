@@ -28,13 +28,15 @@ import Sidebar from './main/sidebar';
 import Header from './main/header';
 import Flip from './main/flip';
 import Contents from './main/contents';
+import { connect } from 'react-redux';
+import * as actionType from '../store/actionTypes'
 
 
 
-const Main = () =>{
+const Main = (props : any) =>{
     let openTabs : any=[];
 
-    let UserFullName : string = "عادل عامری"
+    let UserFullName : string = "عادل عامری سیاهویی"
     
     
     useEffect(()=>{
@@ -252,6 +254,7 @@ const Main = () =>{
                     < Header 
                         UserFullName = {UserFullName}  
                         AvatarImage = {Avatar}
+                        onAvatarClick = {props.onAvatarClick}
                     />
 
                     <Contents />
@@ -266,4 +269,10 @@ const Main = () =>{
     )
 }
 
-export default Main;
+const mapDispatchToProps = (dispatch : any) => {
+    return {
+        onAvatarClick: () => dispatch({ type: actionType.SHOW_AVATAR_MENU })
+    }
+}
+
+export default connect(null,mapDispatchToProps)(Main);

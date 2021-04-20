@@ -102,6 +102,7 @@ li.list-group-item-action{
 	margin-left: 43px;
 	border-top-left-radius: 0;
 	border-bottom-left-radius: 0;
+	user-select: none;
 }
 #avatar-badge:hover{
 	opacity: 100%;
@@ -147,10 +148,29 @@ li.list-group-item-action{
 
 	z-index: 2;
 
-	left: 0!important;
+	left: 0 !important;
 
 	top: 0 !important;
 
+}
+
+#avatarMenu{
+	z-index: 1;
+	left: 20px;
+	position: absolute;
+	width: 170px;
+	top: 30px;
+	border-radius: 0.5em;
+}
+
+#avatarMenu ul{
+	list-style: none;
+	padding-top: 20px;
+}
+
+#avatarMenu li:hover{
+	cursor: pointer;
+	color: #557463;
 }
 
 #srchbx{
@@ -180,6 +200,7 @@ li.list-group-item-action{
 #thm-menu{
 
 	right: 10px;
+	user-select: none;
 
 }
 

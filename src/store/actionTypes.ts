@@ -1,0 +1,1 @@
+export const SHOW_AVATAR_MENU : string = "showAvatarMenu"

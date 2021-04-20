@@ -7,9 +7,12 @@ import Setting from './header/setting'
 import UserName from './header/username'
 import Alert from './header/warning'
 import Time from './header/time'
+import AvatarMenu from './header/avatarMenu'
 import Preferences from './header/preferences'
+import {connect} from 'react-redux'
 
 const Header = (props : any) =>{
+    let avatarMenu  = <AvatarMenu/>
     return(
         <React.Fragment>
 
@@ -17,7 +20,7 @@ const Header = (props : any) =>{
 
             <div className="row mr-0 mt-2 thm-color1" >
                 <div className="col-sm-4 d-flex justify-content-start thm-sans-medium">
-                    <Preferences />
+                   <Preferences />
                    <Time />
                 </div>
                 <div className="col-sm-4 thm-sans-light" >
@@ -27,11 +30,18 @@ const Header = (props : any) =>{
                     <Help />
                     <Setting />
                     <Alert />   
-                    <UserName userFullname = {props.UserFullName} />                  
-                                           
-                </div>	
+                    <UserName 
+                        userFullname = {props.UserFullName} 
+                        onAvatarClick = {props.onAvatarClick}                        
+                    />                  
+                    {props.showAvatarMenu ? avatarMenu : null}
+                </div>
 
-                <AvatarPic Avatar = {props.AvatarImage} />
+                <AvatarPic 
+                    Avatar = {props.AvatarImage} 
+                    onAvatarClick = {props.onAvatarClick}
+                />
+                
 
             </div>
 
@@ -41,4 +51,10 @@ const Header = (props : any) =>{
     )
 }
 
-export default Header
+const mapStateToProps = (state : any) => {
+    return {
+        showAvatarMenu: state.showAvatarMenu
+    }
+}
+
+export default connect(mapStateToProps)(Header)

@@ -12,7 +12,7 @@ import Preferences from './header/preferences'
 import {connect} from 'react-redux'
 
 const Header = (props : any) =>{
-    let avatarMenu  = <AvatarMenu/>
+    let avatarMenu  = <AvatarMenu onAvatarClick = {props.onAvatarClick}/>
     return(
         <React.Fragment>
 

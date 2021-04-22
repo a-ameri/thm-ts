@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactComment from '../../../Helper/Comment';
+import React from 'react'
+import ReactComment from '../../../Helper/Comment'
 import RequestMenu from './menu/requestMenu'
 import Users from './menu/users'
 import Hardware from './menu/hardware'

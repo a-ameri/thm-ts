@@ -6,7 +6,7 @@ import Search from './header/search'
 import Setting from './header/setting'
 import UserName from './header/username'
 import Alert from './header/warning'
-import Time from './header/time'
+import Date from './header/date'
 import AvatarMenu from './header/avatarMenu'
 import Preferences from './header/preferences'
 import {connect} from 'react-redux'
@@ -21,7 +21,7 @@ const Header = (props : any) =>{
             <div className="row mr-0 mt-2 thm-color1" >
                 <div className="col-sm-4 d-flex justify-content-start thm-sans-medium">
                    <Preferences />
-                   <Time />
+                   <Date />
                 </div>
                 <div className="col-sm-4 thm-sans-light" >
                     <Search />

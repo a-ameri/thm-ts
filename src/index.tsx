@@ -6,9 +6,11 @@ import reportWebVitals from './reportWebVitals';
 import {createStore, combineReducers} from 'redux'
 import {Provider} from 'react-redux'
 import Header from './store/reducers/header'
+import Auth from './store/reducers/auth'
 
 const rootReducer = combineReducers({
-  header: Header
+  header: Header,
+  auth: Auth
 });
 
 const store = createStore(rootReducer);

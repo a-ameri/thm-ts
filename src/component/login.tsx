@@ -1,12 +1,27 @@
-import React from "react"
+import React,{useEffect} from "react"
 import ReactComment from '../Helper/Comment'
 import Logo from '../images/tax-logo.png'
 import Logotext from '../images/tax-text.png'
 import '../css/login.css'
+import * as actionType from '../store/actionTypes'
+import {connect} from 'react-redux'
 import $ from 'jquery'
 
 
-const Login = () =>{
+const Login = (props : any) =>{
+
+    let errorMessage : string = props.errorMessage
+    let errorState : boolean = props.errorState
+
+    useEffect(()=>{
+        if(errorState)
+            console.log(errorMessage)
+    },[])
+
+    const buttonHandler=()=>{
+        // let user = $("#thm-user").val()
+        // let pass = $("#thm-pass").val()       
+    }
 
     return(
         <React.Fragment>
@@ -48,7 +63,7 @@ const Login = () =>{
                             </div>
                             <br/>
                             <div className="col-md-auto">
-                                <form action="#">
+                                <form action="/Main">
                                     <div className="row-cols-1">
                                         <div className="col-md-auto input-group input-group-lg">
                                             <div className="input-group-prepend">
@@ -67,7 +82,7 @@ const Login = () =>{
                                         <br/>
                                         <div className="col-md-auto">
                                             <button type="submit" className="form-control form-control-lg 
-                                            btn thm-bg1 w-100 thm-0radius thm-input-font text-white">ورود به سیستم</button>
+                                            btn thm-bg1 w-100 thm-0radius thm-input-font text-white" onClick={buttonHandler}>ورود به سیستم</button>
                                         </div>
                                     </div>
                                 </form>
@@ -92,4 +107,17 @@ const Login = () =>{
     )
 }
 
-export default Login
+const mapStateToProps = (state : any)=>{
+    return{
+        errorMessage : state.errorState,
+        errorState : state.errorState
+    }
+}
+
+const mapDispatchToProps = (dispatch : any) =>{
+    return{
+        onErrorHandler: () => dispatch({ type : actionType.SET_AUTH_ERROR, errorMessage:"", errorState:false})
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Login)

@@ -1,4 +1,5 @@
-import React,{useEffect, useState} from 'react';
+import React,{useEffect} from 'react';
+import Auth from '../auth/auth'
 import ReactDOM from 'react-dom';
 import ReactComment from '../Helper/Comment';
 import Request_stuff from './request-stuff';
@@ -239,33 +240,35 @@ const Main = (props : any) =>{
     },[]);
 
     return(
-        <div className="container-fluid">
+        <Auth>
+            <div className="container-fluid">
 
-            <div className="row">
+                <div className="row">
 
-                <Sidebar />
+                    <Sidebar />
 
-                <ReactComment text="begin main" />
+                    <ReactComment text="begin main" />
 
-                <div id="thm-main" className="col-sm-10 thm-mian thm-bg3 px-0 ">
+                    <div id="thm-main" className="col-sm-10 thm-mian thm-bg3 px-0 ">
 
-                    <Flip />
+                        <Flip />
 
-                    < Header 
-                        UserFullName = {UserFullName}  
-                        AvatarImage = {Avatar}
-                        onAvatarClick = {props.onAvatarClick}
-                    />
+                        < Header 
+                            UserFullName = {UserFullName}  
+                            AvatarImage = {Avatar}
+                            onAvatarClick = {props.onAvatarClick}
+                        />
 
-                    <Contents />
+                        <Contents />
 
-                </div>
+                    </div>
 
-                <ReactComment text="end main" />
+                    <ReactComment text="end main" />
 
-            </div>		
+                </div>		
 
-        </div>
+            </div>
+        </Auth>
     )
 }
 

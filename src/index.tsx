@@ -3,11 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {createStore} from 'redux'
+import {createStore, combineReducers} from 'redux'
 import {Provider} from 'react-redux'
-import Reducer from './store/reducer'
+import Header from './store/reducers/header'
 
-const store = createStore(Reducer);
+const rootReducer = combineReducers({
+  header: Header
+});
+
+const store = createStore(rootReducer);
 
 
 ReactDOM.render(

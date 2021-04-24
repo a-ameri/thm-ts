@@ -161,6 +161,7 @@ li.list-group-item-action{
 	width: 170px;
 	top: 30px;
 	border-radius: 0.5em;
+	user-select: none;
 }
 
 #avatarMenu ul{

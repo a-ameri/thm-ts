@@ -11,7 +11,7 @@ const AvatarMenu = (props : any) =>{
     }
 
     let exit = () =>{
-        
+        window.location.href = "/"
     }
 
     return(

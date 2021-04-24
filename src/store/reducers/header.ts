@@ -1,10 +1,10 @@
-import * as actionType from './actionTypes'
+import * as actionType from '../actionTypes'
 
 const initialState = {
     showAvatarMenu : false
   }
   
-  const Reducer = (state = initialState, action : any) => {
+  const Header = (state = initialState, action : any) => {
     switch(action.type){
       case actionType.SHOW_AVATAR_MENU :
         return{
@@ -14,4 +14,4 @@ const initialState = {
     return state;
   }
   
-  export default Reducer;
+  export default Header;

@@ -53,7 +53,7 @@ const Header = (props : any) =>{
 
 const mapStateToProps = (state : any) => {
     return {
-        showAvatarMenu: state.showAvatarMenu
+        showAvatarMenu: state.header.showAvatarMenu
     }
 }
 

@@ -9,10 +9,12 @@ const initialState = {
     switch(action.type){
       case actionType.SET_AUTH_ERROR:
         return{
-            errorMessage : action.errorMessage,
-            errorState : action.errorState
+          ...state,
+          errorMessage : action.errorMessage,
+          errorState : action.errorState
         }
-    }    
+      
+    }
     return state;
   }
   

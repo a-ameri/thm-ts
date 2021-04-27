@@ -109,8 +109,8 @@ const Login = (props : any) =>{
 
 const mapStateToProps = (state : any)=>{
     return{
-        errorMessage : state.errorState,
-        errorState : state.errorState
+        errorMessage : state.auth.errorMessage,
+        errorState : state.auth.errorState
     }
 }
 

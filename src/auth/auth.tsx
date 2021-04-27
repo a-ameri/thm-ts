@@ -1,17 +1,19 @@
 import React,{useEffect} from 'react'
 import * as actionType from '../store/actionTypes'
 import {connect} from 'react-redux'
-import { map } from 'jquery'
+import {Redirect} from 'react-router-dom'
 
 const Auth = (props : any)=>{
 
     useEffect(()=>{
-        props.onErrorHandler()
-        window.location.href = "/"
+        props.onErrorHandler()        
         
     },[])
-
-    return(
+    const gotoLogin = (tag : boolean)=>{
+        let html = (<Redirect to="/" />)
+        return tag?html:null
+    }
+    return(        
         <React.Fragment>
             {props.children}
         </React.Fragment>
@@ -20,7 +22,7 @@ const Auth = (props : any)=>{
 
 const mapDispatchToProps = (dispatch : any) =>{
     return{
-        onErrorHandler: () => dispatch({ type : actionType.SET_AUTH_ERROR, errorMessage:"test message", errorState:true})
+        onErrorHandler: () => dispatch({ type : actionType.SET_AUTH_ERROR, errorMessage:"test message", errorState:false})
     }
 }
 

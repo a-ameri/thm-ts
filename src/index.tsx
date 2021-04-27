@@ -7,10 +7,12 @@ import {createStore, combineReducers} from 'redux'
 import {Provider} from 'react-redux'
 import Header from './store/reducers/header'
 import Auth from './store/reducers/auth'
+import Modal from './store/reducers/modal'
 
 const rootReducer = combineReducers({
   header: Header,
-  auth: Auth
+  auth: Auth,
+  modal: Modal
 });
 
 const store = createStore(rootReducer);

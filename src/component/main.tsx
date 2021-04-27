@@ -12,6 +12,7 @@ import Office from './office';
 import Zone from './zone';
 import Storage from './storage';
 import Stuff_list from './stuff_list';
+import Modal from '../Helper/Modal/modal'
 import Hardware_management from './hardware-management';
 import Employee_alternative from './employee_alternative';
 import '../css/thm-main.css';
@@ -242,6 +243,8 @@ const Main = (props : any) =>{
     return(
         <Auth>
             <div className="container-fluid">
+
+                <Modal />
 
                 <div className="row">
 

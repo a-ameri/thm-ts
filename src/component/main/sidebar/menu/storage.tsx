@@ -2,20 +2,20 @@ import React from 'react'
 
 const Storge = () =>{
 
-    const declareStorage = 
+    const declareStorage =( 
     <li id="storage" className="list-group-item list-group-item-action">
         <span className="fas fa-plus-square fa-size">&nbsp;&nbsp;</span><span>تعریف انبار</span>
-    </li>;
+    </li>)
 
-    const stuffList = 
+    const stuffList = (
     <li id="stuff_list" className="list-group-item list-group-item-action">
         <span className="fas fa-cart-plus fa-size">&nbsp;&nbsp;</span><span>مدیریت تجهیزات</span>
-    </li>;
+    </li>)
 
-    const employeeAlternative = 
+    const employeeAlternative = (
     <li id="employee_alternative" className="list-group-item list-group-item-action">
         <span className="fas fa-universal-access fa-size">&nbsp;&nbsp;</span><span>ثبت جانشین</span>
-    </li>;
+    </li>)
 
     return(
         <React.Fragment>

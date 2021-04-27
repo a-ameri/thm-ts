@@ -1,4 +1,6 @@
 import React  from 'react'
+import {connect} from 'react-redux'
+import * as actionType from '../../../store/actionTypes'
 
 const AvatarMenu = (props : any) =>{
 
@@ -6,8 +8,9 @@ const AvatarMenu = (props : any) =>{
         props.onAvatarClick();
     }
 
-    let changePassword = () =>{
+    let onPasswordClick = () =>{
         props.onAvatarClick();
+        props.onPasswordClick();
     }
 
     let exit = () =>{
@@ -21,7 +24,7 @@ const AvatarMenu = (props : any) =>{
                     <li onClick={changeAvatar}>
                         <span className="fas fa-user-circle fa-size">&nbsp;&nbsp;</span><span>تغییر آواتار</span>
                     </li>
-                    <li onClick={changePassword}>
+                    <li data-toggle="modal" data-target="#myModal" onClick={onPasswordClick}>
                         <span className="fas fa-key fa-size">&nbsp;&nbsp;</span><span>تغییر رمز</span>
                     </li>
                     <li onClick={exit}>
@@ -33,4 +36,10 @@ const AvatarMenu = (props : any) =>{
     )
 }
 
-export default AvatarMenu
+const mapDispatchToProps = (dispatch : any) =>{
+    return{
+        onPasswordClick : () => dispatch({type:actionType.PasswordModal})
+    }
+}
+
+export default connect(null,mapDispatchToProps)(AvatarMenu)

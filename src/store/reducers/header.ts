@@ -8,6 +8,7 @@ const initialState = {
     switch(action.type){
       case actionType.SHOW_AVATAR_MENU :
         return{
+          ...state,
           showAvatarMenu : !state.showAvatarMenu
         }
     }    

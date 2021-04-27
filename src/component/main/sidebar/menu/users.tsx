@@ -2,25 +2,25 @@ import React from 'react'
 
 const Users = () =>{
 
-    const userManagement = 
+    const userManagement = (
     <li id="employee" className="list-group-item list-group-item-action">
         <span className="fas fa-user-plus fa-size">&nbsp;&nbsp;</span><span>مدیریت کاربران</span>
-    </li>;
+    </li>)
 
-    const generalOfficeManagement = 
+    const generalOfficeManagement = (
     <li id="" data-href="#" className="list-group-item list-group-item-action">
         <span className="fa fa-globe fa-size">&nbsp;&nbsp;</span><span>مدیریت ادارات کل</span>
-    </li>;
+    </li>)
 
-    const officeManagement = 
+    const officeManagement = (
     <li id="office" className="list-group-item list-group-item-action">
         <span className="fas fa-building fa-size">&nbsp;&nbsp;</span><span>مدیریت ادارات</span>
-    </li>;
+    </li>)
 
-    const zoneManagement = 
+    const zoneManagement = (
     <li id="zone" className="list-group-item list-group-item-action">
         <span className="fas fa-university fa-size">&nbsp;&nbsp;</span><span>مدیریت حوزه ها</span>
-    </li>;
+    </li>)
 
     return(
         <React.Fragment>

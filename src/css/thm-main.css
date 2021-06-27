@@ -229,13 +229,13 @@ li.list-group-item-action{
 
 }
 
-#addtab span{
+#close_all span{
 
 	opacity: 50%
 
 }
 
-#addtab span:hover{
+#close_all span:hover{
 
 	opacity: 100%;
 

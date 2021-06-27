@@ -1,6 +1,9 @@
 import React,{useEffect} from 'react';
-import Auth from '../auth/auth'
 import ReactDOM from 'react-dom';
+import $ from 'jquery';
+import { connect } from 'react-redux';
+import * as actionType from '../store/actionTypes'
+//---------------------------------------------------------
 import ReactComment from '../Helper/Comment';
 import Request_stuff from './request-stuff';
 import Request_software from './request-software';
@@ -15,23 +18,23 @@ import Stuff_list from './stuff_list';
 import Modal from '../Helper/Modal/modal'
 import Hardware_management from './hardware-management';
 import Employee_alternative from './employee_alternative';
+import Sidebar from './main/sidebar';
+import Header from './main/header';
+import Flip from './main/flip';
+import Contents from './main/contents';
+import Auth from '../auth/auth'
+//----------------------------------------------------------
 import '../css/thm-main.css';
 import '../css/thm-fields.css';
 import '../css/thm-list.css';
 import '../css/thm-employee.css';
 import '../css/thm-all-hardware.css';
 import '../css/thm-hardware.css';
+//----------------------------------------------------------
 import Save from '../images/save.png';
 import SaveAdd from '../images/save add.png';
 import SaveClose from'../images/save close.png';
 import Avatar from '../images/avatar.png';
-import $ from 'jquery';
-import Sidebar from './main/sidebar';
-import Header from './main/header';
-import Flip from './main/flip';
-import Contents from './main/contents';
-import { connect } from 'react-redux';
-import * as actionType from '../store/actionTypes'
 
 
 
@@ -206,7 +209,7 @@ const Main = (props : any) =>{
             +allHtml+'&nbsp;&nbsp;<span class="fa fa-times thm-close-tab"></span></a></li>';
 
             $(".tab-pane").removeClass("active show");
-            $("#addtab").before(menu_title);
+            $("#close_all").before(menu_title);
             
             $("#tab-content").append("<div id='"+id_content+"' class='tab-pane fade in active show'></div>");
 
@@ -236,6 +239,21 @@ const Main = (props : any) =>{
             }			
             removePane = false;
         });
+        //#endregion
+
+        //#region Click on Close All Tabs
+        $(document).on("click","#close_all",(function(){
+            $("#tab-title").empty();
+            $("#tab-content").empty();
+            let close_all =(
+                '<li id="close_all">'+
+                    '<span class="fas fa-window-close fa-2x mr-2 mt-2"'+
+                    'data-toggle="tooltip" data-placement="bottom" title="بستن همه"></span>'+
+                '</li>'
+            )
+            $("#tab-title").append(close_all);
+            openTabs = []
+        }))
         //#endregion
 
     },[]);

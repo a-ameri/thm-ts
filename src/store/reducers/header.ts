@@ -1,7 +1,8 @@
 import * as actionType from '../actionTypes'
 
 const initialState = {
-    showAvatarMenu : false
+    showAvatarMenu : false,
+    zoneModal : 1
   }
   
   const Header = (state = initialState, action : any) => {
@@ -10,6 +11,11 @@ const initialState = {
         return{
           ...state,
           showAvatarMenu : !state.showAvatarMenu
+        }
+      case actionType.ZONE_STATUS :
+        return{
+          ...state,
+          zoneModal : state.zoneModal
         }
     }    
     return state;

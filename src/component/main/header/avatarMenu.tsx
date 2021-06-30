@@ -13,6 +13,11 @@ const AvatarMenu = (props : any) =>{
         props.onPasswordClick();
     }
 
+    let onZoneSelectClick = () =>{
+        props.onAvatarClick();
+        props.onZoneSelectClick();
+    }
+
     let exit = () =>{
         window.location.href = "/"
     }
@@ -26,6 +31,9 @@ const AvatarMenu = (props : any) =>{
                     </li>
                     <li data-toggle="modal" data-target="#myModal" onClick={onPasswordClick}>
                         <span className="fas fa-key fa-size">&nbsp;&nbsp;</span><span>تغییر رمز</span>
+                    </li>
+                    <li data-toggle="modal" data-target="#myModal" onClick={onZoneSelectClick}>
+                        <span className="fas fa-exchange fa-size">&nbsp;&nbsp;</span><span>تغییر حوزه</span>
                     </li>
                     <li onClick={exit}>
                         <span className="fas fa-arrow-left fa-size">&nbsp;&nbsp;</span><span>خروج</span>

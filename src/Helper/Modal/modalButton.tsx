@@ -6,6 +6,10 @@ const ModalButton = (props: any) =>{
     let onChangePassword = () =>{
         props.onChangePassword()
     }
+    let onChangeZone = () =>{
+        let zoneID : number = props.onClick()
+        props.onChangeZone(zoneID)
+    }
     switch (props.type) {
         case actionType.PasswordModal:
             return(
@@ -15,6 +19,15 @@ const ModalButton = (props: any) =>{
                     </button>
                 </React.Fragment>
             )
+        case actionType.ZoneModal:
+            return(
+                <React.Fragment>            
+                    <button type="button" className="btn btn-default thm-bg5"
+                        data-dismiss="modal" onClick={onChangeZone}>تایید
+                    </button>
+                </React.Fragment>
+            )
+        
     }
     return(
         <React.Fragment>            
@@ -27,7 +40,8 @@ const ModalButton = (props: any) =>{
 
 const mapDispatchToProps = (dispatch : any) =>{
     return{
-        onChangePassword : (val : number) => dispatch({type:actionType.PasswordModal})
+        onChangePassword : () => dispatch({type:actionType.PasswordModal}),
+        onChangeZone : (val : number) => dispatch({type:actionType.ZoneModal, zoneModal: val})
     }
 }
 

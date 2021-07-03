@@ -41,7 +41,7 @@ const ModalButton = (props: any) =>{
 const mapDispatchToProps = (dispatch : any) =>{
     return{
         onChangePassword : () => dispatch({type:actionType.PasswordModal}),
-        onChangeZone : (val : number) => dispatch({type:actionType.ZoneModal, zoneModal: val})
+        onChangeZone : (val : number) => dispatch({type:actionType.ZONE_Header, zoneModal: val})
     }
 }
 

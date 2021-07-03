@@ -55,7 +55,7 @@ const Modal = (state = InitState, action : any) =>{
                 onAcceptClick : () => {
                     let temp = document.getElementById("zone_select") as HTMLSelectElement
                     let val = (temp.value as unknown) as number
-                    return val   
+                    return val
                 },
                 type : actionType.ZoneModal
             }

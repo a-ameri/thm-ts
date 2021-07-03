@@ -12,10 +12,10 @@ const initialState = {
           ...state,
           showAvatarMenu : !state.showAvatarMenu
         }
-      case actionType.ZONE_STATUS :
+      case actionType.ZONE_Header :
         return{
           ...state,
-          zoneModal : state.zoneModal
+          zoneModal : action.zoneModal
         }
     }    
     return state;

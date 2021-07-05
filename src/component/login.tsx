@@ -6,6 +6,8 @@ import '../css/login.css'
 import * as actionType from '../store/actionTypes'
 import {connect} from 'react-redux'
 import $ from 'jquery'
+import axios from 'axios'
+import IEmployee from '../interfaces/employee'
 
 
 const Login = (props : any) =>{
@@ -19,8 +21,22 @@ const Login = (props : any) =>{
     },[])
 
     const buttonHandler=()=>{
-        // let user = $("#thm-user").val()
-        // let pass = $("#thm-pass").val()       
+         let user = $("#thm-user").val() as string
+         let pass = $("#thm-pass").val() as string
+         let emp : IEmployee
+         emp = {
+            ENatinalcode : user,
+            EPassword : pass,
+            EID : 0,
+            EFullName : "",
+            PeID : 0,
+            PName : ""
+         }
+         axios.get("http://10.102.8.72/THM_WebApi/api/status").then(response =>{
+            console.log(response)
+         }).catch(error =>{
+            console.log(error)
+         })
     }
 
     return(
@@ -63,7 +79,7 @@ const Login = (props : any) =>{
                             </div>
                             <br/>
                             <div className="col-md-auto">
-                                <form action="/Main">
+                                {/* <form action="#"> */}
                                     <div className="row-cols-1">
                                         <div className="col-md-auto input-group input-group-lg">
                                             <div className="input-group-prepend">
@@ -85,7 +101,7 @@ const Login = (props : any) =>{
                                             btn thm-bg1 w-100 thm-0radius thm-input-font text-white" onClick={buttonHandler}>ورود به سیستم</button>
                                         </div>
                                     </div>
-                                </form>
+                                {/* </form> */}
                             </div>
                         </div>
                     </div>

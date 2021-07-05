@@ -255,7 +255,7 @@ const Main = (props : any) =>{
             openTabs = []
         }))
         //#endregion
-
+        
     },[]);
 
     return(

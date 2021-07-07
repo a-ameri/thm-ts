@@ -2,7 +2,8 @@ import * as actionType from '../actionTypes'
 
 const initialState = {
     errorMessage : "",
-    errorState : false
+    errorState : false,
+    userFullName : ""
   }
   
   const Auth = (state = initialState, action : any) => {

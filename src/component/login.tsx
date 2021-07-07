@@ -8,6 +8,7 @@ import {connect} from 'react-redux'
 import $ from 'jquery'
 import axios from 'axios'
 import IEmployee from '../interfaces/employee'
+import { reduceEachLeadingCommentRange } from "typescript"
 
 
 const Login = (props : any) =>{
@@ -21,22 +22,30 @@ const Login = (props : any) =>{
     },[])
 
     const buttonHandler=()=>{
-         let user = $("#thm-user").val() as string
-         let pass = $("#thm-pass").val() as string
-         let emp : IEmployee
-         emp = {
+        $("#errorMessage").empty();
+        let user = $("#thm-user").val() as string
+        let pass = $("#thm-pass").val() as string
+        let emp : IEmployee
+        emp = {
             ENatinalcode : user,
             EPassword : pass,
             EID : 0,
             EFullName : "",
             PeID : 0,
             PName : ""
-         }
-         axios.get("http://10.102.8.72/THM_WebApi/api/status").then(response =>{
-            console.log(response)
-         }).catch(error =>{
+        }
+        axios.post("http://10.102.8.72/THM_WebApi/api/EmployeeByUserPass",emp)
+        .then(response =>{
+            if(response.data.EID > 0){ 
+                window.location.href = "/Main"
+            }
+            else
+                $("#errorMessage").text("نام کاربری یا کلمه عبور اشتباه است.");
+            
+        }).catch(error =>{
             console.log(error)
-         })
+            $("#errorMessage").text("خطای نا مشخص.")
+        })
     }
 
     return(
@@ -99,6 +108,9 @@ const Login = (props : any) =>{
                                         <div className="col-md-auto">
                                             <button type="submit" className="form-control form-control-lg 
                                             btn thm-bg1 w-100 thm-0radius thm-input-font text-white" onClick={buttonHandler}>ورود به سیستم</button>
+                                        </div>
+                                        <div className="col-md-auto">
+                                            <p id="errorMessage" style={{color:"red", fontWeight:"bolder"}}></p>
                                         </div>
                                     </div>
                                 {/* </form> */}

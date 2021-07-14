@@ -8,7 +8,7 @@ import {connect} from 'react-redux'
 import $ from 'jquery'
 import axios from 'axios'
 import IEmployee from '../interfaces/employee'
-import { reduceEachLeadingCommentRange } from "typescript"
+import * as staticItems from '../static/staticItems'
 
 
 const Login = (props : any) =>{
@@ -34,9 +34,11 @@ const Login = (props : any) =>{
             PeID : 0,
             PName : ""
         }
+        $("#errorMessage").text("در حال دریافت اطلاعات")
         axios.post("http://10.102.8.72/THM_WebApi/api/EmployeeByUserPass",emp)
         .then(response =>{
-            if(response.data.EID > 0){ 
+            if(response.data.EID > 0){
+                localStorage.setItem(staticItems.UserID, response.data.EID)
                 window.location.href = "/Main"
             }
             else
@@ -103,7 +105,7 @@ const Login = (props : any) =>{
                                                 <span className="input-group-text thm-0radius thm-bg1 border-0 fa fa-lock text-white"></span>
                                             </div>
                                             <input className="form-control form-control-lg thm-0radius thm-input-font" 
-                                            type="password" id="thm-pass" placeholder="کلمه عبور"/>		                                        </div>
+                                            type="password" id="thm-pass" placeholder="کلمه عبور" />		                                        </div>
                                         <br/>
                                         <div className="col-md-auto">
                                             <button type="submit" className="form-control form-control-lg 

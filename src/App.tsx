@@ -1,5 +1,6 @@
 import Main from './component/main'
 import Login from './component/login'
+import Auth from './auth/auth'
 import {
   BrowserRouter as Router,
   Switch,

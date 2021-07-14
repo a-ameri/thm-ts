@@ -1,21 +1,26 @@
 import React,{useEffect} from 'react'
 import * as actionType from '../store/actionTypes'
 import {connect} from 'react-redux'
-import {Redirect} from 'react-router-dom'
+import * as staticItems from '../static/staticItems'
 
 const Auth = (props : any)=>{
 
     useEffect(()=>{
-        props.onErrorHandler()        
-        
+        props.onErrorHandler() 
     },[])
-    const gotoLogin = (tag : boolean)=>{
-        let html = (<Redirect to="/" />)
-        return tag?html:null
+    
+    let UserID : number = (localStorage.getItem(staticItems.UserID) as unknown) as number    
+    let allowMount : boolean = false
+    if(UserID!=null){
+        allowMount = true
     }
-    return(        
+
+    const gotoLogin = ()=>{
+        window.location.href = "/"
+    }
+    return(
         <React.Fragment>
-            {props.children}
+            {allowMount ? props.children : gotoLogin()}
         </React.Fragment>
     )
 }

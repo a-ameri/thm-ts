@@ -19,6 +19,7 @@ const AvatarMenu = (props : any) =>{
     }
 
     let exit = () =>{
+        localStorage.clear()
         window.location.href = "/"
     }
 

@@ -3,7 +3,14 @@ import * as actionType from '../actionTypes'
 const initialState = {
     errorMessage : "",
     errorState : false,
-    userFullName : ""
+    emp : {
+      ENatinalcode : "",
+      EPassword : "",
+      EID : 0,
+      EFullName : "",
+      PeID : 0,
+      PName : ""
+    } 
   }
   
   const Auth = (state = initialState, action : any) => {
@@ -13,6 +20,19 @@ const initialState = {
           ...state,
           errorMessage : action.errorMessage,
           errorState : action.errorState
+        }
+      case actionType.Set_User_Information:
+        return{
+          ...state,
+          emp : {
+            ...state.emp,
+            ENatinalcode : action.employee.ENatinalcode,
+            EPassword : action.employee.EPassword,
+            EID : action.employee.EID,
+            EFullName : action.employee.EFullName,
+            PeID : action.employee.PeID,
+            PName : action.employee.PName
+          }
         }
       
     }

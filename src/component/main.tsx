@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import { connect } from 'react-redux';
 import * as actionType from '../store/actionTypes'
+import * as staticItems from '../static/staticItems'
 //---------------------------------------------------------
 import ReactComment from '../Helper/Comment';
 import Request_stuff from './request-stuff';
@@ -24,6 +25,8 @@ import Flip from './main/flip';
 import Contents from './main/contents';
 import Auth from '../auth/auth'
 //----------------------------------------------------------
+import IEmployee from '../interfaces/employee';
+//----------------------------------------------------------
 import '../css/thm-main.css';
 import '../css/thm-fields.css';
 import '../css/thm-list.css';
@@ -35,16 +38,41 @@ import Save from '../images/save.png';
 import SaveAdd from '../images/save add.png';
 import SaveClose from'../images/save close.png';
 import Avatar from '../images/avatar.png';
+import axios from 'axios'
+import userEvent from '@testing-library/user-event';
 
 
 
 const Main = (props : any) =>{
+    let UserID : number = (localStorage.getItem(staticItems.UserID) as unknown) as number
+    let emp : IEmployee
+    emp = {
+        ENatinalcode : "",
+        EPassword : "",
+        EID : 0,
+        EFullName : "",
+        PeID : 0,
+        PName : ""
+    }    
+
     let openTabs : any=[];
 
-    let UserFullName : string = "عادل عامری سیاهویی"
+    let UserFullName : string = props.employee.EFullName
     
     
     useEffect(()=>{
+
+        ////#region get user informations
+        axios.get("http://10.102.8.72/THM_WebApi/api/Employee/"+UserID)
+        .then(response =>{
+            emp = response.data
+            props.onSetEmployee(emp)
+        }).catch(error =>{
+            console.log(error)
+            $("#errorMessage").text("خطای بارگیری داده.")
+        })
+        //#endregion
+
         //#region function of flip button
         $("#flip").on('click',(function(){
 
@@ -293,10 +321,17 @@ const Main = (props : any) =>{
     )
 }
 
-const mapDispatchToProps = (dispatch : any) => {
-    return {
-        onAvatarClick: () => dispatch({ type: actionType.SHOW_AVATAR_MENU })
+const mapStateToProps = (state : any)=>{
+    return{
+        employee : state.auth.emp
     }
 }
 
-export default connect(null,mapDispatchToProps)(Main);
+const mapDispatchToProps = (dispatch : any) => {
+    return {
+        onAvatarClick: () => dispatch({ type: actionType.SHOW_AVATAR_MENU }),
+        onSetEmployee: (emp : IEmployee) => dispatch({type: actionType.Set_User_Information, employee: emp})
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Main);

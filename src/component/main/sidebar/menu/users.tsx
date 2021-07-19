@@ -29,7 +29,7 @@ const Users = () =>{
             </li>
             <ul id="ul3-2" className="list-group thm-0radius p-0 collapse">
                 {userManagement}
-                {generalOfficeManagement}
+                {/* {generalOfficeManagement} */}
                 {officeManagement}
                 {zoneManagement}
             </ul>                        

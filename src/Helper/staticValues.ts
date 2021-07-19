@@ -1,1 +1,0 @@
-export const ServerIP = "192.168.235.134"

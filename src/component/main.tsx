@@ -1,9 +1,11 @@
 import React,{useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
+import axios from 'axios'
 import { connect } from 'react-redux';
 import * as actionType from '../store/actionTypes'
 import * as staticItems from '../static/staticItems'
+import * as StaticValues from '../Helper/staticUrl'
 //---------------------------------------------------------
 import ReactComment from '../Helper/Comment';
 import Request_stuff from './request-stuff';
@@ -16,7 +18,7 @@ import Office from './office';
 import Zone from './zone';
 import Storage from './storage';
 import Stuff_list from './stuff_list';
-import Modal from '../Helper/Modal/modal'
+import Modal from '../Helper/Modal/Modal'
 import Hardware_management from './hardware-management';
 import Employee_alternative from './employee_alternative';
 import Sidebar from './main/sidebar';
@@ -38,8 +40,6 @@ import Save from '../images/save.png';
 import SaveAdd from '../images/save add.png';
 import SaveClose from'../images/save close.png';
 import Avatar from '../images/avatar.png';
-import axios from 'axios'
-import userEvent from '@testing-library/user-event';
 
 
 
@@ -58,12 +58,12 @@ const Main = (props : any) =>{
     let openTabs : any=[];
 
     let UserFullName : string = props.employee.EFullName
-    
+    console.log(UserFullName)
     
     useEffect(()=>{
 
         ////#region get user informations
-        axios.get("http://10.102.8.72/THM_WebApi/api/Employee/"+UserID)
+        axios.get(StaticValues.Server+"/Employee/"+UserID)
         .then(response =>{
             emp = response.data
             props.onSetEmployee(emp)

@@ -9,6 +9,7 @@ import $ from 'jquery'
 import axios from 'axios'
 import IEmployee from '../interfaces/employee'
 import * as staticItems from '../static/staticItems'
+import * as StaticValues from '../Helper/staticUrl'
 
 
 const Login = (props : any) =>{
@@ -35,7 +36,7 @@ const Login = (props : any) =>{
             PName : ""
         }
         $("#errorMessage").text("در حال دریافت اطلاعات")
-        axios.post("http://10.102.8.72/THM_WebApi/api/EmployeeByUserPass",emp)
+        axios.post(StaticValues.Server+"/EmployeeByUserPass",emp)
         .then(response =>{
             if(response.data.EID > 0){
                 localStorage.setItem(staticItems.UserID, response.data.EID)

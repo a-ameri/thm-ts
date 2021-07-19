@@ -1,0 +1,8 @@
+const ServerIP : string = "http://127.0.0.1"
+export const Server : string = ServerIP + "/THM_WebApi/api"
+export const GetPersmissions : string = ServerIP + "/THM_WebApi/api/Permission"
+export const GetStatus : string = ServerIP + "/THM_WebApi/api/Status"
+export const GetRequestType : string = ServerIP + "/THM_WebApi/api/RequsetType"
+export const GetHealth : string = ServerIP + "/THM_WebApi/api/Health"
+export const GetPost : string = ServerIP + "/THM_WebApi/api/Post"
+export const GetٍEmployees : string = ServerIP + "/THM_WebApi/api/Employee"

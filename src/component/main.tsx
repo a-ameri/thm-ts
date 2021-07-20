@@ -29,6 +29,7 @@ import Auth from '../auth/auth'
 import Alert from '../component/alert'
 //----------------------------------------------------------
 import IEmployee from '../interfaces/employee';
+import IAlert from '../interfaces/alert';
 //----------------------------------------------------------
 import '../css/thm-main.css';
 import '../css/thm-fields.css';
@@ -291,8 +292,8 @@ const Main = (props : any) =>{
         props.onWaiting(tag)
     }
 
-    const onError = (tag : boolean) =>{
-        props.onError(tag)
+    const onError = (tag : boolean, alert : IAlert) =>{
+        props.onError(tag, alert)
     }
 
     return(
@@ -342,7 +343,7 @@ const mapDispatchToProps = (dispatch : any) => {
         onAvatarClick: () => dispatch({ type: actionType.SHOW_AVATAR_MENU }),
         onSetEmployee: (emp : IEmployee) => dispatch({type: actionType.Set_User_Information, employee: emp}),
         onWaiting: (tag : boolean) => dispatch({type: actionType.Waiting, isLoading: tag}),
-        onError: (tag : boolean) => dispatch({type: actionType.AlertModal, onError: tag})
+        onError: (tag : boolean, alert : IAlert) => dispatch({type: actionType.AlertModal, onError: tag, alertDetails : alert})
     }
 }
 

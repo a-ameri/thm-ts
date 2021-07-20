@@ -9,7 +9,8 @@ const InitState : any = {
     bodyElement : bodyElement,
     onAcceptClick : onAcceptClick,
     isLoading : false,
-    onError : false
+    onError : false,
+    alertDetails : null
 }
 
 
@@ -62,7 +63,8 @@ const Modal = (state = InitState, action : any) =>{
         case actionType.AlertModal:            
             return{
                 ...state,
-                onError : action.onError
+                onError : action.onError,
+                alertDetails : action.alertDetails
             }
         case actionType.Waiting:
             return{

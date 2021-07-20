@@ -7,7 +7,9 @@ let onAcceptClick : any = null
 const InitState : any = {
     headerText : headerText,
     bodyElement : bodyElement,
-    onAcceptClick : onAcceptClick
+    onAcceptClick : onAcceptClick,
+    isLoading : false,
+    onError : false
 }
 
 
@@ -34,8 +36,7 @@ const Modal = (state = InitState, action : any) =>{
                         <input id="repeat_new_pass" type="password" placeholder="تکرار پسورد جدید"/>                        
                     </div>
                 </div>,
-                onAcceptClick : () => {},
-                type : actionType.PasswordModal
+                onAcceptClick : () => {}
             }
         case actionType.ZoneModal:            
             return{
@@ -56,8 +57,17 @@ const Modal = (state = InitState, action : any) =>{
                     let temp = document.getElementById("zone_select") as HTMLSelectElement
                     let val = (temp.value as unknown) as number
                     return val
-                },
-                type : actionType.ZoneModal
+                }
+            }
+        case actionType.AlertModal:            
+            return{
+                ...state,
+                onError : action.onError
+            }
+        case actionType.Waiting:
+            return{
+                ...state,
+                isLoading : action.isLoading
             }
     }
     return state

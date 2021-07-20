@@ -1,0 +1,12 @@
+#loading{
+    background-color: rgba(181, 240, 227, 0.400);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+#loading .spinner-grow, #loading .spinner-border{
+    position: absolute;
+    right: 50%;
+    top: 30%;
+    z-index: 300;
+}

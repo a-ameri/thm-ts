@@ -26,6 +26,7 @@ import Header from './main/header';
 import Flip from './main/flip';
 import Contents from './main/contents';
 import Auth from '../auth/auth'
+import Alert from '../component/alert'
 //----------------------------------------------------------
 import IEmployee from '../interfaces/employee';
 //----------------------------------------------------------
@@ -40,6 +41,7 @@ import Save from '../images/save.png';
 import SaveAdd from '../images/save add.png';
 import SaveClose from'../images/save close.png';
 import Avatar from '../images/avatar.png';
+import { isPropertySignature } from 'typescript';
 
 
 
@@ -58,7 +60,6 @@ const Main = (props : any) =>{
     let openTabs : any=[];
 
     let UserFullName : string = props.employee.EFullName
-    console.log(UserFullName)
     
     useEffect(()=>{
 
@@ -164,7 +165,7 @@ const Main = (props : any) =>{
                     ReactDOM.render(<Request_list />, document.getElementById($id_content));
                     break;
                 case "employee":
-                    ReactDOM.render(<Employee />, document.getElementById($id_content));
+                    ReactDOM.render(<Employee onWaiting={onWaiting} onError={onError}/>, document.getElementById($id_content));
                     break;                    
                 case "office":
                     ReactDOM.render(<Office />, document.getElementById($id_content));
@@ -286,6 +287,14 @@ const Main = (props : any) =>{
         
     },[]);
 
+    const onWaiting = (tag : boolean) =>{
+        props.onWaiting(tag)
+    }
+
+    const onError = (tag : boolean) =>{
+        props.onError(tag)
+    }
+
     return(
         <Auth>
             <div className="container-fluid">
@@ -302,19 +311,20 @@ const Main = (props : any) =>{
 
                         <Flip />
 
-                        < Header 
+                        <Header 
                             UserFullName = {UserFullName}  
                             AvatarImage = {Avatar}
                             onAvatarClick = {props.onAvatarClick}
                         />
-
                         <Contents />
 
                     </div>
 
                     <ReactComment text="end main" />
 
-                </div>		
+                </div>	
+
+                <Alert onError={onError}/>	
 
             </div>
         </Auth>
@@ -330,7 +340,9 @@ const mapStateToProps = (state : any)=>{
 const mapDispatchToProps = (dispatch : any) => {
     return {
         onAvatarClick: () => dispatch({ type: actionType.SHOW_AVATAR_MENU }),
-        onSetEmployee: (emp : IEmployee) => dispatch({type: actionType.Set_User_Information, employee: emp})
+        onSetEmployee: (emp : IEmployee) => dispatch({type: actionType.Set_User_Information, employee: emp}),
+        onWaiting: (tag : boolean) => dispatch({type: actionType.Waiting, isLoading: tag}),
+        onError: (tag : boolean) => dispatch({type: actionType.AlertModal, onError: tag})
     }
 }
 

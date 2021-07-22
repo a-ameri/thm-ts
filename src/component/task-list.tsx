@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactComment from '../Helper/Comment';
 
-const Task_list = ()=>{
+const Task_list = (props : any)=>{
     return(
         <div className="thm-f thm-sans-light">
 

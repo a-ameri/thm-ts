@@ -10,7 +10,8 @@ const InitState : any = {
     onAcceptClick : onAcceptClick,
     isLoading : false,
     onError : false,
-    alertDetails : null
+    alertDetails : null,
+    promptTag : false
 }
 
 
@@ -70,6 +71,14 @@ const Modal = (state = InitState, action : any) =>{
             return{
                 ...state,
                 isLoading : action.isLoading
+            }
+        case actionType.PromptModal:         
+            return{
+                ...state,
+                promptTag : action.promptTag,
+                onAcceptClick : action.onAcceptClick,
+                alertDetails : action.alertDetails,
+                itemID : action.itemID
             }
     }
     return state

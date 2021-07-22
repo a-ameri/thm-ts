@@ -1,18 +1,18 @@
 import axios from 'axios';
-import React,{TableHTMLAttributes, useEffect, useState} from 'react';
+import React,{ useEffect, useState} from 'react';
 import ReactComment from '../Helper/Comment';
 import * as URL from '../Helper/staticUrl'
 import IPermission from '../interfaces/permission'
 import IEmployee from '../interfaces/employee'
 import IAlert from '../interfaces/alert'
 import $ from 'jquery'
-import { AnyIfEmpty } from 'react-redux';
+import * as SE from '../static/staticErrors'
 
 const Employee = (props : any)=>{
     const [options,setOptions] = useState(0)
     const [table,fillTable] = useState(0)
-    const [editMode,setEditMode] = useState(false)
     const [employeeID, setEmployeeID] = useState(0)
+    const [editMode, setEditMode] = useState(false)
     const[defaultValue,setDefaulValue]=useState(2)
     let permissions : IPermission[]
     let selectOptions : any
@@ -26,44 +26,56 @@ const Employee = (props : any)=>{
     const onError = (tag : boolean, alert : IAlert) =>{
         props.onError(tag, alert)
     }
+
+    const myClick = (pTag : boolean, onClick : any, alert : IAlert, itemID : number) =>{        
+        props.myClick(pTag, onClick, alert, itemID)
+    }
     
     const fillTableItems = () =>{        
         axios.get(URL.GetEmployees).then(response =>{
-            Employees = response.data
-            tableRows = Employees.map((emp, index)=>
-                <tr className="thm-f thm-m data" key={index + 1}>
-                    <td>{index + 1}</td>
-                    <td>{emp.EFullName}</td>
-                    <td>{emp.ENatinalcode}</td>
-                    <td>{emp.PName}</td>
-                    <td>
-                        <button className="thm-f thm-m btn btn-warning ml-1 btn-sm" onClick={() => onEditClick(emp.EID)}>ویرایش</button>
-                        <button className="thm-f thm-m btn btn-danger btn-sm ml-1" onClick={() => onDeleteClick(emp.EID)}>حذف</button>
-                        <a href="employee-workgroup.html" className=" ml-1">
-                            <button className="thm-f thm-m btn btn-primary btn-sm">انتساب گروه کاری</button>
-                        </a>
-                        <a href="employee-zone-employee.html" className=" ml-1">
-                            <button className="thm-f thm-m btn btn-dark btn-sm">انتساب به حوزه</button>
-                        </a>
-                        <a href="employee-hardware.html" className=" ml-1">
-                            <button className="thm-f thm-m btn btn-secondary btn-sm">مشاهده تجهیزات</button>
-                        </a>
-                    </td>
-                </tr>
-            )
-            fillTable(tableRows)            
+            let err : string = response.data.toString()
+            if(err.includes("Kernel Error"))
+            {
+                SE.globalAlert.AlertCode = 1021
+                SE.globalAlert.Body = err
+                SE.globalAlert.Header = SE.Read
+            }else{
+                Employees = response.data
+                tableRows = Employees.map((emp, index)=>
+                    <tr className="thm-f thm-m data" key={index + 1}>
+                        <td>{index + 1}</td>
+                        <td>{emp.EFullName}</td>
+                        <td>{emp.ENatinalcode}</td>
+                        <td>{emp.PName}</td>
+                        <td>
+                            <button className="thm-f thm-m btn btn-warning ml-1 btn-sm" onClick={() => onEditClick(emp.EID)}>ویرایش</button>
+                            <button className="thm-f thm-m btn btn-danger btn-sm ml-1" onClick={() => onDeletePrompt(emp.EID)}>حذف</button>
+                            <a href="employee-workgroup.html" className=" ml-1">
+                                <button className="thm-f thm-m btn btn-primary btn-sm">انتساب گروه کاری</button>
+                            </a>
+                            <a href="employee-zone-employee.html" className=" ml-1">
+                                <button className="thm-f thm-m btn btn-dark btn-sm">انتساب به حوزه</button>
+                            </a>
+                            <a href="employee-hardware.html" className=" ml-1">
+                                <button className="thm-f thm-m btn btn-secondary btn-sm">مشاهده تجهیزات</button>
+                            </a>
+                        </td>
+                    </tr>
+                )
+                fillTable(tableRows)
+            }          
         }).catch(error =>{
-            let alert : IAlert ={
-                AlertCode : 1005,
-                Body : error.toString(),
-                Header : ""
-            }
-            onError(true, alert)
+            SE.globalAlert.AlertCode = 1020
+            SE.globalAlert.Body = error.toString()
+            SE.globalAlert.Header = SE.Unkonow
+            onError(true, SE.globalAlert)
         })
+        
+        SE.emptyGlobalAlert()
     }
 
     function searchFunction() {
-        var input : any, filter: string, table: any, tr: any, td: any, i: any, txtValue: any;
+        var filter: string, table: any, tr: any, td: any, i: any, txtValue: any;
         
         filter = $("#employeeSearch").val()! as string
         filter = filter.toUpperCase()
@@ -80,31 +92,36 @@ const Employee = (props : any)=>{
             }
           }       
         }
-      }
+    }
 
     useEffect(()=>{
         //#region set  permission option
-        axios.get(URL.GetPersmissions).then(response =>{            
-            permissions = response.data
-            let item : IPermission
-            for(var i=0; i<permissions.length; i++){
-                if(permissions[i].PeName == "کاربر")
-                    setDefaulValue(permissions[i].PeID)
+        axios.get(URL.GetPersmissions).then(response =>{  
+            let err : string = response.data.toString()
+            if(err.includes("Kernel Error")){
+                SE.globalAlert.AlertCode = 1023
+                SE.globalAlert.Body = err
+                SE.globalAlert.Header = SE.Read
+            }else{          
+                permissions = response.data
+                for(var i=0; i<permissions.length; i++){
+                    if(permissions[i].PeName == "کاربر")
+                        setDefaulValue(permissions[i].PeID)
+                }
+                selectOptions = permissions.map((perm)=>
+                    <option key={perm.PeID.toString()} value={perm.PeID}>{perm.PeName}</option>
+                )
+                setOptions(selectOptions)
             }
-            selectOptions = permissions.map((perm)=>
-                <option key={perm.PeID.toString()} value={perm.PeID}>{perm.PeName}</option>
-            )
-            setOptions(selectOptions)    
             
         }).catch(error =>{
-            let alert : IAlert ={
-                AlertCode : 1001,
-                Body : error.toString(),
-                Header : ""
-            }
-            onError(true, alert)
+            SE.globalAlert.AlertCode = 1022
+            SE.globalAlert.Body = error.toString()
+            SE.globalAlert.Header = SE.Unkonow
+            onError(true, SE.globalAlert)
         })
-        //#endregion
+        //#endregion        
+        SE.emptyGlobalAlert()
 
         //#region fill employee table        
         fillTableItems()
@@ -113,7 +130,75 @@ const Employee = (props : any)=>{
     },[])
 
     const onSaveClick = () => {
-    
+        if(editMode){
+            onEditPrompt()
+            setEditMode(false)
+        }
+        else{
+            let fullname  : string = ($("#fullNameTxt").val() as unknown) as string
+            let password = ($("#passwordTxt").val() as unknown) as string
+            let nationalcode = ($("#nationalCodeTxt").val() as unknown) as string
+            let permission  = ($("#permissionSelector").val() as unknown) as number
+
+            let tempEmp : IEmployee = {
+                EFullName : fullname,
+                EID : employeeID,
+                ENatinalcode : nationalcode,
+                EPassword : password,
+                PName : "",
+                PeID : permission
+            }
+            if(tempEmp.EFullName != "" 
+            && tempEmp.ENatinalcode != ""
+            && tempEmp.EPassword != ""){
+                onwaiting(true)
+                axios.post(URL.GetEmployees,tempEmp).then(response =>{
+                    let err : string = response.data.toString()
+                    if(err.includes("Kernel Error")){
+                        SE.globalAlert.AlertCode = 1011
+                        SE.globalAlert.Body = err
+                        SE.globalAlert.Header = SE.Create
+                    }else{
+                        response.data == "" ?
+                        fillTableItems() :
+                        console.log(response.data)
+                    }
+                }).catch(error =>{
+                    SE.globalAlert.AlertCode = 1010
+                    SE.globalAlert.Body = error.toString()
+                    SE.globalAlert.Header = SE.Unkonow
+                    onError(true, SE.globalAlert)
+                }).finally(()=>
+                    onwaiting(false)
+                )
+
+                $("#saveButton").text("ثبت")
+                $("#fullNameTxt").val("")
+                $("#passwordTxt").val("")
+                $("#nationalCodeTxt").val("")
+                $("#permissionSelector").val(2)
+            }else{
+                let alert : IAlert ={
+                    AlertCode : 1,
+                    Body : "لطفا تمامی فیلد ها را وارد نمایید",
+                    Header : SE.Insert
+                }
+                onError(true, alert)
+            }
+            
+            SE.emptyGlobalAlert()
+        }
+        
+    }
+
+    const onEditPrompt = () =>{
+        SE.globalAlert.AlertCode = 10003
+        SE.globalAlert.Body = SE.PromptUpdate
+        SE.globalAlert.Header = SE.Prompt
+        myClick(true, onExeEdit, SE.globalAlert, 0)
+    }
+
+    const onExeEdit = ()=>{
         let fullname  : string = ($("#fullNameTxt").val() as unknown) as string
         let password = ($("#passwordTxt").val() as unknown) as string
         let nationalcode = ($("#nationalCodeTxt").val() as unknown) as string
@@ -130,41 +215,27 @@ const Employee = (props : any)=>{
         if(tempEmp.EFullName != "" 
         && tempEmp.ENatinalcode != ""
         && tempEmp.EPassword != ""){
-            console.log(tempEmp.EPassword)
-            onwaiting(true)
-            if(!editMode){
-                axios.post(URL.GetEmployees,tempEmp).then(response =>{
-                    response.data == "" ?
-                    fillTableItems() :
-                    console.log(response.data)
-                }).catch(error =>{
-                    let alert : IAlert ={
-                        AlertCode : 1002,
-                        Body : error.toString(),
-                        Header : ""
-                    }
-                    onError(true, alert)
-                }).finally(()=>
-                    onwaiting(false)
-                )
-            }else{
-                axios.put(URL.GetEmployees,tempEmp).then(response =>{
+            axios.put(URL.GetEmployees,tempEmp).then(response =>{
+                let err : string = response.data.toString()
+                if(err.includes("Kernel Error")){
+                    SE.globalAlert.AlertCode = 1031
+                    SE.globalAlert.Body = err
+                    SE.globalAlert.Header = SE.Update
+                }else{
                     response.data == "" ?                    
                     fillTableItems() :
                     console.log(response.data)
-                }).catch(error =>{
-                    let alert : IAlert ={
-                        AlertCode : 1003,
-                        Body : error.toString(),
-                        Header : ""
-                    }
-                    onError(true, alert)
-                }).finally(()=>
-                    onwaiting(false)
-                )
-                setEditMode(false)
-                setEmployeeID(0)
-            }
+                }
+            }).catch(error =>{
+                SE.globalAlert.AlertCode = 1030
+                SE.globalAlert.Body = error.toString()
+                SE.globalAlert.Header = SE.Unkonow
+                onError(true, SE.globalAlert)
+            }).finally(()=>
+                onwaiting(false)
+            )
+            setEmployeeID(0)
+
             $("#saveButton").text("ثبت")
             $("#fullNameTxt").val("")
             $("#passwordTxt").val("")
@@ -174,16 +245,14 @@ const Employee = (props : any)=>{
             let alert : IAlert ={
                 AlertCode : 1,
                 Body : "لطفا تمامی فیلد ها را وارد نمایید",
-                Header : "خطا در ورود اطلاعات"
+                Header : SE.Insert
             }
             onError(true, alert)
         }
-        
     }
 
     const onEditClick = (id : number)  : any =>{
         axios.get(URL.GetEmployees+"/"+id).then(response => {
-            setEditMode(true)
             let emp : IEmployee = response.data
 
             $("#fullNameTxt").val(emp.EFullName)
@@ -192,6 +261,7 @@ const Employee = (props : any)=>{
             $("#permissionSelector").val(emp.PeID)
             $("#saveButton").text("ویرایش")
             setEmployeeID(id)
+            setEditMode(true)
         }).catch(error => {
             setEmployeeID(0)
             setEditMode(false)
@@ -199,30 +269,35 @@ const Employee = (props : any)=>{
 
     }
 
-    const onDeleteClick = (id : number) : any =>{     
-        
+    const onDeletePrompt = (id : number) =>{
+        SE.globalAlert.AlertCode = 10004
+        SE.globalAlert.Body = SE.PromptDelete
+        SE.globalAlert.Header = SE.Prompt
+        myClick(true, onDeleteClick, SE.globalAlert, id)
+    }
+
+    const onDeleteClick = (id : number) : any =>{ 
         onwaiting(true)
         axios.delete(URL.GetEmployees+"/"+id).then(response => {
-            response.data == "" ?
-            fillTableItems() :
-            console.log(response)
-        }).catch(error => {
-            let alert : IAlert ={
-                AlertCode : 1004,
-                Body : error.toString(),
-                Header : ""
+            let err : string = response.data.toString()
+            if(err.includes("Kernel Error")){
+                SE.globalAlert.AlertCode = 1041
+                SE.globalAlert.Body = err
+                SE.globalAlert.Header = SE.Delete
+            }else{
+                response.data == "" ?
+                fillTableItems() :
+                console.log(response)
             }
-            onError(true, alert)
+        }).catch(error => {
+            SE.globalAlert.AlertCode = 1040
+            SE.globalAlert.Body = error.toString()
+            SE.globalAlert.Header = SE.Unkonow
+            onError(true, SE.globalAlert)
         }).finally(()=>
             onwaiting(false)
         )
-
-        // setTimeout(() => {
-        //     onwaiting(false)
-        // }, 2000);
-
-        // onError(true)
-       
+        SE.emptyGlobalAlert()       
     }
     
     return(
@@ -297,4 +372,4 @@ const Employee = (props : any)=>{
     )
 }
 
-export default Employee;
+export default Employee

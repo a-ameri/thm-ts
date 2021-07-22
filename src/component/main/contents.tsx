@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactComment from '../../Helper/Comment'
-import Waiting from '../waiting'
+import Waiting from '../../Helper/waiting'
 
 const Contents = () =>{
     return(

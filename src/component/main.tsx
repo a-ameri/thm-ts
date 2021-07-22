@@ -26,7 +26,8 @@ import Header from './main/header';
 import Flip from './main/flip';
 import Contents from './main/contents';
 import Auth from '../auth/auth'
-import Alert from '../component/alert'
+import Alert from '../Helper/alert'
+import DialogBox from '../Helper/dialogBox'
 //----------------------------------------------------------
 import IEmployee from '../interfaces/employee';
 import IAlert from '../interfaces/alert';
@@ -42,7 +43,6 @@ import Save from '../images/save.png';
 import SaveAdd from '../images/save add.png';
 import SaveClose from'../images/save close.png';
 import Avatar from '../images/avatar.png';
-import { isPropertySignature } from 'typescript';
 
 
 
@@ -151,40 +151,40 @@ const Main = (props : any) =>{
         function RenderTabs($tabName : any, $id_content : any){
             switch($tabName){
                 case "request_stuff":
-                    ReactDOM.render(<Request_stuff Save={Save} SaveAdd = {SaveAdd} SaveClose={SaveClose} />, document.getElementById($id_content));
+                    ReactDOM.render(<Request_stuff myClick={myClick} onWaiting={onWaiting} onError={onError} Save={Save} SaveAdd = {SaveAdd} SaveClose={SaveClose} />, document.getElementById($id_content));
                     break;
                 case "request_software":
-                    ReactDOM.render(<Request_software Save={Save} SaveAdd = {SaveAdd} SaveClose={SaveClose} />, document.getElementById($id_content));
+                    ReactDOM.render(<Request_software myClick={myClick} onWaiting={onWaiting} onError={onError} Save={Save} SaveAdd = {SaveAdd} SaveClose={SaveClose} />, document.getElementById($id_content));
                     break;
                 case "request_repair":
-                    ReactDOM.render(<Request_repair Save={Save} SaveAdd = {SaveAdd} SaveClose={SaveClose} />, document.getElementById($id_content));
+                    ReactDOM.render(<Request_repair myClick={myClick} onWaiting={onWaiting} onError={onError} Save={Save} SaveAdd = {SaveAdd} SaveClose={SaveClose} />, document.getElementById($id_content));
                     break;
                 case "task_list":
-                    ReactDOM.render(<Task_list />, document.getElementById($id_content));
+                    ReactDOM.render(<Task_list myClick={myClick} onWaiting={onWaiting} onError={onError} />, document.getElementById($id_content));
                     break;                    
                 case "request_list":
-                    ReactDOM.render(<Request_list />, document.getElementById($id_content));
+                    ReactDOM.render(<Request_list myClick={myClick} onWaiting={onWaiting} onError={onError} />, document.getElementById($id_content));
                     break;
                 case "employee":
-                    ReactDOM.render(<Employee onWaiting={onWaiting} onError={onError}/>, document.getElementById($id_content));
+                    ReactDOM.render(<Employee myClick={myClick} onWaiting={onWaiting} onError={onError}/>, document.getElementById($id_content));
                     break;                    
                 case "office":
-                    ReactDOM.render(<Office />, document.getElementById($id_content));
+                    ReactDOM.render(<Office myClick={myClick} onWaiting={onWaiting} onError={onError} />, document.getElementById($id_content));
                     break;                                        
                 case "zone":
-                    ReactDOM.render(<Zone />, document.getElementById($id_content));
+                    ReactDOM.render(<Zone myClick={myClick} onWaiting={onWaiting} onError={onError} />, document.getElementById($id_content));
                     break;                                        
                 case "hardware_management":
-                    ReactDOM.render(<Hardware_management Save={Save} SaveAdd = {SaveAdd} SaveClose={SaveClose} />, document.getElementById($id_content));
+                    ReactDOM.render(<Hardware_management myClick={myClick} onWaiting={onWaiting} onError={onError} Save={Save} SaveAdd = {SaveAdd} SaveClose={SaveClose} />, document.getElementById($id_content));
                     break;
                 case "storage":
-                    ReactDOM.render(<Storage />, document.getElementById($id_content));
+                    ReactDOM.render(<Storage myClick={myClick} onWaiting={onWaiting} onError={onError} />, document.getElementById($id_content));
                     break;
                 case "stuff_list":
-                    ReactDOM.render(<Stuff_list />, document.getElementById($id_content));
+                    ReactDOM.render(<Stuff_list myClick={myClick} onWaiting={onWaiting} onError={onError} />, document.getElementById($id_content));
                     break;
                 case "employee_alternative":
-                    ReactDOM.render(<Employee_alternative />, document.getElementById($id_content));
+                    ReactDOM.render(<Employee_alternative myClick={myClick} onWaiting={onWaiting} onError={onError} />, document.getElementById($id_content));
                     break;
             }
         }
@@ -296,6 +296,10 @@ const Main = (props : any) =>{
         props.onError(tag, alert)
     }
 
+    const myClick = (pTag : boolean, onClick : any, alert : IAlert, itemID : number) =>{
+        props.myClick(pTag, onClick, alert, itemID)
+    }
+
     return(
         <Auth>
             <div className="container-fluid">
@@ -325,7 +329,8 @@ const Main = (props : any) =>{
 
                 </div>	
 
-                <Alert onError={onError}/>	
+                <DialogBox />
+                <Alert onError={onError}/>
 
             </div>
         </Auth>
@@ -343,7 +348,9 @@ const mapDispatchToProps = (dispatch : any) => {
         onAvatarClick: () => dispatch({ type: actionType.SHOW_AVATAR_MENU }),
         onSetEmployee: (emp : IEmployee) => dispatch({type: actionType.Set_User_Information, employee: emp}),
         onWaiting: (tag : boolean) => dispatch({type: actionType.Waiting, isLoading: tag}),
-        onError: (tag : boolean, alert : IAlert) => dispatch({type: actionType.AlertModal, onError: tag, alertDetails : alert})
+        onError: (tag : boolean, alert : IAlert) => dispatch({type: actionType.AlertModal, onError: tag, alertDetails : alert}),
+        myClick: (pTag : boolean, onClick : any, alert : IAlert, id : number) => dispatch({ type: actionType.PromptModal,
+            promptTag : pTag, onAcceptClick : onClick, alertDetails : alert, itemID : id })
     }
 }
 

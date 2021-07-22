@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactComment from '../Helper/Comment';
 
-const Request_lsit = ()=>{
+const Request_lsit = (props : any)=>{
     return(
         <div className="thm-f thm-sans-light">
 

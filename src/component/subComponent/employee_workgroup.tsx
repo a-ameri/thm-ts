@@ -1,13 +1,30 @@
+import axios from 'axios'
 import React,{useEffect, useState} from 'react'
 import '../../css/employeeWorkgroup.css'
 import ReactComment from '../../Helper/Comment'
-
+import * as URL from '../../Helper/staticUrl'
+import IAlert from '../../interfaces/alert'
 
 const EmployeeWorkgroup = (props : any)=>{
     const [promptTag, setPromptTag] = useState(false)
+    const [eID, setEID] = useState(0)
+
     useEffect(()=>{
+        setEID(props.employeeId)
         setPromptTag(props.tag)
     },[props.tag])
+
+    useEffect(()=>{
+        promptTag ? (
+            axios.get(URL.GetEmployees+'/'+eID).then(response =>{
+                console.log(response.data)
+            }).catch(error=>{
+                console.log(error)
+            })
+        ) : (
+            setEID(0) 
+        )
+    },[promptTag])
 
     const myDiv = () =>{
         return(
@@ -43,7 +60,7 @@ const EmployeeWorkgroup = (props : any)=>{
 
                     <div className="thm-fields thm-sans-light thm-bg6">
                         <div className="row">
-                            <div className="col-md-12 d-flex justify-content-center"><span className="titr thm-title-font">گروه های کاری عادل عامری</span></div>
+                            <div className="col-md-12 d-flex justify-content-center"><span className="titr thm-title-font">گروه های کاری</span></div>
                         </div>
                         <div className="row">
                             <div className="col-md-1"></div>

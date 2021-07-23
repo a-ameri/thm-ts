@@ -13,6 +13,7 @@ const Employee = (props : any)=>{
     const [options,setOptions] = useState(0)
     const [table,fillTable] = useState(0)
     const [employeeID, setEmployeeID] = useState(0)
+    const [ew_eID, setEw_eID] = useState(0)
     const [editMode, setEditMode] = useState(false)
     const [defaultValue,setDefaulValue]=useState(2)
     const [EWTag,setEWTag]=useState(false)
@@ -32,8 +33,13 @@ const Employee = (props : any)=>{
     const myClick = (pTag : boolean, onClick : any, alert : IAlert, itemID : number) =>{        
         props.myClick(pTag, onClick, alert, itemID)
     }
+
+    const openEmployeeWorkgroup = (id : number) =>{
+        setEw_eID(id);
+        setEWTag(true)
+    }
     
-    const fillTableItems = () =>{        
+    const fillTableItems = () =>{
         axios.get(URL.GetEmployees).then(response =>{
             let err : string = response.data.toString()
             if(err.includes("Kernel Error"))
@@ -52,7 +58,7 @@ const Employee = (props : any)=>{
                         <td>
                             <button className="thm-f thm-m btn btn-warning btn-sm ml-1" onClick={() => onEditClick(emp.EID)}>ویرایش</button>
                             <button className="thm-f thm-m btn btn-danger btn-sm ml-1" onClick={() => onDeletePrompt(emp.EID)}>حذف</button>
-                            <button className="thm-f thm-m btn btn-primary btn-sm ml-1" onClick={()=> setEWTag(true)}>انتساب گروه کاری</button>
+                            <button className="thm-f thm-m btn btn-primary btn-sm ml-1" onClick={()=> openEmployeeWorkgroup(emp.EID)}>انتساب گروه کاری</button>
                             <a href="employee-zone-employee.html" className=" ml-1">
                                 <button className="thm-f thm-m btn btn-dark btn-sm">انتساب به حوزه</button>
                             </a>
@@ -355,7 +361,7 @@ const Employee = (props : any)=>{
 
             <ReactComment text="end content" />
 
-            <EmployeeWorkgroup tag = {EWTag} icons={props.icons}/>
+            <EmployeeWorkgroup tag = {EWTag} icons={props.icons} employeeId = {ew_eID}/>
 
 
         </div>

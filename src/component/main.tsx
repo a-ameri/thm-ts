@@ -47,6 +47,7 @@ import Avatar from '../images/avatar.png';
 
 
 const Main = (props : any) =>{
+    let icons : any
     let UserID : number = (localStorage.getItem(staticItems.UserID) as unknown) as number
     let emp : IEmployee
     emp = {
@@ -64,7 +65,13 @@ const Main = (props : any) =>{
     
     useEffect(()=>{
 
-        ////#region get user informations
+        icons = {
+            save : Save,
+            saveAdd : SaveAdd,
+            saveClose : SaveClose
+        }
+
+        //#region get user informations
         axios.get(StaticValues.Server+"/Employee/"+UserID)
         .then(response =>{
             emp = response.data
@@ -166,7 +173,7 @@ const Main = (props : any) =>{
                     ReactDOM.render(<Request_list myClick={myClick} onWaiting={onWaiting} onError={onError} />, document.getElementById($id_content));
                     break;
                 case "employee":
-                    ReactDOM.render(<Employee myClick={myClick} onWaiting={onWaiting} onError={onError}/>, document.getElementById($id_content));
+                    ReactDOM.render(<Employee icons={icons} myClick={myClick} onWaiting={onWaiting} onError={onError}/>, document.getElementById($id_content));
                     break;                    
                 case "office":
                     ReactDOM.render(<Office myClick={myClick} onWaiting={onWaiting} onError={onError} />, document.getElementById($id_content));

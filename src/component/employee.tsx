@@ -7,13 +7,15 @@ import IEmployee from '../interfaces/employee'
 import IAlert from '../interfaces/alert'
 import $ from 'jquery'
 import * as SE from '../static/staticErrors'
+import EmployeeWorkgroup from './subComponent/employee_workgroup';
 
 const Employee = (props : any)=>{
     const [options,setOptions] = useState(0)
     const [table,fillTable] = useState(0)
     const [employeeID, setEmployeeID] = useState(0)
     const [editMode, setEditMode] = useState(false)
-    const[defaultValue,setDefaulValue]=useState(2)
+    const [defaultValue,setDefaulValue]=useState(2)
+    const [EWTag,setEWTag]=useState(false)
     let permissions : IPermission[]
     let selectOptions : any
     let tableRows : any
@@ -48,11 +50,9 @@ const Employee = (props : any)=>{
                         <td>{emp.ENatinalcode}</td>
                         <td>{emp.PName}</td>
                         <td>
-                            <button className="thm-f thm-m btn btn-warning ml-1 btn-sm" onClick={() => onEditClick(emp.EID)}>ویرایش</button>
+                            <button className="thm-f thm-m btn btn-warning btn-sm ml-1" onClick={() => onEditClick(emp.EID)}>ویرایش</button>
                             <button className="thm-f thm-m btn btn-danger btn-sm ml-1" onClick={() => onDeletePrompt(emp.EID)}>حذف</button>
-                            <a href="employee-workgroup.html" className=" ml-1">
-                                <button className="thm-f thm-m btn btn-primary btn-sm">انتساب گروه کاری</button>
-                            </a>
+                            <button className="thm-f thm-m btn btn-primary btn-sm ml-1" onClick={()=> setEWTag(true)}>انتساب گروه کاری</button>
                             <a href="employee-zone-employee.html" className=" ml-1">
                                 <button className="thm-f thm-m btn btn-dark btn-sm">انتساب به حوزه</button>
                             </a>
@@ -74,27 +74,17 @@ const Employee = (props : any)=>{
         SE.emptyGlobalAlert()
     }
 
-    function searchFunction() {
-        var filter: string, table: any, tr: any, td: any, i: any, txtValue: any;
-        
-        filter = $("#employeeSearch").val()! as string
-        filter = filter.toUpperCase()
-        table = document.getElementById("employeeTable");
-        tr = table.getElementsByTagName("tr");
-        for (i = 0; i < tr.length; i++) {
-          td = tr[i].getElementsByTagName("td")[1];
-          if (td) {
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-              tr[i].style.display = "";
-            } else {
-              tr[i].style.display = "none";
-            }
-          }       
-        }
-    }
-
     useEffect(()=>{
+        //#region search table function 
+        $("#employeeSearch").on("keyup", function() {
+            var value = ($(this).val()!  as string).toLowerCase();
+            $("#employeeTable .data").filter(function() : any {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+        //#endregion
+
+
         //#region set  permission option
         axios.get(URL.GetPersmissions).then(response =>{  
             let err : string = response.data.toString()
@@ -337,7 +327,7 @@ const Employee = (props : any)=>{
                     
                     </div>
                         <div className="thm-f thm-m row d-flex justify-content-center">
-                            <input className="thm-f thm-m form-control" id="employeeSearch" type="text" placeholder="جستجو..." onKeyUp={searchFunction}/>
+                            <input className="thm-f thm-m form-control" id="employeeSearch" type="text" placeholder="جستجو..."/>
                         </div>
                         <div className="thm-f thm-m row">
                             <table id="employeeTable" className="thm-f thm-m table table-striped table-bordered bg-light">
@@ -365,6 +355,7 @@ const Employee = (props : any)=>{
 
             <ReactComment text="end content" />
 
+            <EmployeeWorkgroup tag = {EWTag} icons={props.icons}/>
 
 
         </div>

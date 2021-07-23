@@ -1,0 +1,39 @@
+#employeeWorkgroup{
+    background-color: rgba(181, 240, 227, 0.400);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+#employeeWorkgroup .thm-main-action{
+    margin-right: 0;
+    height: 35px;
+}
+#employeeWorkgroup .thm-main-action div{    
+    height: 100%;
+}
+#employeeWorkgroup .thm-fields{
+    margin: 0;
+}
+#ew_div{
+    height: 85% !important;
+}
+#employeeWorkgroup .badge{
+    cursor: pointer;
+}
+#employeeWorkgroup label{
+	width: 90% !important;
+}
+#employeeWorkgroup .all-work-groups{
+	border-style: groove;
+	border-width: 7px;
+	border-color: #b4d6ce;
+}
+#employeeWorkgroup .choosen-work-groups{
+	border-style: ridge;
+	border-width: 7px;
+	border-color: #b4d6ce;
+}
+#employeeWorkgroup .titr{
+	font-size: x-large;
+	font-weight: bolder;
+}

@@ -17,10 +17,8 @@ const DialogBox = (props : any)=>{
         props.dismissClick()
     }
 
-    
-    return(
-        <React.Fragment>
-            {props.promptTag ? <div id="dialogBox">
+    const myDiv = () =>{
+        return(
             <div className="modal-dialog thm-sans-bold">
                 <div className="modal-content">
                     <div className="modal-header">
@@ -37,6 +35,14 @@ const DialogBox = (props : any)=>{
                     </div>
                 </div>
             </div>
+        )
+    }
+
+    
+    return(
+        <React.Fragment>
+            {props.promptTag ? <div id="dialogBox">
+                {myDiv()}
             </div> : null}
         </React.Fragment>
     )

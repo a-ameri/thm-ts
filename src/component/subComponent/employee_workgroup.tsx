@@ -4,32 +4,53 @@ import '../../css/employeeWorkgroup.css'
 import ReactComment from '../../Helper/Comment'
 import * as URL from '../../Helper/staticUrl'
 import IAlert from '../../interfaces/alert'
+import IٍEmployee from '../../interfaces/employee'
 
 const EmployeeWorkgroup = (props : any)=>{
+    let employee : IٍEmployee = {
+        EFullName : "",
+        EID : 0,
+        ENatinalcode : "",
+        EPassword : "",
+        PName : "",
+        PeID : 0
+    }
     const [promptTag, setPromptTag] = useState(false)
-    const [eID, setEID] = useState(0)
+    
+    const [emp, setEmp] = useState(employee)
+    
+    const exit = () =>{
+        setPromptTag(false)
+    }
+    
 
     useEffect(()=>{
-        setEID(props.employeeId)
         setPromptTag(props.tag)
     },[props.tag])
 
     useEffect(()=>{
         promptTag ? (
-            axios.get(URL.GetEmployees+'/'+eID).then(response =>{
-                console.log(response.data)
+            axios.get(URL.GetEmployees+'/'+props.employeeId).then(response =>{
+                setEmp(response.data)
+                console.log(emp)
             }).catch(error=>{
                 console.log(error)
             })
         ) : (
-            setEID(0) 
+            setEmp({
+                EFullName : "",
+                EID : 0,
+                ENatinalcode : "",
+                EPassword : "",
+                PName : "",
+                PeID : 0
+            }) 
         )
     },[promptTag])
 
     const myDiv = () =>{
         return(
             <React.Fragment>
-                
                 <ReactComment text="begin header" />
                 <div className="row w-100 thm-bg7 thm-main-action">
 
@@ -43,7 +64,7 @@ const EmployeeWorkgroup = (props : any)=>{
 
                         <div className="badge  mr-2">
 
-                            <img src={props.icons.saveClose} alt="save close" height="100%"/>
+                            <img src={props.icons.saveClose} alt="save close" height="100%" onClick={exit}/>
 
                         </div>
 
@@ -60,7 +81,7 @@ const EmployeeWorkgroup = (props : any)=>{
 
                     <div className="thm-fields thm-sans-light thm-bg6">
                         <div className="row">
-                            <div className="col-md-12 d-flex justify-content-center"><span className="titr thm-title-font">گروه های کاری</span></div>
+                            <div className="col-md-12 d-flex justify-content-center"><span className="titr thm-title-font">گروه های کاری {emp.EFullName}</span></div>
                         </div>
                         <div className="row">
                             <div className="col-md-1"></div>
@@ -109,6 +130,7 @@ const EmployeeWorkgroup = (props : any)=>{
                 </div>
                 
                 <ReactComment text="end insert employee workgroup" />
+                
                 
             </React.Fragment>
         )

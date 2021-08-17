@@ -1,10 +1,11 @@
 import axios from 'axios'
-import React,{useEffect, useState} from 'react'
+import React,{useEffect, useState, useContext} from 'react'
 import '../../css/employeeWorkgroup.css'
 import ReactComment from '../../Helper/Comment'
 import * as URL from '../../Helper/staticUrl'
 import IAlert from '../../interfaces/alert'
 import IٍEmployee from '../../interfaces/employee'
+import {EWContext}  from '../../context/employee_context/employee_context'
 
 const EmployeeWorkgroup = (props : any)=>{
     let employee : IٍEmployee = {
@@ -15,18 +16,22 @@ const EmployeeWorkgroup = (props : any)=>{
         PName : "",
         PeID : 0
     }
+
+    const {dispatch} : any = useContext(EWContext)
+
     const [promptTag, setPromptTag] = useState(false)
     
     const [emp, setEmp] = useState(employee)
     
     const exit = () =>{
-        setPromptTag(false)
+        dispatch({type:'show',show:false})
     }
     
 
     useEffect(()=>{
-        setPromptTag(props.tag)
-    },[props.tag])
+        setPromptTag(myContext.ewTag)
+        console.log(1,myContext.ewTag)
+    },[myContext.ewTag])
 
     useEffect(()=>{
         promptTag ? (

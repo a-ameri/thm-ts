@@ -8,7 +8,6 @@ import IAlert from '../interfaces/alert'
 import $ from 'jquery'
 import * as SE from '../static/staticErrors'
 import EmployeeWorkgroup from './subComponent/employee_workgroup';
-import EWProvider from '../context/employee_context/employee_context'
 
 const Employee = (props : any)=>{
     const [options,setOptions] = useState(0)
@@ -298,6 +297,7 @@ const Employee = (props : any)=>{
     }
     
     return(
+        
         <div className="thm-f thm-sans-light">
 
             <ReactComment text="begin content" />
@@ -361,9 +361,8 @@ const Employee = (props : any)=>{
             </div>
 
             <ReactComment text="end content" />
-            <EWProvider>
-                <EmployeeWorkgroup icons={props.icons} employeeId = {ew_eID}/>
-            </EWProvider>
+            <EmployeeWorkgroup icons={props.icons} employeeId = {ew_eID} ewTag = {EWTag} setEwTag = {setEWTag}/>
+            
 
         </div>
 

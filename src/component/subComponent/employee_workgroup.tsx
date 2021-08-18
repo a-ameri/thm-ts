@@ -5,7 +5,6 @@ import ReactComment from '../../Helper/Comment'
 import * as URL from '../../Helper/staticUrl'
 import IAlert from '../../interfaces/alert'
 import IٍEmployee from '../../interfaces/employee'
-import {EWContext}  from '../../context/employee_context/employee_context'
 
 const EmployeeWorkgroup = (props : any)=>{
     let employee : IٍEmployee = {
@@ -16,22 +15,23 @@ const EmployeeWorkgroup = (props : any)=>{
         PName : "",
         PeID : 0
     }
-
-    const {dispatch} : any = useContext(EWContext)
-
-    const [promptTag, setPromptTag] = useState(false)
     
     const [emp, setEmp] = useState(employee)
+    const [promptTag, setPromptTag] = useState(false)
     
     const exit = () =>{
-        dispatch({type:'show',show:false})
+        setPromptTag(false)
+        props.setEwTag(false)
     }
-    
 
     useEffect(()=>{
-        setPromptTag(myContext.ewTag)
-        console.log(1,myContext.ewTag)
-    },[myContext.ewTag])
+        console.log(2,props.ewTag)
+    })   
+
+    useEffect(()=>{
+        setPromptTag(props.ewTag)
+        console.log(props.ewTag)
+    },[props.ewTag])
 
     useEffect(()=>{
         promptTag ? (

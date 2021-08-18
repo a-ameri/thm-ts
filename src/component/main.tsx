@@ -18,7 +18,7 @@ import Office from './office';
 import Zone from './zone';
 import Storage from './storage';
 import Stuff_list from './stuff_list';
-import Modal from '../Helper/Modal/modal'
+import Modal from '../Helper/Modal/Modal'
 import Hardware_management from './hardware-management';
 import Employee_alternative from './employee_alternative';
 import Sidebar from './main/sidebar';

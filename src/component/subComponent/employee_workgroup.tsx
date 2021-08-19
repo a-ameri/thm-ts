@@ -3,7 +3,6 @@ import React,{useEffect, useState, useContext} from 'react'
 import '../../css/employeeWorkgroup.css'
 import ReactComment from '../../Helper/Comment'
 import * as URL from '../../Helper/staticUrl'
-import IAlert from '../../interfaces/alert'
 import IٍEmployee from '../../interfaces/employee'
 
 const EmployeeWorkgroup = (props : any)=>{
@@ -15,6 +14,10 @@ const EmployeeWorkgroup = (props : any)=>{
         PName : "",
         PeID : 0
     }
+
+    const allWorkgroup = ()=>{
+
+    }
     
     const [emp, setEmp] = useState(employee)
     const [promptTag, setPromptTag] = useState(false)
@@ -22,11 +25,7 @@ const EmployeeWorkgroup = (props : any)=>{
     const exit = () =>{
         setPromptTag(false)
         props.setEwTag(false)
-    }
-
-    useEffect(()=>{
-        console.log(2,props.ewTag)
-    })   
+    }   
 
     useEffect(()=>{
         setPromptTag(props.ewTag)
@@ -37,7 +36,6 @@ const EmployeeWorkgroup = (props : any)=>{
         promptTag ? (
             axios.get(URL.GetEmployees+'/'+props.employeeId).then(response =>{
                 setEmp(response.data)
-                console.log(emp)
             }).catch(error=>{
                 console.log(error)
             })
@@ -63,13 +61,13 @@ const EmployeeWorkgroup = (props : any)=>{
 
                         <div className="badge save">
 
-                            <img src={props.icons.save} alt="save" height="100%"/>
+                            <span className="fa fa-save fa-size-xxl"></span>
 
                         </div>
 
                         <div className="badge  mr-2">
 
-                            <img src={props.icons.saveClose} alt="save close" height="100%" onClick={exit}/>
+                            <span className="fa fa-times fa-size-xxl" onClick={exit}></span>
 
                         </div>
 

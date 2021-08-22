@@ -25,7 +25,7 @@ const Modal = (props:any)=>{
                     <ModalButton onClick={props.onAcceptClick} type={props.type}/>
                     </div>
                 </div>
-                <ReactComment text="end Modal-COntent" />
+                <ReactComment text="end Modal-Content" />
                 
                 </div>
             </div>

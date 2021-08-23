@@ -22,7 +22,6 @@ const EmployeeWorkgroup = (props : any)=>{
     let employee_workgroups : IٍEmployeeWorkgroup[] = []
     
     const [emp, setEmp] = useState(employee)
-    const [emp_wg, setEmp_wg] = useState(null)
     const [promptTag, setPromptTag] = useState(false)
     
     const exit = () =>{
@@ -31,13 +30,15 @@ const EmployeeWorkgroup = (props : any)=>{
     }
 
     let wids : number[] = []
+    let wids_toRight : string[] = []
+    let wids_toLeft : string[] = []
 
     function setCheckBoxes() {
         axios.get(URL.GetWorkgroup).then(response =>{
             workgroups = response.data
             $("#all-work-groups").empty()
             $("#choosen-work-groups").empty()
-            console.log(2,workgroups.length)
+
             for(let i = 0; i < workgroups.length; i++){
                 if(wids.includes(workgroups[i].WID)){
                     $("#choosen-work-groups").append(
@@ -45,7 +46,6 @@ const EmployeeWorkgroup = (props : any)=>{
                             '<input id="wg_'+ workgroups[i].WID +'" type="checkbox" />'+
                             '<label htmlFor="wg_'+ workgroups[i].WID +'" className="thm-title-font font-weight-bolder">'+ workgroups[i].WName +'</label>'+
                         '</div>')
-                        console.log(i,"1")
                 }else{
                     $("#all-work-groups").append(
                         '<div className="d-block">'+
@@ -75,7 +75,6 @@ const EmployeeWorkgroup = (props : any)=>{
                         wids.push(employee_workgroups[i].WID)
                     }
 
-                    console.log(1,wids.length)
                     setCheckBoxes()
 
                 }).catch(error =>{
@@ -87,6 +86,7 @@ const EmployeeWorkgroup = (props : any)=>{
         
     },[props.ewTag])
 
+    //#region get employee information from server
     useEffect(()=>{
         promptTag ? (
             axios.get(URL.GetEmployees+'/'+props.employeeId).then(response =>{
@@ -105,7 +105,9 @@ const EmployeeWorkgroup = (props : any)=>{
             }) 
         )
     },[promptTag])
+    //#endregion
 
+    //#region set body html
     const myDiv = () =>{
         return(
             <React.Fragment>
@@ -155,12 +157,12 @@ const EmployeeWorkgroup = (props : any)=>{
                             </div>
                             <div className="col-md-2">
                                 <div className="w-100 d-flex justify-content-between">
-                                    <button className="btn thm-bg3 "><span>&gt;</span></button>
-                                    <button className="btn thm-bg3"><span>&lt;</span></button>
+                                    <button id="wg-one-left" className="btn thm-bg3"><span>&gt;</span></button>
+                                    <button id="wg-one-right" className="btn thm-bg3"><span>&lt;</span></button>
                                 </div>
                                 <div className="w-100 d-flex justify-content-between">							
-                                    <button className="btn thm-bg3"><span>&gt;&gt;</span></button>
-                                    <button className="btn thm-bg3"><span>&lt;&lt;</span></button>
+                                    <button id="wg-all-left" className="btn thm-bg3"><span>&gt;&gt;</span></button>
+                                    <button id="wg-all-right" className="btn thm-bg3"><span>&lt;&lt;</span></button>
                                 </div>
                             </div>
                             <div id="choosen-work-groups" className="col-md-4 choosen-work-groups">
@@ -179,6 +181,7 @@ const EmployeeWorkgroup = (props : any)=>{
             </React.Fragment>
         )
     }
+    //#endregion
     
     return(
         <React.Fragment>            

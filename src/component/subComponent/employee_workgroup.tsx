@@ -4,6 +4,8 @@ import '../../css/employeeWorkgroup.css'
 import ReactComment from '../../Helper/Comment'
 import * as URL from '../../Helper/staticUrl'
 import IٍEmployee from '../../interfaces/employee'
+import IٍEmployeeWorkgroup from '../../interfaces/employee_workgroup'
+import IٍWorkgroup from '../../interfaces/workgroup'
 
 const EmployeeWorkgroup = (props : any)=>{
     let employee : IٍEmployee = {
@@ -15,21 +17,74 @@ const EmployeeWorkgroup = (props : any)=>{
         PeID : 0
     }
 
-    const allWorkgroup = ()=>{
+    let workgroups : IٍWorkgroup[]
 
-    }
+    let employee_workgroups : IٍEmployeeWorkgroup[] = []
     
     const [emp, setEmp] = useState(employee)
+    const [emp_wg, setEmp_wg] = useState(null)
     const [promptTag, setPromptTag] = useState(false)
     
     const exit = () =>{
         setPromptTag(false)
         props.setEwTag(false)
-    }   
+    }
+
+    let wids : number[] = []
+
+    function setCheckBoxes() {
+        axios.get(URL.GetWorkgroup).then(response =>{
+            workgroups = response.data
+            $("#all-work-groups").empty()
+            $("#choosen-work-groups").empty()
+            console.log(2,workgroups.length)
+            for(let i = 0; i < workgroups.length; i++){
+                if(wids.includes(workgroups[i].WID)){
+                    $("#choosen-work-groups").append(
+                        '<div className="d-block">'+
+                            '<input id="wg_'+ workgroups[i].WID +'" type="checkbox" />'+
+                            '<label htmlFor="wg_'+ workgroups[i].WID +'" className="thm-title-font font-weight-bolder">'+ workgroups[i].WName +'</label>'+
+                        '</div>')
+                        console.log(i,"1")
+                }else{
+                    $("#all-work-groups").append(
+                        '<div className="d-block">'+
+                            '<input id="wg_'+workgroups[i].WID+'" type="checkbox" />'+
+                            '<label htmlFor="wg_'+workgroups[i].WID+'" className="thm-title-font font-weight-bolder">'+workgroups[i].WName+'</label>'+
+                        '</div>'
+                    )
+                }
+            }
+        }).catch(error => {
+            console.log(error)
+        })
+        
+    }
 
     useEffect(()=>{
         setPromptTag(props.ewTag)
-        console.log(props.ewTag)
+
+        if(props.ewTag){
+            //#region add all workgroup items
+            $(function(){
+                
+                axios.get(URL.GetEmployeesWorkgroupByEID+props.employeeId).then(response =>{
+                    employee_workgroups = response.data
+                        wids = []
+                    for(let i = 0; employee_workgroups.length > i; i++){
+                        wids.push(employee_workgroups[i].WID)
+                    }
+
+                    console.log(1,wids.length)
+                    setCheckBoxes()
+
+                }).catch(error =>{
+                    console.log(error)
+                })
+            })
+            //#endregion
+        }   
+        
     },[props.ewTag])
 
     useEffect(()=>{
@@ -95,15 +150,8 @@ const EmployeeWorkgroup = (props : any)=>{
                         </div>
                         <div className="row">
                             <div className="col-md-1"></div>
-                            <div className="all-work-groups col-md-4">
-                                <div className="d-block">
-                                    <input id="id1_1" type="checkbox" />
-                                    <label htmlFor="id1_1" className="thm-title-font font-weight-bolder">نرم افزار</label>
-                                </div>
-                                <div className="d-block">
-                                    <input id="id1_2" type="checkbox" />
-                                    <label htmlFor="id1_2" className="thm-title-font font-weight-bolder">شبکه</label>
-                                </div>
+                            <div id="all-work-groups" className="all-work-groups col-md-4">
+                                
                             </div>
                             <div className="col-md-2">
                                 <div className="w-100 d-flex justify-content-between">
@@ -115,15 +163,8 @@ const EmployeeWorkgroup = (props : any)=>{
                                     <button className="btn thm-bg3"><span>&lt;&lt;</span></button>
                                 </div>
                             </div>
-                            <div className="col-md-4 choosen-work-groups">
-                                <div className="d-block">
-                                    <input id="id2_1" type="checkbox" />
-                                    <label htmlFor="id2_1" className="thm-title-font font-weight-bolder">انبار دار</label>
-                                </div>
-                                <div className="d-block">
-                                    <input id="id2_2" type="checkbox" />
-                                    <label htmlFor="id2_2" className="thm-title-font font-weight-bolder">سخت افزار</label>
-                                </div>
+                            <div id="choosen-work-groups" className="col-md-4 choosen-work-groups">
+                               
                             </div>
                             <div className="col-md-1"></div>
                         </div>

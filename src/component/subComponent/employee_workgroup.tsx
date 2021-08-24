@@ -4,6 +4,8 @@ import '../../css/employeeWorkgroup.css'
 import ReactComment from '../../Helper/Comment'
 import * as URL from '../../Helper/staticUrl'
 import IٍEmployee from '../../interfaces/employee'
+import IٍEmployeeWorkgroup from '../../interfaces/employee_workgroup'
+import IٍWorkgroup from '../../interfaces/workgroup'
 
 const EmployeeWorkgroup = (props : any)=>{
     let employee : IٍEmployee = {
@@ -15,9 +17,9 @@ const EmployeeWorkgroup = (props : any)=>{
         PeID : 0
     }
 
-    const allWorkgroup = ()=>{
+    let workgroups : IٍWorkgroup[]
 
-    }
+    let employee_workgroups : IٍEmployeeWorkgroup[] = []
     
     const [emp, setEmp] = useState(employee)
     const [promptTag, setPromptTag] = useState(false)
@@ -25,13 +27,66 @@ const EmployeeWorkgroup = (props : any)=>{
     const exit = () =>{
         setPromptTag(false)
         props.setEwTag(false)
-    }   
+    }
+
+    let wids : number[] = []
+    let wids_toRight : string[] = []
+    let wids_toLeft : string[] = []
+
+    function setCheckBoxes() {
+        axios.get(URL.GetWorkgroup).then(response =>{
+            workgroups = response.data
+            $("#all-work-groups").empty()
+            $("#choosen-work-groups").empty()
+
+            for(let i = 0; i < workgroups.length; i++){
+                if(wids.includes(workgroups[i].WID)){
+                    $("#choosen-work-groups").append(
+                        '<div className="d-block">'+
+                            '<input id="wg_'+ workgroups[i].WID +'" type="checkbox" />'+
+                            '<label htmlFor="wg_'+ workgroups[i].WID +'" className="thm-title-font font-weight-bolder">'+ workgroups[i].WName +'</label>'+
+                        '</div>')
+                }else{
+                    $("#all-work-groups").append(
+                        '<div className="d-block">'+
+                            '<input id="wg_'+workgroups[i].WID+'" type="checkbox" />'+
+                            '<label htmlFor="wg_'+workgroups[i].WID+'" className="thm-title-font font-weight-bolder">'+workgroups[i].WName+'</label>'+
+                        '</div>'
+                    )
+                }
+            }
+        }).catch(error => {
+            console.log(error)
+        })
+        
+    }
 
     useEffect(()=>{
         setPromptTag(props.ewTag)
-        console.log(props.ewTag)
+
+        if(props.ewTag){
+            //#region add all workgroup items
+            $(function(){
+                
+                axios.get(URL.GetEmployeesWorkgroupByEID+props.employeeId).then(response =>{
+                    employee_workgroups = response.data
+                        wids = []
+                    for(let i = 0; employee_workgroups.length > i; i++){
+                        wids.push(employee_workgroups[i].WID)
+                    }
+
+                    setCheckBoxes()
+
+                }).catch(error =>{
+                    console.log(error)
+                })
+            })
+            //#endregion
+        }   
+        
     },[props.ewTag])
 
+    //#region get employee information from server
     useEffect(()=>{
         promptTag ? (
             axios.get(URL.GetEmployees+'/'+props.employeeId).then(response =>{
@@ -50,7 +105,9 @@ const EmployeeWorkgroup = (props : any)=>{
             }) 
         )
     },[promptTag])
+    //#endregion
 
+    //#region set body html
     const myDiv = () =>{
         return(
             <React.Fragment>
@@ -95,35 +152,21 @@ const EmployeeWorkgroup = (props : any)=>{
                         </div>
                         <div className="row">
                             <div className="col-md-1"></div>
-                            <div className="all-work-groups col-md-4">
-                                <div className="d-block">
-                                    <input id="id1_1" type="checkbox" />
-                                    <label htmlFor="id1_1" className="thm-title-font font-weight-bolder">نرم افزار</label>
-                                </div>
-                                <div className="d-block">
-                                    <input id="id1_2" type="checkbox" />
-                                    <label htmlFor="id1_2" className="thm-title-font font-weight-bolder">شبکه</label>
-                                </div>
+                            <div id="all-work-groups" className="all-work-groups col-md-4">
+                                
                             </div>
                             <div className="col-md-2">
                                 <div className="w-100 d-flex justify-content-between">
-                                    <button className="btn thm-bg3 "><span>&gt;</span></button>
-                                    <button className="btn thm-bg3"><span>&lt;</span></button>
+                                    <button id="wg-one-left" className="btn thm-bg3"><span>&gt;</span></button>
+                                    <button id="wg-one-right" className="btn thm-bg3"><span>&lt;</span></button>
                                 </div>
                                 <div className="w-100 d-flex justify-content-between">							
-                                    <button className="btn thm-bg3"><span>&gt;&gt;</span></button>
-                                    <button className="btn thm-bg3"><span>&lt;&lt;</span></button>
+                                    <button id="wg-all-left" className="btn thm-bg3"><span>&gt;&gt;</span></button>
+                                    <button id="wg-all-right" className="btn thm-bg3"><span>&lt;&lt;</span></button>
                                 </div>
                             </div>
-                            <div className="col-md-4 choosen-work-groups">
-                                <div className="d-block">
-                                    <input id="id2_1" type="checkbox" />
-                                    <label htmlFor="id2_1" className="thm-title-font font-weight-bolder">انبار دار</label>
-                                </div>
-                                <div className="d-block">
-                                    <input id="id2_2" type="checkbox" />
-                                    <label htmlFor="id2_2" className="thm-title-font font-weight-bolder">سخت افزار</label>
-                                </div>
+                            <div id="choosen-work-groups" className="col-md-4 choosen-work-groups">
+                               
                             </div>
                             <div className="col-md-1"></div>
                         </div>
@@ -138,6 +181,7 @@ const EmployeeWorkgroup = (props : any)=>{
             </React.Fragment>
         )
     }
+    //#endregion
     
     return(
         <React.Fragment>            

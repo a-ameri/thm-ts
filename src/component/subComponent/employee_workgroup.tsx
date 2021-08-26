@@ -31,7 +31,11 @@ const EmployeeWorkgroup = (props : any)=>{
 
     let wids : number[] = []
     let wids_toRight : string[] = []
-    let wids_toLeft : string[] = []
+    let wids_toLeft : string[] = []   
+
+    function test(){
+        console.log(2)
+    }
 
     function setCheckBoxes() {
         axios.get(URL.GetWorkgroup).then(response =>{
@@ -42,15 +46,15 @@ const EmployeeWorkgroup = (props : any)=>{
             for(let i = 0; i < workgroups.length; i++){
                 if(wids.includes(workgroups[i].WID)){
                     $("#choosen-work-groups").append(
-                        '<div className="d-block">'+
-                            '<input id="wg_'+ workgroups[i].WID +'" type="checkbox" />'+
-                            '<label htmlFor="wg_'+ workgroups[i].WID +'" className="thm-title-font font-weight-bolder">'+ workgroups[i].WName +'</label>'+
+                        '<div class="d-block">'+
+                            '<input id="wg_'+workgroups[i].WID+'" type="checkbox" />'+
+                            '<label For="wg_'+workgroups[i].WID+'" class="thm-title-font font-weight-bolder" style="user-select:none" style="color:red">'+workgroups[i].WName+'</label>'+
                         '</div>')
                 }else{
                     $("#all-work-groups").append(
-                        '<div className="d-block">'+
-                            '<input id="wg_'+workgroups[i].WID+'" type="checkbox" />'+
-                            '<label htmlFor="wg_'+workgroups[i].WID+'" className="thm-title-font font-weight-bolder">'+workgroups[i].WName+'</label>'+
+                        '<div class="d-block">'+
+                        '<input id="wg_'+workgroups[i].WID+'" type="checkbox" />'+
+                            '<label For="wg_'+workgroups[i].WID+'" class="thm-title-font font-weight-bolder" style="user-select:none">'+workgroups[i].WName+'</label>'+
                         '</div>'
                     )
                 }
@@ -60,6 +64,10 @@ const EmployeeWorkgroup = (props : any)=>{
         })
         
     }
+
+    useEffect(()=>{
+        
+    },[])
 
     useEffect(()=>{
         setPromptTag(props.ewTag)

@@ -1,4 +1,4 @@
-import React,{useEffect} from "react"
+import React,{EventHandler, useEffect} from "react"
 import ReactComment from '../Helper/Comment'
 import Logo from '../images/tax-logo.png'
 import Logotext from '../images/tax-text.png'
@@ -49,6 +49,12 @@ const Login = (props : any) =>{
             console.log(error)
             $("#errorMessage").text("خطای نا مشخص.")
         })
+    }
+
+    function passwordFunc(e : any){
+        if(e.key == "Enter"){
+            buttonHandler()
+        }
     }
 
     return(
@@ -106,7 +112,7 @@ const Login = (props : any) =>{
                                                 <span className="input-group-text thm-0radius thm-bg1 border-0 fa fa-lock text-white"></span>
                                             </div>
                                             <input className="form-control form-control-lg thm-0radius thm-input-font" 
-                                            type="password" id="thm-pass" placeholder="کلمه عبور" />		                                        </div>
+                                            type="password" id="thm-pass" placeholder="کلمه عبور" onKeyUp={passwordFunc}/>		                                        </div>
                                         <br/>
                                         <div className="col-md-auto">
                                             <button type="submit" className="form-control form-control-lg 

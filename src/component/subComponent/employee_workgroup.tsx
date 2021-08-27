@@ -17,45 +17,42 @@ const EmployeeWorkgroup = (props : any)=>{
         PeID : 0
     }
 
-    let workgroups : IٍWorkgroup[]
-
     let employee_workgroups : IٍEmployeeWorkgroup[] = []
     
     const [emp, setEmp] = useState(employee)
     const [promptTag, setPromptTag] = useState(false)
+    const [wids_included, set_wids_included] = useState<number[]>([])
+    const [wids_ready, set_wids_ready] = useState<number[]>([])
+    const [workgroups, setWorkgroups] = useState<IٍWorkgroup[]>([])
     
     const exit = () =>{
         setPromptTag(false)
         props.setEwTag(false)
     }
 
-    let wids : number[] = []
-    let wids_toRight : string[] = []
-    let wids_toLeft : string[] = []   
-
-    function test(){
-        console.log(2)
-    }
-
-    function setCheckBoxes() {
+    function initCheckBoxes() {
         axios.get(URL.GetWorkgroup).then(response =>{
-            workgroups = response.data
+            setWorkgroups(response.data)
+            let wg = response.data
             $("#all-work-groups").empty()
             $("#choosen-work-groups").empty()
-
-            for(let i = 0; i < workgroups.length; i++){
-                if(wids.includes(workgroups[i].WID)){
+            for(let i = 0; i < wg.length; i++){
+                if(wids_included.includes(wg[i].WID)){
                     $("#choosen-work-groups").append(
-                        '<div class="d-block">'+
-                            '<input id="wg_'+workgroups[i].WID+'" type="checkbox" />'+
-                            '<label For="wg_'+workgroups[i].WID+'" class="thm-title-font font-weight-bolder" style="user-select:none" style="color:red">'+workgroups[i].WName+'</label>'+
-                        '</div>')
+                        '<div className="d-block">'
+                            +'<input id="wg_'+wg[i].WID+'" value="'+wg[i].WID+'" type="checkbox" />'
+                            +'<label For="wg_'+wg[i].WID+'" class="thm-title-font font-weight-bolder" style="user-select:none">'+wg[i].WName+'</label>'
+                        +'</div>'  
+                    )
                 }else{
+                    let ready = wids_ready
+                    ready.push(wg[i].WID)
+                    set_wids_ready(ready)
                     $("#all-work-groups").append(
-                        '<div class="d-block">'+
-                        '<input id="wg_'+workgroups[i].WID+'" type="checkbox" />'+
-                            '<label For="wg_'+workgroups[i].WID+'" class="thm-title-font font-weight-bolder" style="user-select:none">'+workgroups[i].WName+'</label>'+
-                        '</div>'
+                        '<div className="d-block">'
+                            +'<input id="wg_'+wg[i].WID+'" value="'+wg[i].WID+'" type="checkbox" />'
+                            +'<label For="wg_'+wg[i].WID+'" class="thm-title-font font-weight-bolder" style="user-select:none">'+wg[i].WName+'</label>'
+                        +'</div>'
                     )
                 }
             }
@@ -63,34 +60,31 @@ const EmployeeWorkgroup = (props : any)=>{
             console.log(error)
         })
         
-    }
-
-    useEffect(()=>{
-        
-    },[])
+    }    
 
     useEffect(()=>{
         setPromptTag(props.ewTag)
-
+        set_wids_included([])
+        set_wids_ready([])
         if(props.ewTag){
             //#region add all workgroup items
             $(function(){
                 
                 axios.get(URL.GetEmployeesWorkgroupByEID+props.employeeId).then(response =>{
                     employee_workgroups = response.data
-                        wids = []
                     for(let i = 0; employee_workgroups.length > i; i++){
-                        wids.push(employee_workgroups[i].WID)
+                        let included = wids_included
+                        included.push(employee_workgroups[i].WID)
+                        set_wids_included(included)
                     }
 
-                    setCheckBoxes()
-
+                    initCheckBoxes()
                 }).catch(error =>{
                     console.log(error)
                 })
             })
             //#endregion
-        }   
+        }
         
     },[props.ewTag])
 
@@ -165,12 +159,12 @@ const EmployeeWorkgroup = (props : any)=>{
                             </div>
                             <div className="col-md-2">
                                 <div className="w-100 d-flex justify-content-between">
-                                    <button id="wg-one-left" className="btn thm-bg3"><span>&gt;</span></button>
-                                    <button id="wg-one-right" className="btn thm-bg3"><span>&lt;</span></button>
+                                    <button className="btn thm-bg3" onClick={pushInclude}><span>&gt;</span></button>
+                                    <button className="btn thm-bg3" onClick={pushReady}><span>&lt;</span></button>
                                 </div>
                                 <div className="w-100 d-flex justify-content-between">							
-                                    <button id="wg-all-left" className="btn thm-bg3"><span>&gt;&gt;</span></button>
-                                    <button id="wg-all-right" className="btn thm-bg3"><span>&lt;&lt;</span></button>
+                                    <button className="btn thm-bg3" onClick={allPushInclude}><span>&gt;&gt;</span></button>
+                                    <button className="btn thm-bg3" onClick={allPushReady}><span>&lt;&lt;</span></button>
                                 </div>
                             </div>
                             <div id="choosen-work-groups" className="col-md-4 choosen-work-groups">
@@ -190,7 +184,112 @@ const EmployeeWorkgroup = (props : any)=>{
         )
     }
     //#endregion
+
+    //#region all button functions
+    const pushInclude = () =>{
+        //find all checked input
+        let obj : any = $("#all-work-groups input:checked").each((e)=>{
+            
+        })
+
+        //sperate checked from unchecked
+        for(let i=0; i < obj.length ; i++){
+            let included = wids_included
+            included.push(parseInt(obj[i].value,10))
+            set_wids_included(included)
+            
+            let inx = -1
+            if(wids_ready.indexOf(parseInt(obj[i].value,10)) >= 0){
+                console.log('index '+inx+" : ",wids_ready.indexOf(parseInt(obj[i].value,10)))
+                inx = wids_ready.indexOf(parseInt(obj[i].value,10))
+                wids_ready.splice(inx,1)
+            }            
+        }
+
+        updateCheckBoxes()
+
+
+    }
+
+    const pushReady = () =>{
+        //find all checked input
+        let obj : any = $("#choosen-work-groups input:checked").each((e)=>{
+            
+        })
+
+        //sperate checked from unchecked
+        for(let i=0; i < obj.length ; i++){
+            let ready = wids_ready
+            ready.push(parseInt(obj[i].value,10))
+            set_wids_ready(ready)
+            
+            let inx = -1
+            if(wids_included.indexOf(parseInt(obj[i].value,10)) >= 0){
+                console.log('index '+inx+" : ",wids_included.indexOf(parseInt(obj[i].value,10)))
+                inx = wids_included.indexOf(parseInt(obj[i].value,10))
+                wids_included.splice(inx,1)
+            }            
+        }
+
+        updateCheckBoxes()
+
+    }
+
+    const allPushInclude = () =>{
+
+        let included = wids_included
+        let ready = wids_ready
+        for(let i = ready.length - 1; i >= 0 ; i--){
+            included.push(ready[i]) 
+            ready.splice(i,1)
+        }
+
+        set_wids_included(included)
+        set_wids_ready(ready)
+
+        updateCheckBoxes()
+    }
+
+    const allPushReady = () =>{
+
+        let included = wids_included
+        let ready = wids_ready
+        for(let i = included.length - 1; i >= 0 ; i--){
+            ready.push(included[i]) 
+            included.splice(i,1)        
+        }
+
+        set_wids_included(included)
+        set_wids_ready(ready)
+
+        updateCheckBoxes()
+    }
+    //#endregion
     
+    //#region updateCheckBoxes
+    const updateCheckBoxes = () =>{
+        $("#all-work-groups").empty()
+        $("#choosen-work-groups").empty()
+        
+        for(let i = 0; i < workgroups.length; i++){
+            if(wids_included.includes(workgroups[i].WID)){
+                $("#choosen-work-groups").append(
+                    '<div className="d-block">'
+                        +'<input id="wg_'+workgroups[i].WID+'" value="'+workgroups[i].WID+'" type="checkbox" />'
+                        +'<label For="wg_'+workgroups[i].WID+'" class="thm-title-font font-weight-bolder" style="user-select:none">'+workgroups[i].WName+'</label>'
+                    +'</div>'  
+                )
+            }else{
+                $("#all-work-groups").append(
+                    '<div className="d-block">'
+                        +'<input id="wg_'+workgroups[i].WID+'" value="'+workgroups[i].WID+'" type="checkbox" />'
+                        +'<label For="wg_'+workgroups[i].WID+'" class="thm-title-font font-weight-bolder" style="user-select:none">'+workgroups[i].WName+'</label>'
+                    +'</div>'
+                )
+            }
+        }
+    }
+    //#endregion
     return(
         <React.Fragment>            
             {promptTag ? <div id="employeeWorkgroup">

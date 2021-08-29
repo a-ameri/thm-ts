@@ -3,12 +3,14 @@ import React,{useEffect, useState, useContext} from 'react'
 import '../../css/employeeWorkgroup.css'
 import ReactComment from '../../Helper/Comment'
 import * as URL from '../../Helper/staticUrl'
-import IٍEmployee from '../../interfaces/employee'
-import IٍEmployeeWorkgroup from '../../interfaces/employee_workgroup'
-import IٍWorkgroup from '../../interfaces/workgroup'
+import IEmployee from '../../interfaces/employee'
+import IEmployeeWorkgroup from '../../interfaces/employee_workgroup'
+import IWorkgroup from '../../interfaces/workgroup'
+import * as SE from '../../static/staticErrors'
+import IAlert from '../../interfaces/alert'
 
 const EmployeeWorkgroup = (props : any)=>{
-    let employee : IٍEmployee = {
+    let employee : IEmployee = {
         EFullName : "",
         EID : 0,
         ENatinalcode : "",
@@ -17,15 +19,26 @@ const EmployeeWorkgroup = (props : any)=>{
         PeID : 0
     }
 
-    let employee_workgroups : IٍEmployeeWorkgroup[] = []
+    const onWaiting = (tag : boolean) =>{
+        props.onWaiting(tag)
+    }
+    
+    const onError = (tag : boolean, alert : IAlert) =>{
+        props.onError(tag, alert)
+    }
+
+    let employee_workgroups : IEmployeeWorkgroup[] = []
     
     const [emp, setEmp] = useState(employee)
     const [promptTag, setPromptTag] = useState(false)
     const [wids_included, set_wids_included] = useState<number[]>([])
     const [wids_ready, set_wids_ready] = useState<number[]>([])
-    const [workgroups, setWorkgroups] = useState<IٍWorkgroup[]>([])
+    const [workgroups, setWorkgroups] = useState<IWorkgroup[]>([])
     
     const exit = () =>{
+        set_wids_included([])
+        set_wids_ready([])
+        setWorkgroups([])
         setPromptTag(false)
         props.setEwTag(false)
     }
@@ -120,7 +133,7 @@ const EmployeeWorkgroup = (props : any)=>{
 
                         <div className="badge save">
 
-                            <span className="fa fa-save fa-size-xxl"></span>
+                            <span className="fa fa-save fa-size-xxl" onClick={save}></span>
 
                         </div>
 
@@ -263,6 +276,65 @@ const EmployeeWorkgroup = (props : any)=>{
         set_wids_ready(ready)
 
         updateCheckBoxes()
+    }
+
+    const save = () =>{
+        onWaiting(true)
+        axios.delete(URL.DeleteEmployeesWorkgroup+props.employeeId).then(response => {
+            let err : string = response.data.toString()
+            if(err.includes("Kernel Error")){
+                SE.globalAlert.AlertCode = 1141
+                SE.globalAlert.Body = err
+                SE.globalAlert.Header = SE.Delete
+            }else{
+                console.log(response)
+            }
+        }).catch(error => {
+            SE.globalAlert.AlertCode = 1140
+            SE.globalAlert.Body = error.toString()
+            SE.globalAlert.Header = SE.Unknown
+            onError(true, SE.globalAlert)
+        }).finally(()=>
+            onWaiting(false)
+        )
+        SE.emptyGlobalAlert() 
+
+        
+
+        let employeeWorkgroup : IEmployeeWorkgroup
+        let employeeWorkgroups : IEmployeeWorkgroup[] = []
+
+        for(let i=0; i < wids_included.length; i++){
+            let myWID = wids_included[i]
+            let W : IWorkgroup[] = workgroups.filter(e => e.WID == myWID)
+            employeeWorkgroup = {
+                EFullName : emp.EFullName,
+                EID : emp.EID,
+                EWID : 0,
+                WID : myWID,
+                WName : W[0].WName
+            }
+            employeeWorkgroups.push(employeeWorkgroup)
+        }
+        onWaiting(true)
+        axios.post(URL.GetEmployeesWorkgroup,employeeWorkgroups).then(response =>{
+            let err : string = response.data.toString()
+            if(err.includes("Kernel Error")){
+                SE.globalAlert.AlertCode = 1111
+                SE.globalAlert.Body = err
+                SE.globalAlert.Header = SE.Create
+            }else{
+                console.log(response.data)
+            }
+        }).catch(error =>{
+            SE.globalAlert.AlertCode = 1110
+            SE.globalAlert.Body = error.toString()
+            SE.globalAlert.Header = SE.Unknown
+            onError(true, SE.globalAlert)
+        }).finally(()=>{
+            onWaiting(false)
+            exit()
+        })
     }
     //#endregion
     

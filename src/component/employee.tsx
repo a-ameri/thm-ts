@@ -73,7 +73,7 @@ const Employee = (props : any)=>{
         }).catch(error =>{
             SE.globalAlert.AlertCode = 1020
             SE.globalAlert.Body = error.toString()
-            SE.globalAlert.Header = SE.Unkonow
+            SE.globalAlert.Header = SE.Unknown
             onError(true, SE.globalAlert)
         })
         
@@ -113,7 +113,7 @@ const Employee = (props : any)=>{
         }).catch(error =>{
             SE.globalAlert.AlertCode = 1022
             SE.globalAlert.Body = error.toString()
-            SE.globalAlert.Header = SE.Unkonow
+            SE.globalAlert.Header = SE.Unknown
             onError(true, SE.globalAlert)
         })
         //#endregion        
@@ -129,8 +129,7 @@ const Employee = (props : any)=>{
         if(editMode){
             onEditPrompt()
             setEditMode(false)
-        }
-        else{
+        }else{
             let fullname  : string = ($("#fullNameTxt").val() as unknown) as string
             let password = ($("#passwordTxt").val() as unknown) as string
             let nationalcode = ($("#nationalCodeTxt").val() as unknown) as string
@@ -162,7 +161,7 @@ const Employee = (props : any)=>{
                 }).catch(error =>{
                     SE.globalAlert.AlertCode = 1010
                     SE.globalAlert.Body = error.toString()
-                    SE.globalAlert.Header = SE.Unkonow
+                    SE.globalAlert.Header = SE.Unknown
                     onError(true, SE.globalAlert)
                 }).finally(()=>
                     onwaiting(false)
@@ -225,7 +224,7 @@ const Employee = (props : any)=>{
             }).catch(error =>{
                 SE.globalAlert.AlertCode = 1030
                 SE.globalAlert.Body = error.toString()
-                SE.globalAlert.Header = SE.Unkonow
+                SE.globalAlert.Header = SE.Unknown
                 onError(true, SE.globalAlert)
             }).finally(()=>
                 onwaiting(false)
@@ -288,7 +287,7 @@ const Employee = (props : any)=>{
         }).catch(error => {
             SE.globalAlert.AlertCode = 1040
             SE.globalAlert.Body = error.toString()
-            SE.globalAlert.Header = SE.Unkonow
+            SE.globalAlert.Header = SE.Unknown
             onError(true, SE.globalAlert)
         }).finally(()=>
             onwaiting(false)
@@ -361,7 +360,8 @@ const Employee = (props : any)=>{
             </div>
 
             <ReactComment text="end content" />
-            <EmployeeWorkgroup icons={props.icons} employeeId = {ew_eID} ewTag = {EWTag} setEwTag = {setEWTag}/>
+            <EmployeeWorkgroup icons={props.icons} employeeId = {ew_eID} ewTag = {EWTag} 
+                setEwTag = {setEWTag} onWaiting={onwaiting} onError = {onError}/>
             
 
         </div>

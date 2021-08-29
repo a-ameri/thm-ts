@@ -8,15 +8,18 @@ import IAlert from '../interfaces/alert'
 import $ from 'jquery'
 import * as SE from '../static/staticErrors'
 import EmployeeWorkgroup from './subComponent/employee_workgroup';
+import EmployeeZoneEmployee from './subComponent/employee_zone_employee';
 
 const Employee = (props : any)=>{
     const [options,setOptions] = useState(0)
     const [table,fillTable] = useState(0)
     const [employeeID, setEmployeeID] = useState(0)
-    const [ew_eID, setEw_eID] = useState(0)
+    const [ew_eID, setEw_eID] = useState(0)    
+    const [ez_eID, setEz_eID] = useState(0)
     const [editMode, setEditMode] = useState(false)
     const [defaultValue,setDefaulValue]=useState(2)
     const [EWTag,setEWTag]=useState(false)
+    const [EZTag,setEZTag]=useState(false)
     let permissions : IPermission[]
     let selectOptions : any
     let tableRows : any
@@ -37,6 +40,11 @@ const Employee = (props : any)=>{
     const openEmployeeWorkgroup = (id : number) =>{
         setEw_eID(id);
         setEWTag(true)
+    }
+
+    const openEmployeeZone = (id : number) =>{
+        setEz_eID(id);
+        setEZTag(true)
     }
     
     const fillTableItems = () =>{
@@ -59,9 +67,7 @@ const Employee = (props : any)=>{
                             <button className="thm-f thm-m btn btn-warning btn-sm ml-1" onClick={() => onEditClick(emp.EID)}>ویرایش</button>
                             <button className="thm-f thm-m btn btn-danger btn-sm ml-1" onClick={() => onDeletePrompt(emp.EID)}>حذف</button>
                             <button className="thm-f thm-m btn btn-primary btn-sm ml-1" onClick={()=> openEmployeeWorkgroup(emp.EID)}>انتساب گروه کاری</button>
-                            <a href="employee-zone-employee.html" className=" ml-1">
-                                <button className="thm-f thm-m btn btn-dark btn-sm">انتساب به حوزه</button>
-                            </a>
+                            <button className="thm-f thm-m btn btn-dark btn-sm ml-1" onClick={()=> openEmployeeZone(emp.EID)}>انتساب به حوزه</button>
                             <a href="employee-hardware.html" className=" ml-1">
                                 <button className="thm-f thm-m btn btn-secondary btn-sm">مشاهده تجهیزات</button>
                             </a>
@@ -360,8 +366,11 @@ const Employee = (props : any)=>{
             </div>
 
             <ReactComment text="end content" />
-            <EmployeeWorkgroup icons={props.icons} employeeId = {ew_eID} ewTag = {EWTag} 
+            <EmployeeWorkgroup employeeId = {ew_eID} ewTag = {EWTag} 
                 setEwTag = {setEWTag} onWaiting={onwaiting} onError = {onError}/>
+
+            <EmployeeZoneEmployee employeeId = {ez_eID} ezTag = {EZTag} 
+                setEzTag = {setEZTag} onWaiting={onwaiting} onError = {onError}/>
             
 
         </div>

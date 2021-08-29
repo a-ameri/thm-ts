@@ -1,0 +1,10 @@
+abcd
+ab > page
+c > opration > 1 = insert, 2 = select, 3 = update, 4 = delete
+d > error Posision
+---------------------------------------------------------------
+ab pattern
+10 > emloyee
+11 > employeeWorkgroup
+---------------------------------------------------------------
+global alert code

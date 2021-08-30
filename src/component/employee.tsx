@@ -253,7 +253,7 @@ const Employee = (props : any)=>{
     }
 
     const onEditClick = (id : number)  : any =>{
-        axios.get(URL.GetEmployees+"/"+id).then(response => {
+        axios.get(URL.GetEmployees+id).then(response => {
             let emp : IEmployee = response.data
 
             $("#fullNameTxt").val(emp.EFullName)
@@ -279,7 +279,7 @@ const Employee = (props : any)=>{
 
     const onDeleteClick = (id : number) : any =>{ 
         onwaiting(true)
-        axios.delete(URL.GetEmployees+"/"+id).then(response => {
+        axios.delete(URL.GetEmployees+id).then(response => {
             let err : string = response.data.toString()
             if(err.includes("Kernel Error")){
                 SE.globalAlert.AlertCode = 1041

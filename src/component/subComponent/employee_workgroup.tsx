@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React,{useEffect, useState, useContext} from 'react'
-import '../../css/employeeWorkgroup.css'
+//import styles from '../../css/employeeWorkgroup.css'
 import ReactComment from '../../Helper/Comment'
 import * as URL from '../../Helper/staticUrl'
 import IEmployee from '../../interfaces/employee'
@@ -104,7 +104,7 @@ const EmployeeWorkgroup = (props : any)=>{
     //#region get employee information from server
     useEffect(()=>{
         promptTag ? (
-            axios.get(URL.GetEmployees+'/'+props.employeeId).then(response =>{
+            axios.get(URL.GetEmployees+props.employeeId).then(response =>{
                 setEmp(response.data)
             }).catch(error=>{
                 console.log(error)

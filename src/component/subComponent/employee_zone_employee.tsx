@@ -1,12 +1,16 @@
 import axios from 'axios'
 import React,{useEffect, useState} from 'react'
+import '../../css/employeeZoneEmployee.css'
 import ReactComment from '../../Helper/Comment'
 import * as URL from '../../Helper/staticUrl'
+import IEmployeeZone from '../../interfaces/employee_zone'
 import IEmployee from '../../interfaces/employee'
+import IZone from '../../interfaces/zone'
 import * as SE from '../../static/staticErrors'
 import IAlert from '../../interfaces/alert'
 
 const EmployeeZoneEmployee = (props : any)=>{
+
     let employee : IEmployee = {
         EFullName : "",
         EID : 0,
@@ -23,24 +27,79 @@ const EmployeeZoneEmployee = (props : any)=>{
     const onError = (tag : boolean, alert : IAlert) =>{
         props.onError(tag, alert)
     }
-    
+
     const [emp, setEmp] = useState(employee)
     const [promptTag, setPromptTag] = useState(false)
+    const [mainTable,fillMainTable] = useState(0)
+    let tableRows : any
+    let employeeZone : IEmployeeZone[]
+    let zones : IZone[]
     
     const exit = () =>{
         setPromptTag(false)
         props.setEzTag(false)
     }
     
-    const save = () =>{
+    const onSaveClick = (id : number) =>{
         
     }
+
+    const onDeleteClick = (id : number) =>{
+
+    }
+
+    const fillTableItems = () =>{
+        axios.get(URL.GetZone).then(response =>{
+            let err : string = response.data.toString()
+            if(err.includes("Kernel Error"))
+            {
+                SE.globalAlert.AlertCode = 1221
+                SE.globalAlert.Body = err
+                SE.globalAlert.Header = SE.Read
+            }else{
+                zones = response.data
+                tableRows = zones.map((z, index)=>
+                    <tr className="thm-f thm-m data" key={index + 1}>
+                        <td>{index + 1}</td>
+                        <td>{z.ZName}</td>
+                        <td>{z.ZCode}</td>                        
+                        <td><button className="btn btn-success ml-1 btn-sm">ثبت</button></td>
+                    </tr>
+                )
+                fillMainTable(tableRows)
+            }          
+        }).catch(error =>{
+            SE.globalAlert.AlertCode = 1220
+            SE.globalAlert.Body = error.toString()
+            SE.globalAlert.Header = SE.Unknown
+            onError(true, SE.globalAlert)
+        })
+        
+        SE.emptyGlobalAlert()
+    }
+
+    useEffect(()=>{
+        //#region search table function 
+        $("#eze-searchInput").on("keyup", function() {
+            var value = ($(this).val()!  as string).toLowerCase();
+            $("#eze-mainTable .data").filter(function() : any {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+        //#endregion
+
+    },[])
 
     useEffect(()=>{
         setPromptTag(props.ezTag)
         if(props.ezTag){
             //#region add all workgroup items
             
+            //#endregion
+
+            
+            //#region fill employee table        
+            fillTableItems()
             //#endregion
         }
         
@@ -49,7 +108,7 @@ const EmployeeZoneEmployee = (props : any)=>{
     //#region get employee information from server
     useEffect(()=>{
         promptTag ? (
-            axios.get(URL.GetEmployees+'/'+props.employeeId).then(response =>{
+            axios.get(URL.GetEmployees+props.employeeId).then(response =>{
                 setEmp(response.data)
             }).catch(error=>{
                 console.log(error)
@@ -64,6 +123,7 @@ const EmployeeZoneEmployee = (props : any)=>{
                 PeID : 0
             }) 
         )
+        
     },[promptTag])
     //#endregion
 
@@ -75,12 +135,6 @@ const EmployeeZoneEmployee = (props : any)=>{
                 <div className="row w-100 thm-bg7 thm-main-action">
 
                     <div className="col-12 d-flex justify-content-start w-100 thm-sans-medium">
-
-                        <div className="badge save">
-
-                            <span className="fa fa-save fa-size-xxl" onClick={save}></span>
-
-                        </div>
 
                         <div className="badge  mr-2">
 
@@ -101,13 +155,13 @@ const EmployeeZoneEmployee = (props : any)=>{
 
                     <div className="thm-fields thm-sans-light thm-bg6">
                         <div className="row d-flex justify-content-center">
-                            <label className="thm-title-font font-weight-bolder">انتساب حوزه ها به عادل عامری</label>
+                            <label id="eze-title" className="titr thm-title-font">انتساب حوزه ها به {emp.EFullName}</label>
                         </div>
                         <div className="row d-flex justify-content-center">					
-                            <input className="form-control" id="searchInput" type="text" placeholder="جستجو..." />					
+                            <input className="form-control" id="eze-searchInput" type="text" placeholder="جستجو..." />					
                         </div>
                         <div className="row">
-                            <table id="mainTable" className="table table-striped table-bordered bg-light">
+                            <table id="eze-resultTable" className="table table-striped table-bordered table-dark">
                                 <thead>
                                     <tr>
                                         <th>ردیف</th>
@@ -121,19 +175,19 @@ const EmployeeZoneEmployee = (props : any)=>{
                                         <td>1</td>
                                         <td>مشاغل 03</td>
                                         <td>2303</td>
-                                        <td><button className="btn btn-success ml-1 btn-sm">ثبت</button></td>
+                                        <td><button className="btn btn-danger btn-sm">حذف</button></td>
                                     </tr>
                                     <tr className="data">
                                         <td>2</td>
                                         <td>شرکت ها 17</td>
                                         <td>2317</td>
-                                        <td><button className="btn btn-success ml-1 btn-sm">ثبت</button></td>
+                                        <td><button className="btn btn-danger btn-sm">حذف</button></td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                         <div className="row">
-                            <table id="resultTable" className="table table-striped table-bordered table-dark">
+                            <table id="eze-mainTable" className="table table-striped table-bordered bg-light">
                                 <thead>
                                     <tr>
                                         <th>ردیف</th>
@@ -143,18 +197,7 @@ const EmployeeZoneEmployee = (props : any)=>{
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr className="data">
-                                        <td>1</td>
-                                        <td>فناوری اطلاعات</td>
-                                        <td>2300</td>
-                                        <td><button className="btn btn-danger btn-sm">حذف</button></td>
-                                    </tr>
-                                    <tr className="data">
-                                        <td>2</td>
-                                        <td>هیئت های مالیاتی</td>
-                                        <td>2330</td>
-                                        <td><button className="btn btn-danger btn-sm">حذف</button></td>
-                                    </tr>
+                                    {mainTable}                                    
                                 </tbody>
                             </table>
                         </div>

@@ -80,10 +80,10 @@ const EmployeeZoneEmployee = (props : any)=>{
 
     useEffect(()=>{
         //#region search table function 
-        $("#eze-searchInput").on("keyup", function() {
+        $("#ezeSearchInput").on("keyup", function() {
             var value = ($(this).val()!  as string).toLowerCase();
-            $("#eze-mainTable .data").filter(function() : any {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            $("#ezeMainTable .data").filter(function() : any {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
             });
         });
         //#endregion
@@ -149,19 +149,19 @@ const EmployeeZoneEmployee = (props : any)=>{
                 <ReactComment text="end header" />
 
 
-                <ReactComment text="begin insert employee workgroup" />                
+                <ReactComment text="begin insert employee zone" />                
 
-                <div className="col-md-12 h-100">
+                <div id="ew_div" className="col-md-12 h-100">
 
                     <div className="thm-fields thm-sans-light thm-bg6">
                         <div className="row d-flex justify-content-center">
                             <label id="eze-title" className="titr thm-title-font">انتساب حوزه ها به {emp.EFullName}</label>
                         </div>
                         <div className="row d-flex justify-content-center">					
-                            <input className="form-control" id="eze-searchInput" type="text" placeholder="جستجو..." />					
+                            <input className="form-control" id="ezeSearchInput" type="text" placeholder="جستجو..." />					
                         </div>
                         <div className="row">
-                            <table id="eze-resultTable" className="table table-striped table-bordered table-dark">
+                            <table id="ezeResultTable" className="table table-striped table-bordered table-dark">
                                 <thead>
                                     <tr>
                                         <th>ردیف</th>
@@ -187,7 +187,7 @@ const EmployeeZoneEmployee = (props : any)=>{
                             </table>
                         </div>
                         <div className="row">
-                            <table id="eze-mainTable" className="table table-striped table-bordered bg-light">
+                            <table id="ezeMainTable" className="table table-striped table-bordered bg-light">
                                 <thead>
                                     <tr>
                                         <th>ردیف</th>
@@ -206,7 +206,7 @@ const EmployeeZoneEmployee = (props : any)=>{
 
 		        </div>
                 
-                <ReactComment text="end insert employee workgroup" />
+                <ReactComment text="end insert employee zone" />
                 
                 
             </React.Fragment>
@@ -216,7 +216,7 @@ const EmployeeZoneEmployee = (props : any)=>{
     
     return(
         <React.Fragment>            
-            {promptTag ? <div id="employeeWorkgroup">
+            {promptTag ? <div id="employeeZoneEmployee">
                 {myDiv()}
             </div> : null}
         </React.Fragment>

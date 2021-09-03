@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React,{useEffect, useState, useContext} from 'react'
-//import styles from '../../css/employeeWorkgroup.css'
+import '../../css/employeeWorkgroup.css'
 import ReactComment from '../../Helper/Comment'
 import * as URL from '../../Helper/staticUrl'
 import IEmployee from '../../interfaces/employee'

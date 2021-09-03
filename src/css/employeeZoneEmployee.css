@@ -1,3 +1,29 @@
-#eze-title{
-    width: auto !important;
+#employeeZoneEmployee{
+    background-color: rgba(181, 240, 227, 0.400);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+#employeeZoneEmployee .thm-main-action{
+    margin-right: 0;
+    height: 35px;
+}
+#employeeZoneEmployee .thm-main-action div{    
+    height: 100%;
+}
+#employeeZoneEmployee .thm-fields{
+    margin: 0;
+}
+#ez_div{
+    height: 85% !important;
+}
+#employeeZoneEmployee .badge{
+    cursor: pointer;
+}
+#employeeZoneEmployee label{
+	width: auto !important;
+}
+#employeeZoneEmployee .titr{
+	font-size: x-large;
+	font-weight: bolder;
 }

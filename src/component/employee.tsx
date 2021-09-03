@@ -91,7 +91,7 @@ const Employee = (props : any)=>{
         $("#employeeSearch").on("keyup", function() {
             var value = ($(this).val()!  as string).toLowerCase();
             $("#employeeTable .data").filter(function() : any {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
             });
         });
         //#endregion

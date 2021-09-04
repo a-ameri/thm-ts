@@ -59,7 +59,7 @@ const EmployeeZoneEmployee = (props : any)=>{
             }else{
                 zones = response.data
                 tableRows = zones.map((z, index)=>
-                    <tr className="thm-f thm-m data" key={index + 1}>
+                    <tr className="data" key={index + 1}>
                         <td>{index + 1}</td>
                         <td>{z.ZName}</td>
                         <td>{z.ZCode}</td>                        

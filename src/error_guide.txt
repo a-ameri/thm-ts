@@ -6,5 +6,6 @@ d > error Posision
 ab pattern
 10 > emloyee
 11 > employeeWorkgroup
+12 > employeeZoneEmployee
 ---------------------------------------------------------------
 global alert code

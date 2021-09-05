@@ -1,0 +1,29 @@
+#employeeHardware{
+    background-color: rgba(181, 240, 227, 0.400);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+#employeeHardware .thm-main-action{
+    margin-right: 0;
+    height: 35px;
+}
+#employeeHardware .thm-main-action div{    
+    height: 100%;
+}
+#employeeHardware .thm-fields{
+    margin: 0;
+}
+#ez_div{
+    height: 85% !important;
+}
+#employeeHardware .badge{
+    cursor: pointer;
+}
+#employeeHardware label{
+	width: auto !important;
+}
+#employeeHardware .titr{
+	font-size: x-large;
+	font-weight: bolder;
+}

@@ -1,14 +1,14 @@
 import axios from 'axios'
 import React,{useEffect, useState} from 'react'
-import '../../css/employeeZoneEmployee.css'
-import ReactComment from '../../Helper/Comment'
-import * as URL from '../../Helper/staticUrl'
-import IEmployeeZone from '../../interfaces/employee_zone'
-import IEmployee from '../../interfaces/employee'
-import IZone from '../../interfaces/zone'
-import IPost from '../../interfaces/post'
-import * as SE from '../../static/staticErrors'
-import IAlert from '../../interfaces/alert'
+import '../../../css/employeeZoneEmployee.css'
+import ReactComment from '../../../Helper/Comment'
+import * as URL from '../../../Helper/staticUrl'
+import IEmployeeZone from '../../../interfaces/employee_zone'
+import IEmployee from '../../../interfaces/employee'
+import IZone from '../../../interfaces/zone'
+import IPost from '../../../interfaces/post'
+import * as SE from '../../../static/staticErrors'
+import IAlert from '../../../interfaces/alert'
 
 const EmployeeZoneEmployee = (props : any)=>{
 
@@ -291,7 +291,7 @@ const EmployeeZoneEmployee = (props : any)=>{
 
                     <div className="thm-fields thm-sans-light thm-bg6">
                         <div className="row d-flex justify-content-center">
-                            <label id="eze-title" className="titr thm-title-font">انتساب حوزه ها به {emp.EFullName}</label>
+                            <label id="eze-title" className="titr thm-title-font">انتساب اداره ها به {emp.EFullName}</label>
                         </div>
                         <div className="row d-flex justify-content-center">					
                             <input className="form-control" id="ezeSearchInput" type="text" placeholder="جستجو..." />					
@@ -301,8 +301,8 @@ const EmployeeZoneEmployee = (props : any)=>{
                                 <thead>
                                     <tr>
                                         <th>ردیف</th>
-                                        <th>نام حوزه</th>
-                                        <th>کد حوزه</th>
+                                        <th>نام اداره</th>
+                                        <th>کد اداره</th>
                                         <th>پست سازمانی</th>
                                         <th>عملیات</th>
                                     </tr>
@@ -317,8 +317,8 @@ const EmployeeZoneEmployee = (props : any)=>{
                                 <thead>
                                     <tr>
                                         <th>ردیف</th>
-                                        <th>نام حوزه</th>
-                                        <th>کد حوزه</th>
+                                        <th>نام اداره</th>
+                                        <th>کد اداره</th>
                                         <th>پست سازمانی</th>
                                         <th>عملیات</th>
                                     </tr>

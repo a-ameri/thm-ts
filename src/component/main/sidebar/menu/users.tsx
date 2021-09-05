@@ -14,12 +14,12 @@ const Users = () =>{
 
     const officeManagement = (
     <li id="office" className="list-group-item list-group-item-action">
-        <span className="fas fa-building fa-size">&nbsp;&nbsp;</span><span>مدیریت ادارات</span>
+        <span className="fas fa-building fa-size">&nbsp;&nbsp;</span><span>مدیریت ساختمان ها</span>
     </li>)
 
     const zoneManagement = (
     <li id="zone" className="list-group-item list-group-item-action">
-        <span className="fas fa-university fa-size">&nbsp;&nbsp;</span><span>مدیریت حوزه ها</span>
+        <span className="fas fa-university fa-size">&nbsp;&nbsp;</span><span>مدیریت ادارات</span>
     </li>)
 
     return(

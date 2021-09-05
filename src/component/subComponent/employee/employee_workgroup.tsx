@@ -1,13 +1,13 @@
 import axios from 'axios'
 import React,{useEffect, useState, useContext} from 'react'
-import '../../css/employeeWorkgroup.css'
-import ReactComment from '../../Helper/Comment'
-import * as URL from '../../Helper/staticUrl'
-import IEmployee from '../../interfaces/employee'
-import IEmployeeWorkgroup from '../../interfaces/employee_workgroup'
-import IWorkgroup from '../../interfaces/workgroup'
-import * as SE from '../../static/staticErrors'
-import IAlert from '../../interfaces/alert'
+import '../../../css/employeeWorkgroup.css'
+import ReactComment from '../../../Helper/Comment'
+import * as URL from '../../../Helper/staticUrl'
+import IEmployee from '../../../interfaces/employee'
+import IEmployeeWorkgroup from '../../../interfaces/employee_workgroup'
+import IWorkgroup from '../../../interfaces/workgroup'
+import * as SE from '../../../static/staticErrors'
+import IAlert from '../../../interfaces/alert'
 
 const EmployeeWorkgroup = (props : any)=>{
     let employee : IEmployee = {

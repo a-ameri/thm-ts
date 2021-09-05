@@ -64,9 +64,9 @@ const Login = (props : any) =>{
                 <div className="row mt-4" style={{height: "150px"}}>
                     <div className="col-md-6">
                         <div className="d-flex justify-content-start">
-                            <span className="thm-title-font font-weight-bold">نرم افزار جامع فناوری اطلاعات </span>
+                            <span className="thm-title-font font-weight-bold">میز سرویس الکترونیکی فناوری اطلاعات</span>
                             <span>&nbsp;&nbsp; - &nbsp;&nbsp;</span>
-                            <span className="thm-title-font font-weight-bold">«نجفا»</span>
+                            <span className="thm-title-font font-weight-bold">«مساف»</span>
                         </div>
                     </div>
                     <div className="col-md-6">

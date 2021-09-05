@@ -5,5 +5,6 @@ export default interface EmployeeZone{
     PID : number,
     EFullName : string,    
     ZCode : string,
+    ZName: string,
     PName : string
 }

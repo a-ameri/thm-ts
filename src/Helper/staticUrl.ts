@@ -12,3 +12,5 @@ export const GetEmployeesWorkgroupByEID : string = ServerIP + "/THM_WebApi/api/E
 export const GetEmployeesWorkgroupByWID : string = ServerIP + "/THM_WebApi/api/EmployeeWorkgroup/ByWID/"
 export const DeleteEmployeesWorkgroup : string = ServerIP + "/THM_WebApi/api/EmployeeWorkgroup/EID/"
 export const GetZone : string = ServerIP + "/THM_WebApi/api/Zone/"
+export const GetEmployeeZoneByEID : string = ServerIP + "/THM_WebApi/api/EmployeeZone/ByEID/"
+export const GetEmployeeZone : string = ServerIP + "/THM_WebApi/api/EmployeeZone/"

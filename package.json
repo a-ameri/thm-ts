@@ -62,10 +62,7 @@
     "react-redux": "^7.2.3",
     "react-refresh": "^0.8.3",
     "react-router": "^5.2.0",
-<<<<<<< HEAD
-=======
     "react-scripts": "^4.0.3",
->>>>>>> ead83be63d569e4a050dc7628db99416d16359ad
     "redux": "^4.1.0",
     "resolve": "1.18.1",
     "resolve-url-loader": "^3.1.2",

@@ -87,7 +87,7 @@ const EmployeeHardware = (props : any) =>{
             <ReactComment text="end header" />
 
             <ReactComment text="begin insert employee storage" />
-            <div id="eh_div" className="col-md-12">
+            <div className="col-md-12 h-100">
 
                 <div className="thm-fields thm-sans-light thm-bg6">
                     <div className="row d-flex justify-content-center">
@@ -97,7 +97,7 @@ const EmployeeHardware = (props : any) =>{
                         <input className="form-control" id="searchInput" type="text" placeholder="جستجو..." />					
                     </div>
                     <div className="row">                        
-                        <table id="ehResultTable" className="table table-striped table-bordered table-dark">
+                        <table id="resultTable" className="table table-striped table-bordered table-dark">
                             <thead>
                                 <tr>
                                     <th>ردیف</th>
@@ -135,7 +135,7 @@ const EmployeeHardware = (props : any) =>{
                         </table>
                     </div>
                     <div className="row">
-                    <table id="ehMainTable" className="table table-striped table-bordered bg-light">
+                    <table id="mainTable" className="table table-striped table-bordered bg-light">
                             <thead>
                                 <tr>
                                     <th>ردیف</th>

@@ -87,7 +87,7 @@ const EmployeeHardware = (props : any) =>{
             <ReactComment text="end header" />
 
             <ReactComment text="begin insert employee storage" />
-            <div className="col-md-12 h-100">
+            <div id="eh_div" className="col-md-12">
 
                 <div className="thm-fields thm-sans-light thm-bg6">
                     <div className="row d-flex justify-content-center">

@@ -97,7 +97,7 @@ const EmployeeHardware = (props : any) =>{
                         <input className="form-control" id="searchInput" type="text" placeholder="جستجو..." />					
                     </div>
                     <div className="row">                        
-                        <table id="resultTable" className="table table-striped table-bordered table-dark">
+                        <table id="ehResultTable" className="table table-striped table-bordered table-dark">
                             <thead>
                                 <tr>
                                     <th>ردیف</th>
@@ -135,7 +135,7 @@ const EmployeeHardware = (props : any) =>{
                         </table>
                     </div>
                     <div className="row">
-                    <table id="mainTable" className="table table-striped table-bordered bg-light">
+                    <table id="ehMainTable" className="table table-striped table-bordered bg-light">
                             <thead>
                                 <tr>
                                     <th>ردیف</th>

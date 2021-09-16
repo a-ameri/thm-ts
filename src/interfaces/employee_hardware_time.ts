@@ -5,5 +5,6 @@ export default interface EmployeeHradwareTime{
      EHTDescription : string,
      EHID : number,
      RID : number,
-     STUID : number
+     STUID : number,
+     EHTTimeGet : string
 }

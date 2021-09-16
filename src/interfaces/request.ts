@@ -16,5 +16,7 @@ export default interface Request{
     SName : string,
     HTName : string,
     HName : string,
-    RTName : string
+    RTName : string,
+    RTimeGet : string,
+    RAcceptTimeGet : string
 }

@@ -7,5 +7,6 @@ export default interface RequestMessage{
     RTID : number,
     EZID : number,
     EmployeeFullName : string,
-    RTName : number
+    RTName : number,
+    RMDatetimeGet : string
 }

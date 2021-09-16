@@ -178,8 +178,8 @@ const EmployeeHardware = (props : any) =>{
                                     <th>2123</th>
                                     <td>
                                         <select className="form-control font-weight-light thm-sans-regular">
-                                            <option><span>-</span></option>
-                                            <option><span>کیس - Green - pars - شماره سریال : 0 - شماره اموال : 136</span></option>
+                                            <option>-</option>
+                                            <option>کیس - Green - pars - شماره سریال : 0 - شماره اموال : 136</option>
                                         </select>
                                     </td>
                                     <td>

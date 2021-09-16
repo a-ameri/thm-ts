@@ -4,5 +4,6 @@ export default interface RequestMessageDetails{
     RMDDatetime : Date,
     EZID : number,
     RMID : number,
-    EmployeeFullName : string
+    EmployeeFullName : string,
+    RMDDatetimeGet : string
 }
